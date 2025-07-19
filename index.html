@@ -6,20 +6,21 @@
   <title>INCLUDE</title>
   <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
-      background-color: #f8f9fb;
+      background-color: #f9fafb;
       color: #333;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
 
     header {
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(90deg, #6a0dad, #2ecc71);
+      color: white;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     nav {
@@ -33,27 +34,33 @@
 
     nav a {
       text-decoration: none;
-      color: #333;
+      color: white;
       font-weight: 500;
       margin: 0 1rem;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
 
     nav a:hover {
-      color: #007acc;
+      color: #d1f7d6;
     }
 
     section {
+      display: none;
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
-    h1, h2 {
-      color: #222;
+    section.active {
+      display: block;
     }
 
-    /* TEAM GRID */
+    h1, h2 {
+      color: #4a4a4a;
+      text-align: center;
+    }
+
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -61,12 +68,12 @@
       margin-top: 2rem;
     }
 
-    .Dr.rer.nat.Andrea Hahnefeld {
+    .team-member {
       text-align: center;
-      background: #fff;
+      background: white;
       padding: 1rem;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
 
@@ -74,13 +81,13 @@
       transform: translateY(-5px);
     }
 
-    .Prof.Dr.Matthias Klosinski img {
+    .team-member img {
       width: 150px;
       height: 150px;
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 1rem;
-      border: 3px solid #007acc;
+      border: 4px solid #6a0dad;
     }
 
     .cv-button {
@@ -89,23 +96,22 @@
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
       color: white;
-      background: #007acc;
-      border: none;
+      background: #2ecc71;
       border-radius: 20px;
       text-decoration: none;
       transition: background 0.3s;
     }
 
     .cv-button:hover {
-      background: #005f99;
+      background: #27ae60;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.8rem;
-      color: #777;
-      border-top: 1px solid #eee;
+      color: #555;
+      background: #f0f0f0;
       margin-top: 2rem;
     }
 
@@ -120,22 +126,22 @@
 <body>
   <header>
     <nav>
-      <div class="logo"><a href="#home">Wissenschaftsprojekt</a></div>
+      <div class="logo"><a onclick="showSection('home')">INCLUDE</a></div>
       <div>
-        <a href="#home">Home</a>
-        <a href="#team">Team</a>
-        <a href="#projekte">Projekte</a>
-        <a href="#publikationen">Publikationen</a>
-        <a href="#neuigkeiten">Neuigkeiten</a>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('team')">Team</a>
+        <a onclick="showSection('projekte')">Projekte</a>
+        <a onclick="showSection('publikationen')">Publikationen</a>
+        <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
       </div>
     </nav>
   </header>
 
   <!-- HOME -->
-  <section id="home">
-    <h1>Willkommen beim Wissenschaftsprojekt</h1>
-    <p>Hier findest du Informationen zu unserem Team, unseren Projekten und unseren aktuellen Veröffentlichungen.</p>
-    <img src="images/lab.jpg" alt="Labor Bild" class="responsive">
+  <section id="home" class="active">
+    <h1>Willkommen bei INCLUDE</h1>
+    <p>INterCuLtUral Child DevelopmEnt (INCLUDE): Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Research-lab.jpg" alt="Labor Bild" class="responsive">
   </section>
 
   <!-- TEAM -->
@@ -143,17 +149,18 @@
     <h2>Unser Team</h2>
     <div class="team-grid">
       <div class="team-member">
-        <img src="images/person1.jpg" alt="Anna Müller">
-        <h3>Dr. Anna Müller</h3>
-        <p>Leitende Wissenschaftlerin</p>
-        <a class="cv-button" href="cv/anna-mueller.pdf" download>CV Download</a>
+        <img src="https://via.placeholder.com/150" alt="Andrea Hahnefeld">
+        <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
+        <p>Projektleitung, Dipl.-Psych., Psychologische Psychotherapeutin</p>
+        <a class="cv-button" href="cv/hahnefeld.pdf" download>CV Download</a>
       </div>
       <div class="team-member">
-        <img src="images/person2.jpg" alt="Max Mustermann">
-        <h3>Max Mustermann</h3>
-        <p>Doktorand</p>
-        <a class="cv-button" href="cv/max-mustermann.pdf" download>CV Download</a>
+        <img src="https://via.placeholder.com/150" alt="Matthias Klosinski">
+        <h3>Prof. Dr. Matthias Klosinski</h3>
+        <p>Stellv. Leitung</p>
+        <a class="cv-button" href="cv/klosinski.pdf" download>CV Download</a>
       </div>
+      <!-- Weitere Mitglieder -->
     </div>
   </section>
 
@@ -161,26 +168,72 @@
   <section id="projekte">
     <h2>Unsere Projekte</h2>
     <p>Hier stellen wir unsere aktuellen und abgeschlossenen Forschungsprojekte vor.</p>
-    <img src="images/project1.jpg" alt="Projekt Bild" class="responsive">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Science_illustration.png/640px-Science_illustration.png" class="responsive">
   </section>
 
   <!-- PUBLIKATIONEN -->
   <section id="publikationen">
     <h2>Publikationen</h2>
     <ul>
-      <li>2024 – Müller, A. et al.: <i>Neue Methoden der KI-Forschung</i>.</li>
-      <li>2023 – Mustermann, M. et al.: <i>Analyse moderner Neurotechnologien</i>.</li>
+      <li></i> 
+Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.
+ 
+Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana R.; Fleischmann, Melia; Klosinski, Matthias; Rivera, Luisa M. et al. (2024): Young children's development after forced displacement: a systematic review. In: Child and adolescent psychiatry and mental health 18 (1), S. 20. DOI: 10.1186/s13034-024-00711-5.
+ 
+Hahnefeld, Andrea; Fink, Monika; Le Beherec, Saskia; Baur, Marie Anna; Bernhardt, Katharina; Mall, Volker (2024): Correlation of screen exposure to stress, learning, cognitive and language performance in children. In: European child & adolescent psychiatry. DOI: 10.1007/s00787-024-02593-6.
+
+A. Hahnefeld,  M. Fink,  E. Hauber, et al., “ Dysregulated Screen Exposure Is Associated With Severity of Language and Communication Impairments in Children With Developmental Disorders,” Acta Paediatrica(2025):  1–8, https://doi.org/10.1111/apa.70223.
+ 
+Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin bei Flüchtlingskindern. In: Pädiatrische Praxis 94 (3), S. 508–521.
+ 
+Hahnefeld, Andrea; Münch, Katharina; Aberl, Sigrid; Henningsen, Peter; Mall, Volker (2022): Versorgung traumatisierter Vorschulkinder. In: Monatsschr Kinderheilkd 170 (12), S. 1077–1084. DOI: 10.1007/s00112-022-01618-1.
+ 
+Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Dudek, Verena; Münch, Katharina; Aberl, Sigrid et al. (2022): Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. In: European journal of pediatrics 181 (3), S. 1205–1212. DOI: 10.1007/s00431-021-04312-8.
+ 
+Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Münch, Katharina; Aberl, Sigrid; Eckler, Lea V. et al. (2021): Survival states as indicators of learning performance and biological stress in refugee children: a cross-sectional study with a comparison group. In: BMC psychiatry 21, Artikel 228. DOI: 10.1186/s12888-021-03233-y.
+ 
+Hahnefeld, Andrea; Weigand, Elena; Aberl, Sigrid; Mall, Volker (Hg.) (2024): Interdisziplinäre Versorgung von Kindern mit Fluchterfahrung. Mit psychoedukativem Gruppenkonzept für Eltern. Unter Mitarbeit von Elena Weigand. 1. Aufl. Bern: Hogrefe Verlag.
+ 
+Soykoek, Seval; Mall, Volker; Nehring, Ina; Henningsen, Peter; Aberl, Sigrid (2017): Post-traumatic stress disorder in Syrian children of a German refugee camp. In: Lancet (London, England) 389 (10072), S. 903–904. DOI: 10.1016/S0140-6736(17)30595-0.
+</li>
+     
     </ul>
   </section>
 
   <!-- NEUIGKEITEN -->
   <section id="neuigkeiten">
     <h2>Neuigkeiten</h2>
-    <p>Hier findest du aktuelle Nachrichten, Veranstaltungen und Updates zu unserem Projekt.</p>
+    <p>Athen</h2>
+
+Infos über den Kongress in Athen
+ 
+Heidelberg</h2>
+
+Infos über den Kongress in Heidelberg
+
+Vilnius</h2>
+
+Wir sind auch in Vilnius auf der ESRII Conference verteten. Dort werden wir die Entwicklung und Forschung zu unserer mobilen Anwendnung InterAPPtion präsentieren.  
+ 
+ 
+InterAPPtion geht in die Testphase</h2>
+ 
+Wir haben ein Blended Treatment entwickelt, um unser Parents‘ College niedrigschwellig und mehrsprachig zu erweitern. 
+Die App finden Sie hier: 
+ 
+</p>
   </section>
 
   <footer>
-    &copy; 2025 Wissenschaftsprojekt-Team. Alle Rechte vorbehalten.
+    &copy; 2025 INCLUDE. Alle Rechte vorbehalten.
   </footer>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
