@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INCLUDE</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background-color: #f8f9fb;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #007acc;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1, h2 {
+      color: #222;
+    }
+
+    /* TEAM GRID */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .Dr.rer.nat.Andrea Hahnefeld {
+      text-align: center;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .Prof.Dr.Matthias Klosinski img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid #007acc;
+    }
+
+    .cv-button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: white;
+      background: #007acc;
+      border: none;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .cv-button:hover {
+      background: #005f99;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+    }
+
+    img.responsive {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo"><a href="#home">Wissenschaftsprojekt</a></div>
+      <div>
+        <a href="#home">Home</a>
+        <a href="#team">Team</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#publikationen">Publikationen</a>
+        <a href="#neuigkeiten">Neuigkeiten</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section id="home">
+    <h1>Willkommen beim Wissenschaftsprojekt</h1>
+    <p>Hier findest du Informationen zu unserem Team, unseren Projekten und unseren aktuellen Veröffentlichungen.</p>
+    <img src="images/lab.jpg" alt="Labor Bild" class="responsive">
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <h2>Unser Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="images/person1.jpg" alt="Anna Müller">
+        <h3>Dr. Anna Müller</h3>
+        <p>Leitende Wissenschaftlerin</p>
+        <a class="cv-button" href="cv/anna-mueller.pdf" download>CV Download</a>
+      </div>
+      <div class="team-member">
+        <img src="images/person2.jpg" alt="Max Mustermann">
+        <h3>Max Mustermann</h3>
+        <p>Doktorand</p>
+        <a class="cv-button" href="cv/max-mustermann.pdf" download>CV Download</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJEKTE -->
+  <section id="projekte">
+    <h2>Unsere Projekte</h2>
+    <p>Hier stellen wir unsere aktuellen und abgeschlossenen Forschungsprojekte vor.</p>
+    <img src="images/project1.jpg" alt="Projekt Bild" class="responsive">
+  </section>
+
+  <!-- PUBLIKATIONEN -->
+  <section id="publikationen">
+    <h2>Publikationen</h2>
+    <ul>
+      <li>2024 – Müller, A. et al.: <i>Neue Methoden der KI-Forschung</i>.</li>
+      <li>2023 – Mustermann, M. et al.: <i>Analyse moderner Neurotechnologien</i>.</li>
+    </ul>
+  </section>
+
+  <!-- NEUIGKEITEN -->
+  <section id="neuigkeiten">
+    <h2>Neuigkeiten</h2>
+    <p>Hier findest du aktuelle Nachrichten, Veranstaltungen und Updates zu unserem Projekt.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Wissenschaftsprojekt-Team. Alle Rechte vorbehalten.
+  </footer>
+</body>
+</html>
