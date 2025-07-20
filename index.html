@@ -35,16 +35,17 @@
       top: 0;
       border-bottom: 1px solid #ddd;
       z-index: 1000;
+      flex-wrap: wrap;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
+      gap: 10px;
     }
 
-    .logo {
-      height: 40px;
-      margin-right: 10px;
+    .nav-left img {
+      height: 50px; /* Logos größer */
       cursor: pointer;
     }
 
@@ -52,6 +53,7 @@
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--menu-text);
+      margin-right: 10px;
     }
 
     .nav-links {
@@ -68,17 +70,6 @@
 
     .nav-links a:hover {
       color: var(--menu-hover);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-right {
-      height: 30px;
-      cursor: pointer;
     }
 
     .nav-toggle {
@@ -150,6 +141,16 @@
       height: auto;
     }
 
+    img.responsive {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 20px;
+      border-radius: 12px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     /* TEAM */
     .team-grid {
       display: grid;
@@ -167,10 +168,6 @@
       transition: transform 0.3s;
     }
 
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
-
     .team-member img {
       width: 150px;
       height: 150px;
@@ -178,6 +175,7 @@
       border-radius: 50%;
       margin-bottom: 1rem;
       border: 4px solid var(--primary-purple);
+      object-position: center 20%;
     }
 
     .cv-button {
@@ -227,8 +225,10 @@
   <!-- NAVIGATION -->
   <header class="navbar">
     <div class="nav-left">
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Logo" class="logo">
       <h1 class="site-title">INCLUDE</h1>
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Logo 1">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Logo 2">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png" alt="Logo 3">
     </div>
     <nav class="nav-links" id="navLinks">
       <a onclick="showSection('home')">Home</a>
@@ -237,10 +237,7 @@
       <a onclick="showSection('publikationen')">Publikationen</a>
       <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
     </nav>
-    <div class="nav-right">
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Right Logo" class="logo-right">
-      <button class="nav-toggle" id="navToggle">&#9776;</button>
-    </div>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
   </header>
 
   <!-- HOME -->
@@ -248,11 +245,36 @@
     <h1>Willkommen bei INCLUDE</h1>
     <p>
       <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png" alt="Logo" class="text-logo">
-      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>: Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.
+      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>: 
     </p>
+    <p>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</p>
     <p>
-      Das INCLUDE-Projekt verbindet klinische Arbeit und Forschung, um eine kulturübergreifende Versorgung zu ermöglichen.
+      Das INCLUDE (INterCuLtUral Child Development)-Projekt 
+      <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="flyer-link">(Flyer ansehen)</a> 
+      verbindet klinische Arbeit und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
+      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
     </p>
+    <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/TEAM.jpeg" alt="Labor Bild" class="responsive">
+
+    <p>In unseren Studien hat sich gezeigt, dass eine standardisierte Spielbeobachtung als leicht durchführbares und valides Instrument zur Einschätzung des kognitiven, sprachlichen und sozial-emotionalen Entwicklungsstandes von Kindern dienen kann.</p>
+
+    <p>Da unsere Studiendaten zeigen, dass Kinder nach Fluchterfahrung bei frühzeitiger Intervention und Herstellung gesunder Entwicklungsbedingungen im Familienumfeld und mit Zugang zu altersgemäßen Gesundheits-, Schul- und Bildungsangeboten im Verlauf eine Symptomreduktion und gute Aufholentwicklung an den Tag legen, stellt sich die Frage, inwieweit die gängigen in den westlichen Industrienationen entwickelten Diagnostik- und Therapieverfahren kultursensitiv angepasst werden sollten, um das Entwicklungspotential und die Ansatzpunkte zur gezielten Förderung der ankommenden Kinder zuverlässiger abzubilden.</p>
+
+    <p>In unserem interdisziplinären und multimodalen Ansatz erfassen wir die Kompetenzen und Problembereiche der Kinder diagnoseübergreifend aus mehreren Perspektiven und beziehen auch biologische Variablen wie z.B. Speichelkortisolwerte als Marker für Stress mit ein.</p>
+
+    <p>Im Mittelpunkt unserer Forschung steht dabei der Erkenntnisgewinn darüber, wie sich Fluchterfahrungen und damit assoziierte Lebensbedingungen auf die kindliche Entwicklung auswirken und wie die elterliche Erziehungskompetenz unter herausfordernden Lebensumständen gestärkt werden kann.
+    Ziel des interdisziplinären und multidimensionalen Ansatzes der INCLUDE-Arbeitsgruppe ist die Implementation sowie Untersuchung der Wirksamkeit niedrigschwelliger therapeutischer Kurzinterventionen bei Familien mit Kriegs- und Fluchterfahrung in longitudinalen Studiendesigns, um durch eine bessere, effektivere und skalierbare Versorgung (z.B. mobil-basiert im blended treatment) eine gelingende Inklusion der ankommenden Familien in die aufnehmende Gesellschaft zu erleichtern.</p>
+
+    <p><b>Referenzen:</b></p>
+    <p>1. Bundesamt für Migration und Flüchtlinge. Aktuelle Zahlen. ...</p>
+    <p>2. Soykök, S., Mall, V., Nehring, I., ...</p>
+    <p>3. Bernhardt, K., Le Beherec, S., ...</p>
+    <p>4. Hahnefeld, A., Sukale, T., ...</p>
+    <p>5. Hahnefeld, A., Sukale, T., ...</p>
+    <p>6. Bernhardt, K., Le Beherec, S., ...</p>
+    <p>7. Hahnefeld, A., Fink M, ...</p>
+    <p>8. Hahnefeld A, Fink M, Hauber E, ...</p>
+    <p>9. Le Beherec S, Bernhardt K, ...</p>
   </section>
 
   <!-- TEAM -->
@@ -277,23 +299,20 @@
   <!-- PROJEKTE -->
   <section id="projekte">
     <h2>Unsere Projekte</h2>
-
     <div class="project">
       <img src="https://via.placeholder.com/600x200?text=Projektbild+ISKF" alt="Projektbild ISKF">
       <h3>ISKF</h3>
-      <p>Seit 2016 bietet unsere Projektgruppe ...</p>
+      <p>Seit 2016 bietet unsere Projektgruppe mit der Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) ...</p>
     </div>
-
     <div class="project">
       <img src="https://via.placeholder.com/600x200?text=Projektbild+Parents+College" alt="Projektbild Parents College">
       <h3>Parents‘ College</h3>
-      <p>Seit November 2020 ...</p>
+      <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln ...</p>
     </div>
-
     <div class="project">
       <img src="https://via.placeholder.com/600x200?text=Projektbild+InterAPPtion" alt="Projektbild InterAPPtion">
       <h3>InterAPPtion</h3>
-      <p>Das psychoedukative Parents‘ College wird ...</p>
+      <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert ...</p>
     </div>
   </section>
 
@@ -301,8 +320,10 @@
   <section id="publikationen">
     <h2>Publikationen</h2>
     <ul>
-      <li>Beispielpublikation 1</li>
-      <li>Beispielpublikation 2</li>
+      <li>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana ...</li>
+      <li>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin ...</li>
+      <li>Hahnefeld, Andrea; Münch, Katharina; Aberl, Sigrid ...</li>
+      <!-- Alle restlichen Publikationen hier aus deinem Text -->
     </ul>
   </section>
 
@@ -310,7 +331,9 @@
   <section id="neuigkeiten">
     <h2>Neuigkeiten</h2>
     <h3>Heidelberg</h3>
-    <p>Infos</p>
+    <p>"Infos"</p>
+    <h3>Vilnius</h3>
+    <p>Wir sind in Vilnius auf der ESRII Conference vertreten ...</p>
   </section>
 
   <footer>
