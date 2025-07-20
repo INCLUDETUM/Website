@@ -21,36 +21,89 @@
       scroll-behavior: smooth;
     }
 
-    header {
-      background: white;
-      border-bottom: 1px solid #e5e5e5;
+    /* NAVIGATION */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--primary-green);
+      color: white;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    nav {
+    .nav-left {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
     }
 
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      margin: 0 1rem;
-      transition: color 0.3s ease;
+    .logo {
+      height: 40px;
+      margin-right: 10px;
       cursor: pointer;
     }
 
-    nav a:hover {
-      color: var(--primary-green);
+    .site-title {
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-right {
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--primary-green);
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Content Sections */
     section {
       display: none;
       max-width: 1200px;
@@ -170,18 +223,64 @@
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo"><a onclick="showSection('home')">INCLUDE</a></div>
-      <div>
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('team')">Team</a>
-        <a onclick="showSection('projekte')">Projekte</a>
-        <a onclick="showSection('publikationen')">Publikationen</a>
-        <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
-      </div>
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="logo-links.png" alt="Logo" class="logo">
+      <h1 class="site-title">INCLUDE</h1>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('team')">Team</a>
+      <a onclick="showSection('projekte')">Projekte</a>
+      <a onclick="showSection('publikationen')">Publikationen</a>
+      <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
     </nav>
+    <div class="nav-right">
+      <img src="logo-rechts.png" alt="Right Logo" class="logo-right">
+      <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </div>
   </header>
+
+  <section id="home" class="active">
+    <h1>Willkommen bei INCLUDE</h1>
+    <p>Hier kannst du deinen Startseiten-Inhalt einfügen.</p>
+  </section>
+
+  <section id="team">
+    <h2>Unser Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="team1.jpg" alt="Teammitglied 1">
+        <h3>Person 1</h3>
+        <p>Beschreibung Person 1.</p>
+      </div>
+      <!-- Weitere Team-Mitglieder -->
+    </div>
+  </section>
+
+  <!-- Weitere Sections für Projekte, Publikationen usw. -->
+
+  <footer>
+    &copy; 2025 INCLUDE – Alle Rechte vorbehalten.
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Sections umschalten
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
 
   <!-- HOME -->
   <section id="home" class="active">
