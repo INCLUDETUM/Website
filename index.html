@@ -6,10 +6,12 @@
   <title>INCLUDE</title>
   <style>
     :root {
-      --primary-green: #58a880;
       --primary-purple: #6d5cae;
       --background-light: #f8f9fb;
       --text-dark: #333;
+      --menu-bg: #ffffff;
+      --menu-text: #333;
+      --menu-hover: #6d5cae;
     }
 
     body {
@@ -27,10 +29,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background-color: var(--primary-green);
-      color: white;
+      background-color: var(--menu-bg);
+      color: var(--menu-text);
       position: sticky;
       top: 0;
+      border-bottom: 1px solid #ddd;
       z-index: 1000;
     }
 
@@ -48,6 +51,7 @@
     .site-title {
       font-size: 1.5rem;
       font-weight: bold;
+      color: var(--menu-text);
     }
 
     .nav-links {
@@ -56,10 +60,14 @@
     }
 
     .nav-links a {
-      color: white;
+      color: var(--menu-text);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
       cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: var(--menu-hover);
     }
 
     .nav-right {
@@ -78,7 +86,7 @@
       font-size: 24px;
       background: none;
       border: none;
-      color: white;
+      color: var(--menu-text);
       cursor: pointer;
     }
 
@@ -88,10 +96,11 @@
         position: absolute;
         top: 60px;
         right: 0;
-        background: var(--primary-green);
+        background: var(--menu-bg);
         flex-direction: column;
         width: 200px;
         padding: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       }
 
       .nav-links.active {
@@ -134,17 +143,14 @@
       color: #000;
     }
 
-    ul {
-      max-width: 900px;
-      margin: 1rem auto;
-      padding-left: 1.5rem;
+    .text-logo {
+      float: right;
+      margin: 0 0 10px 15px;
+      width: 120px;
+      height: auto;
     }
 
-    li {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
-
+    /* TEAM */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -180,14 +186,31 @@
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
       color: white;
-      background: var(--primary-green);
+      background: var(--primary-purple);
       border-radius: 20px;
       text-decoration: none;
       transition: background 0.3s;
     }
 
     .cv-button:hover {
-      background: #3e7f61;
+      background: #4e3f84;
+    }
+
+    /* Projekte */
+    .project {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .project img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     footer {
@@ -198,34 +221,13 @@
       background: #f0f0f0;
       margin-top: 2rem;
     }
-
-    img.responsive {
-      width: 100%;
-      max-width: 800px;
-      margin-top: 20px;
-      border-radius: 12px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    a.flyer-link {
-      display: inline-block;
-      color: var(--primary-purple);
-      font-weight: bold;
-      margin-top: 1rem;
-      text-decoration: none;
-    }
-
-    a.flyer-link:hover {
-      color: var(--primary-green);
-    }
   </style>
 </head>
 <body>
+  <!-- NAVIGATION -->
   <header class="navbar">
     <div class="nav-left">
-      <img src="logo-links.png" alt="Logo" class="logo">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Logo" class="logo">
       <h1 class="site-title">INCLUDE</h1>
     </div>
     <nav class="nav-links" id="navLinks">
@@ -236,92 +238,22 @@
       <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
     </nav>
     <div class="nav-right">
-      <img src="logo-rechts.png" alt="Right Logo" class="logo-right">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Right Logo" class="logo-right">
       <button class="nav-toggle" id="navToggle">&#9776;</button>
     </div>
   </header>
-
-  <section id="home" class="active">
-    <h1>Willkommen bei INCLUDE</h1>
-    <p>Hier kannst du deinen Startseiten-Inhalt einfügen.</p>
-  </section>
-
-  <section id="team">
-    <h2>Unser Team</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="team1.jpg" alt="Teammitglied 1">
-        <h3>Person 1</h3>
-        <p>Beschreibung Person 1.</p>
-      </div>
-      <!-- Weitere Team-Mitglieder -->
-    </div>
-  </section>
-
-  <!-- Weitere Sections für Projekte, Publikationen usw. -->
-
-  <footer>
-    &copy; 2025 INCLUDE – Alle Rechte vorbehalten.
-  </footer>
-
-  <script>
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Sections umschalten
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
-</body>
-</html>
-
 
   <!-- HOME -->
   <section id="home" class="active">
     <h1>Willkommen bei INCLUDE</h1>
     <p>
-      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>: 
-      Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png" alt="Logo" class="text-logo">
+      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>: Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.
     </p>
     <p>
-      Das INCLUDE (INterCuLtUral Child Development)-Projekt 
-      <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="flyer-link">(Flyer ansehen)</a> 
-      verbindet klinische Arbeit und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
-      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
+      Das INCLUDE-Projekt verbindet klinische Arbeit und Forschung, um eine kulturübergreifende Versorgung zu ermöglichen.
     </p>
-    <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/TEAM.jpeg" alt="Labor Bild" class="responsive">
-
-      <p style="text-align: justify;">
-     
-   <p> In unseren Studien hat sich gezeigt, dass eine standardisierte Spielbeobachtung als leicht durchführbares und valides Instrument zur Einschätzung des kognitiven, sprachlichen und sozial-emotionalen Entwicklungsstandes von Kindern dienen kann.
-    Die begleitende wissenschaftliche Evaluation beinhaltet längs- und querschnittliche Erhebungen bezüglich der Effekte der eingesetzten Maßnahmen auf die kindliche Gesamtentwicklung (kognitive, sozial-emotionale und Sprachentwicklung, Lernverhalten, biologisches Stresslevel).
-   <p> Da unsere Studiendaten zeigen, dass Kinder nach Fluchterfahrung bei frühzeitiger Intervention und Herstellung gesunder Entwicklungsbedingungen im Familienumfeld und mit Zugang zu altersgemäßen Gesundheits-, Schul- und Bildungsangeboten im Verlauf eine Symptomreduktion und gute Aufholentwicklung an den Tag legen, stellt sich die Frage, inwieweit die gängigen in den westlichen Industrienationen entwickelten Diagnostik- und Therapieverfahren kultursensitiv angepasst werden sollten, um das Entwicklungspotential und die Ansatzpunkte zur gezielten Förderung der ankommenden Kinder zuverlässiger abzubilden.
-    In unserem interdisziplinären und multimodalen Ansatz erfassen wir die Kompetenzen und Problembereiche der Kinder diagnoseübergreifend aus mehreren Perspektiven und beziehen auch biologische Variablen wie z.B. Speichelkortisolwerte als Marker für Stress mit ein. 
-   <p> Im Mittelpunkt unserer Forschung steht dabei der Erkenntnisgewinn darüber, wie sich Fluchterfahrungen und damit assoziierte Lebensbedingungen auf die kindliche Entwicklung auswirken und wie die elterliche Erziehungskompetenz unter herausfordernden Lebensumständen gestärkt werden kann.
-    Ziel des interdisziplinären und multidimensionalen Ansatzes der INCLUDE-Arbeitsgruppe ist die Implementation sowie Untersuchung der Wirksamkeit niedrigschwelliger therapeutischer Kurzinterventionen bei Familien mit Kriegs- und Fluchterfahrung in longitudinalen Studiendesigns, um durch eine bessere, effektivere und skalierbare Versorgung (z.B. mobil-basiert im blended treatment) eine gelingende Inklusion der ankommenden Familien in die aufnehmende Gesellschaft zu erleichtern.
-
-<p>1.	Bundesamt für Migration und Flüchtlinge. Aktuelle Zahlen. Bundesamt für Migration und Flüchtlinge. (Das Bundesamt in Zahlen 2022 Asyl, Migration und Integration (bamf.de)). Zugegriffen: 29.02.2024.
-<p>2.	Soykök, S., Mall, V., Nehring, I., Henningsen, P. & Aberl, S. (2017). Post-traumatic stress disorder in Syrian children of a German refugee camp. The lancet 389 (4). 903-904.
-<p>3.	Bernhardt, K., Le Beherec, S., Uppendahl, J. R., Fleischmann, M., Klosinski, M., Rivera, L. M., Samaras, G., Kenney, M., Müller, R., Nehring, I., Mall, V., & Hahnefeld, A. (2024). Young Children’s Psychological and Developmental Trajectories after Forced Displacement: A Systematic Review. European Child & Adolescent Psychiatry.
-<p>4.	Hahnefeld, A., Sukale, T., Weigand, E., Münch, K., Aberl, S., Eckler, L. V., Schmidt, D., Friedmann, A., Plener, P. L., Fegert, J. M., & Mall, V. (2021). Survival states as indicators of learning performance and biological stress in refugee children: a cross-sectional study with a comparison group. BMC psychiatry, 21(1), 228. https://doi.org/10.1186/s12888-021-03233-y
-<p>5.	Hahnefeld, A., Sukale, T., Weigand, E., Dudek, V., Münch, K., Aberl, S., Eckler, L. V., Nehring, I., Friedmann, A., Plener, P. L., Fegert, J. M., & Mall, V. (2022). Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. European journal of pediatrics, 181(3), 1205–1212. https://doi.org/10.1007/s00431-021-04312-8
-<p>6.	Bernhardt, K., Le Beherec, S., Uppendahl, J., Baur, M.-A., Klosinski, M., Mall, V. & Hahnefeld, A. (2023). Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. Child Psychiatry & Human Development. https://doi.org/10.1007/s10578-023-01584-z
-<p>7.	Hahnefeld A, Fink M, Le Beherec S, Baur MA, Bernhardt K, Mall V. Correlation of screen exposure to stress, learning, cognitive and language performance in children. Eur Child Adolesc Psychiatry. 2025 May;34(5):1615-1624. doi: 10.1007/s00787-024-02593-6. Epub 2024 Oct 23. Erratum in: Eur Child Adolesc Psychiatry. 2025 May;34(5):1625. doi: 10.1007/s00787-024-02625-1. PMID: 39443365; PMCID: PMC12122617.
-<p>8.	Hahnefeld A, Fink M, Hauber E, Le Beherec S, Gassner M, Klosinski M, Mall V. Dysregulated screen exposure is associated with severity of language and communication impairments in children with developmental disorders. Acta Paediatrica. 2025, accepted for publication.
-<p>9.	Le Beherec S, Bernhardt K, Gassner M, Hauber E, Klosinski M, Mall V, Hahnefeld A. Refugee Children’s Mental Health and Development over time: A 2 year follow-up Study. Submitted for publication at BMC Psychology.
-</p>
   </section>
-
-      
-      
-      </p>
-</section>
 
   <!-- TEAM -->
   <section id="team">
@@ -332,48 +264,45 @@
         <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
         <p>Projektleitung, Dipl.-Psych., Psychologische Psychotherapeutin</p>
         <a class="cv-button" href="cv/hahnefeld.pdf" download>CV Download</a>
-        </div>
-<div class="team-member">
-  <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" 
-       alt="Matthias Klosinski" 
-       style="width:150px; height:150px; border-radius:50%; border:4px solid #6d5cae; object-fit:contain; background-color:#fff;">
-  <h3>Prof. Dr. Matthias Klosinski</h3>
-  <p>Stellv. Leitung</p>
-  <a class="cv-button" href="cv/klosinski.pdf" download>CV Download</a>
-
-</div>
-</div>   
+      </div>
+      <div class="team-member">
+        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Matthias Klosinski">
+        <h3>Prof. Dr. Matthias Klosinski</h3>
+        <p>Stellv. Leitung</p>
+        <a class="cv-button" href="cv/klosinski.pdf" download>CV Download</a>
+      </div>
+    </div>
   </section>
 
   <!-- PROJEKTE -->
   <section id="projekte">
     <h2>Unsere Projekte</h2>
-    <h3>ISKF</h3>
-    <p>Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchthintergrund direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) an.</p>
 
-    <h3>Parents‘ College</h3>
-    <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um eine kultur- und traumasensitive Komponente beim pädagogischen Kinderangebot und um niedrigschwellige Psychoedukationsgruppen für Eltern ergänzt werden (AM19-BY5232, 9168-2022-0193). Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht und ist als Buch erhältlich. Das „Parents‘ College“ wird aktuell fortlaufend in Unterkunftsdependancen in München durchgeführt. Darüber hinaus wird das Manual für eine Kooperation mit Wissenschaftlerinnen aus der Türkei übersetzt und soll dort künftig zum Einsatz kommen.</p>
+    <div class="project">
+      <img src="https://via.placeholder.com/600x200?text=Projektbild+ISKF" alt="Projektbild ISKF">
+      <h3>ISKF</h3>
+      <p>Seit 2016 bietet unsere Projektgruppe ...</p>
+    </div>
 
-    <h3>InterAPPtion</h3>
-    <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert, um die Adhärenz der Teilnehmer zu begünstigen und die evidenzbasierten Inhalte einer größeren Zahl von Eltern niedrigschwellig und mehrsprachig zugänglich zu machen. Entwickelt wird die Anwendung in Kooperation mit einem StartUp aus München (Selphspace).</p>
+    <div class="project">
+      <img src="https://via.placeholder.com/600x200?text=Projektbild+Parents+College" alt="Projektbild Parents College">
+      <h3>Parents‘ College</h3>
+      <p>Seit November 2020 ...</p>
+    </div>
 
-    <h3>Huggy Puppy</h3>
-    <p> Derzeit führen wir in Kooperation mit dem <a href="#">Universitätsklinikum Ulm</a> die Intervention „Huggy Puppy“ durch.<p>-Absätzen).</p>
+    <div class="project">
+      <img src="https://via.placeholder.com/600x200?text=Projektbild+InterAPPtion" alt="Projektbild InterAPPtion">
+      <h3>InterAPPtion</h3>
+      <p>Das psychoedukative Parents‘ College wird ...</p>
+    </div>
   </section>
 
   <!-- PUBLIKATIONEN -->
   <section id="publikationen">
     <h2>Publikationen</h2>
     <ul>
-      <li>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.</li>
-      <li>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana R.; Fleischmann, Melia; Klosinski, Matthias; Rivera, Luisa M. et al. (2024): Young children's development after forced displacement: a systematic review. In: Child and adolescent psychiatry and mental health 18 (1), S. 20. DOI: 10.1186/s13034-024-00711-5.</li>
-      <li>Hahnefeld, Andrea; Fink, Monika; Le Beherec, Saskia; Baur, Marie Anna; Bernhardt, Katharina; Mall, Volker (2024): Correlation of screen exposure to stress, learning, cognitive and language performance in children. In: European child & adolescent psychiatry. DOI: 10.1007/s00787-024-02593-6.</li>
-      <li>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin bei Flüchtlingskindern. In: Pädiatrische Praxis 94 (3), S. 508–521.</li>
-      <li>Hahnefeld, Andrea; Münch, Katharina; Aberl, Sigrid; Henningsen, Peter; Mall, Volker (2022): Versorgung traumatisierter Vorschulkinder. In: Monatsschr Kinderheilkd 170 (12), S. 1077–1084. DOI: 10.1007/s00112-022-01618-1.</li>
-      <li>Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Dudek, Verena; Münch, Katharina; Aberl, Sigrid et al. (2022): Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. In: European journal of pediatrics 181 (3), S. 1205–1212. DOI: 10.1007/s00431-021-04312-8.</li>
-      <li>Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Münch, Katharina; Aberl, Sigrid; Eckler, Lea V. et al. (2021): Survival states as indicators of learning performance and biological stress in refugee children: a cross-sectional study with a comparison group. In: BMC psychiatry 21, Artikel 228. DOI: 10.1186/s12888-021-03233-y.</li>
-      <li>Hahnefeld, Andrea; Weigand, Elena; Aberl, Sigrid; Mall, Volker (Hg.) (2024): Interdisziplinäre Versorgung von Kindern mit Fluchterfahrung. Mit psychoedukativem Gruppenkonzept für Eltern. Unter Mitarbeit von Elena Weigand. 1. Aufl. Bern: Hogrefe Verlag.</li>
-      <li>Soykoek, Seval; Mall, Volker; Nehring, Ina; Henningsen, Peter; Aberl, Sigrid (2017): Post-traumatic stress disorder in Syrian children of a German refugee camp. In: Lancet (London, England) 389 (10072), S. 903–904. DOI: 10.1016/S0140-6736(17)30595-0.</li>
+      <li>Beispielpublikation 1</li>
+      <li>Beispielpublikation 2</li>
     </ul>
   </section>
 
@@ -381,13 +310,7 @@
   <section id="neuigkeiten">
     <h2>Neuigkeiten</h2>
     <h3>Heidelberg</h3>
-    <p>"Infos" </p>
-    <h3>Vilnius</h3>
-    <p>Wir sind  in Vilnius auf der ESRII Conference vertreten. Dort werden wir die Entwicklung und Forschung zu unserer mobilen Anwendung InterAPPtion präsentieren.</p>
-    <h3>InterAPPtion</h3>
-    <p>Wir haben ein Blended Treatment entwickelt, um unser Parents‘ College niedrigschwellig und mehrsprachig zu erweitern. Die App finden Sie hier: <a href="#">https://testflight.apple.com/join/CuNbCXJk
-https://play.google.com/store/apps/details?id=de.tum.interapption
-</a>.</p>
+    <p>Infos</p>
   </section>
 
   <footer>
@@ -395,6 +318,11 @@ https://play.google.com/store/apps/details?id=de.tum.interapption
   </footer>
 
   <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
     function showSection(sectionId) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
