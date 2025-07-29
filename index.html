@@ -346,35 +346,81 @@
   <section id="publikationen">
     <h2>Publikationen</h2>
 
-<!-- Visuelle Timeline -->
-<div class="timeline-container">
-  <div class="timeline-box">
+<!-- Timeline CSS (am Ende des bestehenden <style>-Tags einfügen) -->
+<style>
+/* Diagonale Timeline */
+.diagonal-timeline {
+  margin: 3rem auto;
+  max-width: 900px;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.timeline-step {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.timeline-step:nth-child(1) { margin-left: 0; }
+.timeline-step:nth-child(2) { margin-left: 60px; }
+.timeline-step:nth-child(3) { margin-left: 120px; }
+.timeline-step:nth-child(4) { margin-left: 180px; }
+.timeline-step:nth-child(5) { margin-left: 240px; }
+
+.year {
+  display: block;
+  font-weight: bold;
+  color: var(--primary-purple);
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline-step,
+  .timeline-step:nth-child(n) {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+}
+</style>
+
+<!-- Timeline HTML (unter <h2>Publikationen</h2> einfügen) -->
+<div class="diagonal-timeline">
+  <div class="timeline-step">
     <span class="year">2018–2019</span>
-    <h3>Studie 1</h3>
+    <h3>INCLUDE 1</h3>
     <p>Konzeption, Vorstudien und erste Analysen.</p>
   </div>
-  <div class="timeline-box">
+  <div class="timeline-step">
     <span class="year">2020–2021</span>
-    <h3>Studie 2</h3>
-    <p>Probandenrekrutierung, Datenerhebung, Publikation erster Ergebnisse.</p>
+    <h3>ICLUDE 2</h3>
+    <p>Probandenrekrutierung und Datenerhebung.</p>
   </div>
-  <div class="timeline-box">
+  <div class="timeline-step">
     <span class="year">2022–2023</span>
-    <h3>Studie 3</h3>
-    <p>Vergleichsstudien, Cross-Analysen, erste Follow-ups.</p>
+    <h3>INCLUDE 3</h3>
+    <p>Vergleichsstudien und Publikationen.</p>
   </div>
-  <div class="timeline-box">
+  <div class="timeline-step">
     <span class="year">2024–2025</span>
-    <h3>Studie 4</h3>
+    <h3>INCLUDE 4</h3>
     <p>Vertiefende Analysen und Interventionen.</p>
   </div>
-  <div class="timeline-box">
+  <div class="timeline-step">
     <span class="year">2026–2028</span>
     <h3>Langzeitprojekte</h3>
     <p>Follow-up Studien und Abschlussberichte.</p>
   </div>
 </div>
-
 
 
     <p>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.</p>
