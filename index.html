@@ -345,6 +345,73 @@
   <!-- PUBLIKATIONEN -->
   <section id="publikationen">
     <h2>Publikationen</h2>
+
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto 3rem;
+  padding-left: 1rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-purple), #9c8fd9);
+  opacity: 0.4;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Staffelung diagonal */
+.timeline-item:nth-child(1) { margin-left: 0; }
+.timeline-item:nth-child(2) { margin-left: 60px; }
+.timeline-item:nth-child(3) { margin-left: 120px; }
+.timeline-item:nth-child(4) { margin-left: 180px; }
+.timeline-item:nth-child(5) { margin-left: 240px; }
+
+.year {
+  font-weight: bold;
+  color: var(--primary-purple);
+  margin-bottom: 0.5rem;
+}
+
+.study-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.phases {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.phases li {
+  margin-bottom: 0.3rem;
+}
+
+
     <p>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.</p>
     <p>Hahnefeld, Andrea; Fink, Monika; Le Beherec, Saskia; Baur, Marie Anna; Bernhardt, Katharina; Mall, Volker (2024): Correlation of screen exposure to stress, learning, cognitive and language performance in children. In: European child & adolescent psychiatry. DOI: 10.1007/s00787-024-02593-6.</p>
     <p>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin bei Flüchtlingskindern. In: Pädiatrische Praxis 94 (3), S. 508–521.</p>
