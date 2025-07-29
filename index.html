@@ -346,70 +346,54 @@
   <section id="publikationen">
     <h2>Publikationen</h2>
 
-/* Timeline Styles */
-.timeline {
-  position: relative;
-  width: 90%;
-  max-width: 1000px;
-  margin: 2rem auto 3rem;
-  padding-left: 1rem;
-}
+<!-- Timeline Bereich -->
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="year">2018–2019</div>
+    <div class="study-title">Studie 1</div>
+    <ul class="phases">
+      <li>Konzeption</li>
+      <li>Vorstudien</li>
+    </ul>
+  </div>
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50px;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--primary-purple), #9c8fd9);
-  opacity: 0.4;
-}
+  <div class="timeline-item">
+    <div class="year">2020–2021</div>
+    <div class="study-title">Studie 2</div>
+    <ul class="phases">
+      <li>Probandenrekrutierung</li>
+      <li>Datenerhebung</li>
+    </ul>
+  </div>
 
-.timeline-item {
-  position: relative;
-  margin: 2rem 0;
-  padding: 1rem 1.5rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  width: 250px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  <div class="timeline-item">
+    <div class="year">2022–2023</div>
+    <div class="study-title">Studie 3</div>
+    <ul class="phases">
+      <li>Analyse</li>
+      <li>Publikationen</li>
+    </ul>
+  </div>
 
-.timeline-item:hover {
-  transform: translateX(5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-}
+  <div class="timeline-item">
+    <div class="year">2024–2025</div>
+    <div class="study-title">Studie 4</div>
+    <ul class="phases">
+      <li>Vergleichsstudien</li>
+      <li>Intervention</li>
+    </ul>
+  </div>
 
-/* Staffelung diagonal */
-.timeline-item:nth-child(1) { margin-left: 0; }
-.timeline-item:nth-child(2) { margin-left: 60px; }
-.timeline-item:nth-child(3) { margin-left: 120px; }
-.timeline-item:nth-child(4) { margin-left: 180px; }
-.timeline-item:nth-child(5) { margin-left: 240px; }
+  <div class="timeline-item">
+    <div class="year">2026–2028</div>
+    <div class="study-title">Langzeitprojekte</div>
+    <ul class="phases">
+      <li>Follow-up Studien</li>
+      <li>Abschlussbericht</li>
+    </ul>
+  </div>
+</div>
 
-.year {
-  font-weight: bold;
-  color: var(--primary-purple);
-  margin-bottom: 0.5rem;
-}
-
-.study-title {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.phases {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.phases li {
-  margin-bottom: 0.3rem;
-}
 
 
     <p>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.</p>
