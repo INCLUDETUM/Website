@@ -301,7 +301,6 @@
       </div>
     </div>
   </section>
-   </div>
       <div class="team-member">
         <img src="" alt="Lea Eckler">
         <h3>Lea Eckler</h3>
@@ -309,27 +308,21 @@
           <p>Psychologische Psychotherapeutin in Ausbildung</p>
         <a class="cv-button" href="cv/Eckler.pdf" download>CV Download</a>
       </div>
-    </div>
-  </div>
       <div class="team-member">
         <img src="" alt="Penelope Thomas">
         <h3>Penelope Thomas</h3>
         <p>Msc. Psychologin</p>
-        <p>Psychologische Psychotherapeutin</p>
-
+        <p>Psychologische Psychotherapeutin, wissenschaftliche Mitarbeiterin</p>
         <a class="cv-button" href="cv/Thomas.pdf" download>CV Download</a>
-      </div>
     </div>
   <div class="team-member">
         <img src="" alt="Marco Gaßner">
         <h3>Marco Gaßner</h3>
-        <p>M.Ed. Research on Teaching and Learning, M.A. Philosophie</p>
+        <p> M.A. Philosophie, M.Ed. Research on Teaching and Learning</p>
             <p> Doktorand; wissenschaftlicher Mitarbeiter</p>
 
-    
         <a class="cv-button" href="cv/Thomas.pdf" download>CV Download</a>
       </div>
-    </div>
 
 
   <!-- PROJEKTE -->
@@ -424,6 +417,44 @@
 </style>
 
 <!-- Timeline HTML (unter <h2>Publikationen</h2> einfügen) -->
+<style>
+.diagonal-timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.timeline-step {
+  background: #f1f1f1;
+  border-left: 4px solid #333;
+  padding: 1.5rem;
+  width: 45%;
+  margin-top: 2rem;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease;
+}
+
+.timeline-step:nth-child(even) {
+  align-self: flex-end;
+  transform: rotate(1.5deg);
+}
+
+.timeline-step:hover {
+  transform: rotate(0deg);
+}
+
+.timeline-step .year {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+</style>
+
 <div class="diagonal-timeline">
   <div class="timeline-step">
     <span class="year">2018–2020</span>
@@ -434,23 +465,15 @@
     <span class="year">2021–2023</span>
     <h3>ICLUDE 2</h3>
     <p>In einer 2-year-Follow-Up Studie wurde eine Untersuchung mit 33 Menschen mit Fluchthintergrund durchgeführt.</p>
-       <p>Zu T1 in der INCLUDE-Studie 2 wurden 111 Menschen mit Fluchthintergrund und 70 klinische Patient:innen untersucht.</p>
+    <p>Zu T1 in der INCLUDE-Studie 2 wurden 111 Menschen mit Fluchthintergrund und 70 klinische Patient:innen untersucht.</p>
   </div>
   <div class="timeline-step">
     <span class="year">2023–2026</span>
     <h3>INCLUDE 3</h3>
-    <p>2023/T1: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents College'</p>
-    <p>2024/T2: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents College'</p>
-
-    
-    <p>Retrospektive Datenanalyse: 73 Klinische Patient:innen<p>
-    <p>Retrospektive Datenanalyse: 121 Klinische Patient:innen<p>
-
-
-
-
-      
-     
+    <p>2023/T1: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents College</p>
+    <p>2024/T2: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents College</p>
+    <p>Retrospektive Datenanalyse: 73 Klinische Patient:innen</p>
+    <p>Retrospektive Datenanalyse: 121 Klinische Patient:innen</p>
   </div>
   <div class="timeline-step">
     <span class="year">2024–2025</span>
