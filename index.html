@@ -1,69 +1,174 @@
-<section id="projekte">
-  <h2>Unsere Projekte</h2>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INCLUDE</title>
+  <style>
+    :root {
+      --primary-purple: #6d5cae;
+      --background-light: #f8f9fb;
+      --text-dark: #333;
+      --menu-bg: #ffffff;
+      --menu-text: #333;
+      --menu-hover: #6d5cae;
+    }
 
-  <div class="project">
-    <h3 id="iskf">ISKF</h3>
-    <p>Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchthintergrund direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) an.</p>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-    <details class="more">
-      <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-      <div class="more-content">
-        <p><!-- Dein zusätzlicher Text zu ISKF hier rein. Du kannst auch Listen, Bilder usw. einfügen. --></p>
-      </div>
-    </details>
-  </div>
+    /* NAVIGATION */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--menu-bg);
+      color: var(--menu-text);
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+    .nav-left img { height: 50px; cursor: pointer; }
+    .site-title { font-size: 1.5rem; font-weight: bold; color: var(--menu-text); margin-right: 10px; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--menu-text); text-decoration: none; font-weight: 500; cursor: pointer; }
+    .nav-links a:hover { color: var(--menu-hover); }
+    .nav-toggle { display: none; font-size: 24px; background: none; border: none; color: var(--menu-text); cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: absolute; top: 60px; right: 0; background: var(--menu-bg);
+        flex-direction: column; width: 200px; padding: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+    }
 
-  <div class="project">
-    <div class="project-content">
-      <div class="project-text">
-        <h3 id="parents-college">Parents‘ College</h3>
-        <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um eine kultur- und traumasensitive Komponente beim pädagogischen Kinderangebot und um niedrigschwellige Psychoedukationsgruppen für Eltern ergänzt werden (AM19-BY5232, 9168-2022-0193). Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht und ist als Buch erhältlich. Das „Parents‘ College“ wird aktuell fortlaufend in Unterkunftsdependancen in München durchgeführt. Darüber hinaus wird das Manual für eine Kooperation mit Wissenschaftlerinnen aus der Türkei übersetzt und soll dort künftig zum Einsatz kommen.</p>
-      </div>
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-2.png" alt="Parents' College">
+    /* Content Sections */
+    section { display: none; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    section.active { display: block; }
+
+    h1, h2 { color: var(--primary-purple); text-align: center; }
+    h3 { color: #000; font-weight: bold; margin-top: 1rem; }
+
+    /* Anker-Offset (sticky Navbar) */
+    h2, h3 { scroll-margin-top: 90px; }
+
+    p { text-align: justify; font-size: 1.05rem; max-width: 900px; margin: 1rem auto; color: #000; }
+    .text-logo { float: right; margin: 0 0 10px 15px; width: 120px; height: auto; }
+    img.responsive {
+      width: 100%; max-width: 800px; margin-top: 20px; border-radius: 12px; display: block; margin-left: auto; margin-right: auto;
+    }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .team-member {
+      text-align: center; background: white; padding: 1rem; border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.3s;
+    }
+    .team-member img {
+      width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem;
+      border: 4px solid var(--primary-purple); object-position: center 20%;
+    }
+    .cv-button {
+      display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;
+      color: white; background: var(--primary-purple); border-radius: 20px; text-decoration: none; transition: background 0.3s;
+    }
+    .cv-button:hover { background: #4e3f84; }
+
+    /* Projekte */
+    .project {
+      background: white; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .project-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .project-content img { width: 200px; height: auto; border-radius: 8px; object-fit: cover; }
+
+    /* Aufklappbare Zusatzinfos (details) */
+    details.more { margin-top: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
+    details.more[open] { background: #ffffff; }
+    details.more summary {
+      list-style: none; cursor: pointer; padding: 0.75rem 1rem; font-weight: 600; display: flex; align-items: center; justify-content: space-between; user-select: none;
+    }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more summary::after { content: "▼"; font-size: 0.9rem; transform: rotate(0deg); transition: transform 0.2s ease; }
+    details.more[open] summary::after { transform: rotate(180deg); }
+    details.more .more-content { padding: 0.75rem 1rem 1rem; border-top: 1px dashed #e5e7eb; }
+    details.more summary .less { display: none; }
+    details.more[open] summary .more { display: none; }
+    details.more[open] summary .less { display: inline; }
+
+    /* Publikationen – Timeline */
+    .diagonal-timeline {
+      margin: 3rem auto; max-width: 900px; position: relative; padding-left: 1rem;
+      display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 0;
+    }
+    .timeline-step {
+      background: #f1f1f1; border-left: 4px solid #333; padding: 1.5rem; width: 45%; margin-top: 2rem; position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease;
+    }
+    .timeline-step:nth-child(even) { align-self: flex-end; }
+    .timeline-step:hover { transform: translateY(-3px); }
+    .timeline-step .year { font-weight: bold; display: block; margin-bottom: 0.5rem; color: var(--primary-purple); }
+    @media screen and (max-width: 768px) {
+      .timeline-step, .timeline-step:nth-child(n) { width: 100%; align-self: auto; }
+    }
+
+    footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #555; background: #f0f0f0; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-left">
+      <h1 class="site-title">INCLUDE</h1>
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Logo 1">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Logo 2">
     </div>
+    <nav class="nav-links" id="navLinks">
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('team')">Team</a>
+      <a onclick="showSection('projekte')">Projekte</a>
+      <a onclick="showSection('publikationen')">Publikationen</a>
+      <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">&#9776;</button>
+  </header>
 
-    <details class="more">
-      <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-      <div class="more-content">
-        <p><!-- Zusatzinfos zum Parents’ College --></p>
-      </div>
-    </details>
-  </div>
+  <!-- HOME -->
+  <section id="home" class="active">
+    <h1>Willkommen bei INCLUDE</h1>
+    <p>
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png" alt="Logo" class="text-logo">
+      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>:
+    </p>
+    <p>
+      Das INCLUDE (INterCuLtUral Child Development)-
+      <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="Projekt">(Projekt)</a>
+      verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
+      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
+    </p>
+    <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/TEAM.jpeg" alt="Labor Bild" class="responsive">
 
-  <div class="project">
-    <h3 id="interapption">InterAPPtion</h3>
-    <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert, um die Adhärenz der Teilnehmer zu begünstigen und die evidenzbasierten Inhalte einer größeren Zahl von Eltern niedrigschwellig und mehrsprachig zugänglich zu machen. Entwickelt wird die Anwendung in Kooperation mit einem StartUp aus München (Selphspace).</p>
+    <p><b>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</b></p>
 
-    <details class="more">
-      <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-      <div class="more-content">
-        <p><!-- Zusatzinfos zu InterAPPtion --></p>
-      </div>
-    </details>
-  </div>
-
-  <div class="project">
-    <div class="project-content">
-      <div class="project-text">
-        <h3 id="huggy">Huggy Puppy</h3>
-        <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um eine kultur- und traumasensitive Komponente beim pädagogischen Kinderangebot und um niedrigschwellige Psychoedukationsgruppen für Eltern ergänzt werden (AM19-BY5232, 9168-2022-0193). Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht und ist als Buch erhältlich. Das „Parents‘ College“ wird aktuell fortlaufend in Unterkunftsdependancen in München durchgeführt. Darüber hinaus wird das Manual für eine Kooperation mit Wissenschaftlerinnen aus der Türkei übersetzt und soll dort künftig zum Einsatz kommen.</p>
-      </div>
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
-    </div>
-
-    <details class="more">
-      <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-      <div class="more-content">
-        <p><!-- Zusatzinfos zu Huggy Puppy --></p>
-      </div>
-    </details>
-  </div>
-
-  <!-- zweites InterAPPtion-Element (wie im Original) -->
-  <div class="project">
-    <h3>InterAPPtion</h3>
-    <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert, um die Adhärenz der Teilnehmer zu begünstigen und die evidenzbasierten Inhalte einer größeren Zahl von Eltern niedrigschwellig und mehrsprachig zugänglich zu machen. Entwickelt wird die Anwendung in Kooperation mit einem StartUp aus München (Selphspace).</p>
-
-    <details class="more">
-      <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-      <div c
+    <!-- Fließtext mit Querverweisen -->
+    <p>
+      Aktuell leben knapp 3 Millionen schutzsuchende Menschen in Deutschland, wobei in den letzten Jahren ca. ein Fünftel bis ein Viertel der Asylanträge für Kinder im Alter von bis zu sechs Jahren gestellt wurden.¹
+    </p>
+    <p>
+      Diese Familien sind oft vor und während der Flucht mit vielen aversiven und potentiell traumatisierenden Ereignissen konfrontiert.2,3 Es ist hinreichend bekannt, dass belastende Kindheitserlebnisse nicht nur schwerwiegende Folgen für das Wohlbefinden haben, sondern sich auch längerfristig auf den Gesundheitszustand auswirken können.
+    </p>
+    <p>
+      Zudem fällt auf, dass die von Flucht betroffenen Kinder auch nach Ankunft in Deutschland noch zusätzlich anderen Deprivationsrisiken und entwicklungsbeeinträchtigenden Faktoren wie z.B. prekären Lebensumständen, hochbelasteten Eltern und erhöhter Bildschirmexposition verstärkt ausgesetzt sind,3,4 wohingegen resilienzfördernde Angebote wie altersgemäße Spiel- und Freizeitmöglichkeiten sowie regelmäßiger Schul- und Kindergartenbesuch in zu geringem Maße verfügbar sind.3
+    </p>
+    <p>
+      Da unsere Studiendaten zeigen, dass Kinder nach Fluchterfahrung bei frühzeitiger Intervention und Herstellung gesunder Entwicklungsbedingungen im Familienumfeld und mit Zugang zu altersgemäßen Gesundheits-, Schul- und Bildungs
