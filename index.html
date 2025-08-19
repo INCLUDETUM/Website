@@ -158,13 +158,28 @@
     Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
   </p>
 
-  <!-- Das große Bild mittig -->
-  <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png"
+  <!-- Großes Bild: explizit das Picture.png + Schutz gegen CSS/JS-Overrides -->
+  <img id="hero-img"
+       src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png"
        alt="Großes Bild"
-       style="display:block; margin: 2rem auto; max-width:100%; height:auto;">
+       style="
+         display:block; margin:2rem auto; max-width:100%; height:auto;
+         content: normal !important;        /* falls irgendwo content:url(...) gesetzt wird */
+         background: none !important;       /* falls background-image drübergelegt wurde   */
+         float: none !important;            /* falls img global gefloatet wird             */
+       ">
 
   <p><b>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</b></p>
 </section>
+
+<script>
+  // Fängt evtl. JS ab, das das src überschreibt:
+  (function () {
+    const img = document.getElementById('hero-img');
+    const wanted = "https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png";
+    if (img && img.currentSrc !== wanted) img.src = wanted;
+  })();
+</script>
 
 
     <!-- Fließtext mit Querverweisen -->
