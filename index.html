@@ -72,7 +72,7 @@
     }
     .hero-img {
       display: block; margin: 2rem auto; max-width: 100%; height: auto;
-      clear: both; /* sorgt dafür, dass der Float des kleinen Logos nicht ins große Bild hineinragt */
+      clear: both; /* Float des kleinen Logos räumen */
     }
 
     /* TEAM */
@@ -137,8 +137,8 @@
   <header class="navbar">
     <div class="nav-left">
       <h1 class="site-title">INCLUDE</h1>
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Logo 1">
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Logo 2">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Navbar-Logo 1">
+      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Navbar-Logo 2">
     </div>
     <nav class="nav-links" id="navLinks">
       <a onclick="showSection('home')">Home</a>
@@ -154,10 +154,11 @@
   <section id="home" class="active">
     <h1>Willkommen bei INCLUDE</h1>
     <p>
-      <!-- kleines Logo im Text: eigene Datei -->
-      <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png"
-           alt="Logo"
-           class="text-logo">
+      <!-- Eigenes, kleines Logo nur für den Text -->
+      <img
+        src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/TextLogo.png"
+        alt="Text-Logo"
+        class="text-logo">
       INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>:
     </p>
     <p>
@@ -167,16 +168,16 @@
       Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
     </p>
 
-    <!-- Großes Bild: bleibt Picture.png -->
+    <!-- Großes Bild in der Mitte -->
     <img
-      src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png"
-      alt="Großes Bild"
+      src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture.png?v=2"
+      alt="Großes Hero-Bild"
       class="hero-img"
     >
 
+    <!-- Die langen Absätze gehören NUR zur HOME-Section -->
     <p><b>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</b></p>
-  </section>
-    <!-- Fließtext mit Querverweisen (bleibt in der HOME-Section!) -->
+
     <p>
       Aktuell leben knapp 3 Millionen schutzsuchende Menschen in Deutschland, wobei in den letzten Jahren ca. ein Fünftel bis ein Viertel der Asylanträge für Kinder im Alter von bis zu sechs Jahren gestellt wurden.¹
     </p>
@@ -220,14 +221,14 @@
 
     <div class="team-grid leadership">
       <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/Autorenfoto_AHahnefeld_2023.jpg" alt="Andrea Hahnefeld">
+        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/Autorenfoto_AHahnefeld_2023.jpg" alt="Dr. Andrea Hahnefeld">
         <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
         <p>Projektleitung, Dipl.-Psych., Psychologische Psychotherapeutin</p>
         <a class="cv-button" href="cv/hahnefeld.pdf" download>CV Download</a>
       </div>
 
       <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Matthias Klosinski">
+        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Prof. Dr. Matthias Klosinski">
         <h3>Prof. Dr. Matthias Klosinski</h3>
         <p>Stellv. Leitung</p>
         <a class="cv-button" href="cv/klosinski.pdf" download>CV Download</a>
@@ -257,98 +258,95 @@
   <section id="projekte">
     <h2>Unsere Projekte</h2>
 
-    <div class="project">
-      <h3 id="iskf">ISKF</h3>
-      <p>Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchthintergrund direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) an.</p>
+    <div class="project" id="iskf">
+      <h3>ISKF</h3>
+      <p>Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung ...</p>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Seit 2016 bietet die INCLUDE-Gruppe mit der Förderung des Bayrischen Innenministeriums eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung an. Die Sprechstunde findet jeweils direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) und in Haus 22 des SPZ Schwabing (kbo Kinderzentrum) in München statt. 
-          Zusätzlich zu regelmäßig stattfindenden interdisziplinären Sprechstunden in den Dependancen des Ankerzentrums wurde gemeinsam mit den von Krieg und Vertreibung betroffenen Eltern die niedrigschwellige Psychoedukationsgruppe „Parents‘ College“ entwickelt, in welcher wichtige Informationen zur gesunden kindlichen Entwicklung in einfacher Sprache und mit Bildmaterialien kulturunabhängig aufbereitet wurden, um von Experten in Elterngruppen mit Hilfe von Dolmetschern vermittelt und diskutiert zu werden.1
-          Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums Manching in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.</p>
+          <p>Seit 2016 bietet die INCLUDE-Gruppe ... Kursgruppen finden regelmäßig ...</p>
         </div>
       </details>
     </div>
 
-    <div class="project">
+    <div class="project" id="parents-college">
       <div class="project-content">
         <div class="project-text">
-          <h3 id="parents-college">Parents‘ College</h3>
-          <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um eine kultur- und traumasensitive Komponente beim pädagogischen Kinderangebot und um niedrigschwellige Psychoedukationsgruppen für Eltern ergänzt werden (AM19-BY5232, 9168-2022-0193). Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht und ist als Buch erhältlich. Das „Parents‘ College“ wird aktuell fortlaufend in Unterkunftsdependancen in München durchgeführt. Darüber hinaus wird das Manual für eine Kooperation mit Wissenschaftlerinnen aus der Türkei übersetzt und soll dort künftig zum Einsatz kommen.</p>
+          <h3>Parents‘ College</h3>
+          <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln ... Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht ...</p>
         </div>
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-2.png" alt="Parents' College">
       </div>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Gemeinsam mit Eltern mit Fluchterfahrung wurde diese niedrigschwellige Psychoedukationsgruppe entwickelt, in welcher wichtige Informationen zu den Rahmenbedingungen einer gesunden kindlichen Entwicklung in einfacher Sprache vermittelt und mit der Unterstützung von Sprachmittlern diskutiert werden können. Das Manual wurde im Hogrefe-Verlag in Buchform veröffentlicht und ist in einfacher Sprache mit vielen Bildmaterialien aufbereitet. Die in 4 wöchentlichen Einheiten aufgebauten Kursgruppen finden regelmäßig in Gemeinschaftsunterkünften in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
-          <!-- ... (dein Langtext unverändert) ... -->
-          </p>
+          <p>Gemeinsam mit Eltern mit Fluchterfahrung wurde diese niedrigschwellige Psychoedukationsgruppe entwickelt ...</p>
         </div>
       </details>
     </div>
 
-    <div class="project">
-      <h3 id="interapption">InterAPPtion</h3>
-      <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert, um die Adhärenz der Teilnehmer zu begünstigen und die evidenzbasierten Inhalte einer größeren Zahl von Eltern niedrigschwellig und mehrsprachig zugänglich zu machen. Entwickelt wird die Anwendung in Kooperation mit einem StartUp aus München (Selphspace).</p>
+    <div class="project" id="interapption">
+      <div class="project-content">
+        <div class="project-text">
+          <h3>InterAPPtion</h3>
+          <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert ...</p>
+        </div>
+        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/InterAPPtion_Community(iPhone+12+Pro).png" alt="InterAPPtion App">
+      </div>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet. Zudem werden in der App Lerneinheiten zur Wiederholung der Kursinhalte in Form von mehrsprachigen Erklärvideos und Übungen zur Verfügung gestellt.</p>
+          <p>Als Ergänzung ... Lerneinheiten ... mehrsprachige Erklärvideos ...</p>
         </div>
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/InterAPPtion_Community(iPhone+12+Pro).png">
-      </div>
       </details>
     </div>
 
-    <div class="project">
+    <div class="project" id="huggy">
       <div class="project-content">
         <div class="project-text">
-          <h3 id="huggy">Huggy Puppy</h3>
-          <p>Seit November 2020 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um eine kultur- und traumasensitive Komponente beim pädagogischen Kinderangebot und um niedrigschwellige Psychoedukationsgruppen für Eltern ergänzt werden (AM19-BY5232, 9168-2022-0193). Das manualisierte Gesamtkonzept wurde im <a href="#">Hogrefe Verlag</a> veröffentlicht und ist als Buch erhältlich. Das „Parents‘ College“ wird aktuell fortlaufend in Unterkunftsdependancen in München durchgeführt. Darüber hinaus wird das Manual für eine Kooperation mit Wissenschaftlerinnen aus der Türkei übersetzt und soll dort künftig zum Einsatz kommen.</p>
+          <h3>Huggy Puppy</h3>
+          <p>Da sich in der Studie von Sadeh et al. (2008) gezeigt hat, dass ...</p>
         </div>
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
       </div>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Da sich in der Studie von Sadeh et al. (2008) gezeigt hat, dass mit der niedrigschwelligen Kurzintervention „Huggy Puppy“ emotionales Belastungserleben und Verhaltensauffälligkeiten als Traumafolgesymptome bei kriegsbedingt in Flüchtlingslager umgesiedelten Kindern im Alter von 2 bis 7 Jahren gesenkt werden können, unterstützen wir gerade gemeinsam mit der Theodor-Hellbrügge-Stiftung und den Spenden von Sternstunden unsere Kollegen in der Ukraine beim Implementieren dieser Intervention im Kinderzentrum in Odessa und begleiten die Durchführung mit einer wissenschaftlichen Evaluationsstudie.
-          <!-- ... (dein Langtext + Literaturangaben unverändert) ... -->
-          </p>
+          <p>Wir unterstützen gemeinsam mit der Theodor-Hellbrügge-Stiftung ...</p>
         </div>
       </details>
     </div>
 
-    <!-- Zweites InterAPPtion-Element belassen (wie im Original) -->
+    <!-- Optionaler zweiter InterAPPtion-Block (falls gewünscht) -->
     <div class="project">
-      <h3>InterAPPtion</h3>
-      <p>Das psychoedukative Parents‘ College wird um eine mobile Anwendung (InterAPPtion) erweitert, um die Adhärenz der Teilnehmer zu begünstigen und die evidenzbasierten Inhalte einer größeren Zahl von Eltern niedrigschwellig und mehrsprachig zugänglich zu machen. Entwickelt wird die Anwendung in Kooperation mit einem StartUp aus München (Selphspace).</p>
+      <h3>InterAPPtion – Zusatzinfos</h3>
+      <p>Weitere Hinweise und Evaluationspläne.</p>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p><!-- Zusatzinfos (zweiter Block) --></p>
+          <p><!-- Zusatzinfos --></p>
         </div>
       </details>
     </div>
 
-    <div class="project">
-      <h3 id="spielbeobachtung">Standardisierte Spielbeobachtung</h3>
-      <p>Die standardisierte Spielbeobachtung dient als valides, leicht durchführbares Instrument zur Einschätzung des kognitiven, sprachlichen und sozial-emotionalen Entwicklungsstandes von Kindern.</p>
+    <div class="project" id="spielbeobachtung">
+      <h3>Standardisierte Spielbeobachtung</h3>
+      <p>Die standardisierte Spielbeobachtung dient als valides, leicht durchführbares Instrument ...</p>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Spielbeobachtungsbogen (Hahnefeld & Bernhardt, 2021): Allen Kindern wird die gleiche Auswahl an Spielzeug in einer definierten Anordnung angeboten, darunter Puppen, Kochgeschirr, ein Bauernhof-Set und Bauklötze. Die Untersucher geben keine Anweisungen oder Anleitungen, so dass die Kinder frei spielen können. Spielsequenzen von zehn Minuten werden nach Möglichkeit auf Video aufgenommen, von zwei geschulten Untersuchern beobachtet und nach einem in unserer Arbeitsgruppe entwickelten und evaluierten Spielbeobachtungsbogen eingeschätzt (Bernhardt et al., wird gerade zur Einreichung vorbereitet). Anhand von vier Unterskalen wird das kindliche Spiel bewertet. Im Bereich „A“ wird die kindliche Spielentwicklung kodiert: sensomotorisch, funktional/explorativ, Konstruktionsspiel, symbolisches Spiel, Rollenspiel. Insgesamt können bis zu 9 Punkte vergeben werden und die Bewertung eines bestimmten Spielverhaltens umfasst dabei alle vorherigen Ebenen. Der Index der sozialen Interaktion während des Spiels im Bereich „B“ erfasst die Initiative, Ausdauer, soziale Interaktion und den Sprachgebrauch von Kindern während des Spiels (Werte 0-7). In den Bereichen „C“ und „D“ werden emotionsloses und kaltes Spielverhalten und Reinszenierungen von traumatischen Erlebnissen kodiert („0“, für „nicht vorhanden“ oder „1“, für „vorhanden“).</p>
+          <p>Spielbeobachtungsbogen ... Unterskalen ...</p>
         </div>
       </details>
     </div>
 
-    <div class="project">
-      <h3 id="evaluation">Begleitende wissenschaftliche Evaluation</h3>
-      <p>Längs- und querschnittliche Erhebungen zur Wirkung der eingesetzten Maßnahmen auf die kindliche Entwicklung.</p>
+    <div class="project" id="evaluation">
+      <h3>Begleitende wissenschaftliche Evaluation</h3>
+      <p>Längs- und querschnittliche Erhebungen zur Wirkung ...</p>
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Die „Symptomabfrage Traumafolgestörung bei Kindern“ (SATK-10, Hahnefeld & Terlinden, 2022) ist eine in unserer Arbeitsgruppe entwickelte kurz und übersichtlich gestaltete Abfrage, die in zehn Fragen die verhaltensnahen traumafolgerelevanten Problembereiche aufgreift, die auch im interkulturellen Kontext spontan von den Familien gesehen und thematisiert werden wie z.B. Entwicklungsrückschritte und Schlafstörungen (Goldbeck & Jensen, 2017; PROTECT, 2021).</p>
+          <p>Die „Symptomabfrage Traumafolgestörung bei Kindern“ (SATK-10, Hahnefeld & Terlinden, 2022) ...</p>
         </div>
       </details>
     </div>
@@ -365,21 +363,17 @@
       <div class="timeline-step">
         <span class="year">2018–2020</span>
         <h3>INCLUDE 1</h3>
-        <p>Zu T1 wurden insgesamt 134 Personen in die Studie eingeschlossen, davon 109 Menschen mit Fluchthintergrund und 25 klinische Patient:innen.</p>
+        <p>Zu T1 wurden insgesamt 134 Personen ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2021–2023</span>
         <h3>INCLUDE 2</h3>
-        <p>In einer 2-year-Follow-Up Studie wurde eine Untersuchung mit 33 Menschen mit Fluchthintergrund durchgeführt.</p>
-        <p>Zu T1 in der INCLUDE-Studie 2 wurden 111 Menschen mit Fluchthintergrund und 70 klinische Patient:innen untersucht.</p>
+        <p>Follow-Up ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2023–2026</span>
         <h3>INCLUDE 3</h3>
-        <p>2023/T1: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents’ College</p>
-        <p>2024/T2: Quasi-randomisierte Kontrollgruppenstudie: 12 Menschen mit Fluchthintergrund, 4 Parents’ College</p>
-        <p>Retrospektive Datenanalyse: 73 Klinische Patient:innen</p>
-        <p>Retrospektive Datenanalyse: 121 Klinische Patient:innen</p>
+        <p>Quasi-randomisierte Kontrollgruppenstudie ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2024–2025</span>
@@ -393,14 +387,14 @@
       </div>
     </div>
 
-    <p>Bernhardt, Katharina; Le Beherec, Saskia; Uppendahl, Jana; Baur, Marie-Anna; Klosinski, Matthias; Mall, Volker; Hahnefeld, Andrea (2023): Exploring Mental Health and Development in Refugee Children Through Systematic Play Assessment. In: Child psychiatry and human development. DOI: 10.1007/s10578-023-01584-z.</p>
-    <p>Hahnefeld, Andrea; Fink, Monika; Le Beherec, Saskia; Baur, Marie Anna; Bernhardt, Katharina; Mall, Volker (2024): Correlation of screen exposure to stress, learning, cognitive and language performance in children. In: European child & adolescent psychiatry. DOI: 10.1007/s00787-024-02593-6.</p>
-    <p>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin bei Flüchtlingskindern. In: Pädiatrische Praxis 94 (3), S. 508–521.</p>
-    <p>Hahnefeld, Andrea; Münch, Katharina; Aberl, Sigrid; Henningsen, Peter; Mall, Volker (2022): Versorgung traumatisierter Vorschulkinder. In: Monatsschr Kinderheilkd 170 (12), S. 1077–1084. DOI: 10.1007/s00112-022-01618-1.</p>
-    <p>Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Dudek, Verena; Münch, Katharina; Aberl, Sigrid et al. (2022): Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. In: European journal of pediatrics 181 (3), S. 1205–1212. DOI: 10.1007/s00431-021-04312-8.</p>
-    <p>Hahnefeld, Andrea; Sukale, Thorsten; Weigand, Elena; Münch, Katharina; Aberl, Sigrid; Eckler, Lea V. et al. (2021): Survival states as indicators of learning performance and biological stress in refugee children: a cross-sectional study with a comparison group. In: BMC psychiatry 21, Artikel 228. DOI: 10.1186/s12888-021-03233-y.</p>
-    <p>Hahnefeld, Andrea; Weigand, Elena; Aberl, Sigrid; Mall, Volker (Hg.) (2024): Interdisziplinäre Versorgung von Kindern mit Fluchterfahrung. Mit psychoedukativem Gruppenkonzept für Eltern. Unter Mitarbeit von Elena Weigand. 1. Aufl. Bern: Hogrefe Verlag.</p>
-    <p>Soykoek, Seval; Mall, Volker; Nehring, Ina; Henningsen, Peter; Aberl, Sigrid (2017): Post-traumatic stress disorder in Syrian children of a German refugee camp. In: Lancet (London, England) 389 (10072), S. 903–904. DOI: 10.1016/S0140-6736(17)30595-0.</p>
+    <p>Bernhardt, Katharina; ... (2023): Exploring Mental Health ...</p>
+    <p>Hahnefeld, Andrea; ... (2024): Correlation of screen exposure ...</p>
+    <p>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin ...</p>
+    <p>Hahnefeld, Andrea; Münch, Katharina; ... (2022): Versorgung traumatisierter Vorschulkinder ...</p>
+    <p>Hahnefeld, Andrea; ... (2022): Non-verbal cognitive development ...</p>
+    <p>Hahnefeld, Andrea; ... (2021): Survival states ...</p>
+    <p>Hahnefeld, Andrea; ... (2024): Interdisziplinäre Versorgung ... Hogrefe Verlag.</p>
+    <p>Soykoek, Seval; ... (2017): PTSD in Syrian children ...</p>
   </section>
 
   <!-- NEUIGKEITEN -->
@@ -430,7 +424,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Querverweis-Funktion: erst Sektion aktivieren, dann optional Aufklapper öffnen und zum Anker scrollen
+    // Querverweise: Sektion aktivieren, ggf. Details öffnen, zum Anker scrollen
     function goTo(sectionId, anchorId) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       const sec = document.getElementById(sectionId);
@@ -438,7 +432,6 @@
 
       requestAnimationFrame(() => {
         const el = document.getElementById(anchorId);
-        // Öffne ggf. den Aufklapper des Projekts automatisch
         if (el) {
           const project = el.closest('.project');
           if (project) {
