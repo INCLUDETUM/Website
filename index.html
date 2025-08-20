@@ -86,15 +86,16 @@
       margin-right: auto;
     }
 
-    .hero-img {
-      display: block;
-      margin: 2rem auto;
-      width: 100%;
-      max-width: 900px;     /* exakt so breit wie der Text */
-      height: auto;
-      border-radius: 12px;  /* leicht abgerundet */
-      clear: both;          /* Float des kleinen Logos räumen */
-    }
+  .hero-img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 900px;   /* gleiche Breite wie p-Text */
+  width: 100%;        /* passt sich flexibel an */
+  height: auto;
+  border-radius: 12px; /* leicht abgerundet */
+  clear: both;        /* Float vom kleinen Logo auflösen */
+}
+
 
     /* TEAM */
     .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
