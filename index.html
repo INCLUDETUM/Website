@@ -70,9 +70,8 @@
       float: right;
       width: 120px;
       height: auto;
-      /* weiter von der rechten Kante nach innen + etwas Abstand zum Text */
       margin: 0 24px 10px 18px; /* top right bottom left */
-      border-radius: 10px;       /* leichte Abrundung */
+      border-radius: 10px;
     }
 
     /* Bilder */
@@ -86,38 +85,73 @@
       margin-right: auto;
     }
 
- .hero-img {
-  display: block;
-  margin: 2rem auto;
-  max-width: 900px;   /* gleiche Breite wie Text */
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  clear: both;
-}
-
+    .hero-img {
+      display: block;
+      margin: 2rem auto;
+      max-width: 900px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      clear: both;
+    }
 
     /* TEAM */
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
     .team-member {
-      text-align: center; background: white; padding: 1rem; border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.3s;
+      text-align: center;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
     }
+    .team-member:hover { transform: translateY(-3px); }
+
+    /* Portraits eckig (quadratisch) */
     .team-member img {
-      width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem;
-      border: 4px solid var(--primary-purple); object-position: center 20%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;              /* eckig statt rund */
+      margin-bottom: 1rem;
+      border: 4px solid var(--primary-purple);
+      object-position: center 20%;
+      background: #f3f3f3;
     }
+
     .cv-button {
-      display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;
-      color: white; background: var(--primary-purple); border-radius: 20px; text-decoration: none; transition: background 0.3s;
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: white;
+      background: var(--primary-purple);
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.3s;
     }
     .cv-button:hover { background: #4e3f84; }
 
     /* Projekte */
     .project {
-      background: white; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .project-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .project-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
     .project-content .project-text { flex: 1 1 300px; min-width: 260px; }
     .project-content img { width: 240px; height: auto; border-radius: 8px; object-fit: cover; flex: 0 0 auto; }
 
@@ -125,7 +159,14 @@
     details.more { margin-top: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
     details.more[open] { background: #ffffff; }
     details.more summary {
-      list-style: none; cursor: pointer; padding: 0.75rem 1rem; font-weight: 600; display: flex; align-items: center; justify-content: space-between; user-select: none;
+      list-style: none;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
     }
     details.more summary::-webkit-details-marker { display: none; }
     details.more summary::after { content: "▼"; font-size: 0.9rem; transform: rotate(0deg); transition: transform 0.2s ease; }
@@ -137,12 +178,24 @@
 
     /* Publikationen – Timeline */
     .diagonal-timeline {
-      margin: 3rem auto; max-width: 900px; position: relative; padding-left: 1rem;
-      display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 0;
+      margin: 3rem auto;
+      max-width: 900px;
+      position: relative;
+      padding-left: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem 0;
     }
     .timeline-step {
-      background: #f1f1f1; border-left: 4px solid #333; padding: 1.5rem; width: 45%; margin-top: 2rem; position: relative;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease;
+      background: #f1f1f1;
+      border-left: 4px solid #333;
+      padding: 1.5rem;
+      width: 45%;
+      margin-top: 2rem;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
     .timeline-step:nth-child(even) { align-self: flex-end; }
     .timeline-step:hover { transform: translateY(-3px); }
@@ -154,6 +207,7 @@
     footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #555; background: #f0f0f0; margin-top: 2rem; }
   </style>
 </head>
+
 <body>
   <!-- NAVIGATION -->
   <header class="navbar">
@@ -176,7 +230,6 @@
   <section id="home" class="active">
     <h1>Willkommen bei INCLUDE</h1>
     <p>
-      <!-- Eigenes, kleines Logo nur für den Text -->
       <img
         src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/include.png"
         alt="Text-Logo"
@@ -187,18 +240,16 @@
       Das INCLUDE (INterCuLtUral Child Development)-
       <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="Projekt">(Projekt)</a>
       verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
-      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und 
+      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und
       kulturübergreifend anzupassen und zu gestalten.
     </p>
 
-    <!-- Großes Bild in der Mitte -->
     <img
       src=""
       alt="Großes Hero-Bild"
       class="hero-img"
     >
 
-    <!-- Die langen Absätze gehören NUR zur HOME-Section -->
     <p><b>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</b></p>
 
     <p>
@@ -238,7 +289,7 @@
     </p>
   </section>
 
-  <!-- TEAM -->
+  <!-- TEAM (NUR HIER! Alle Team-Mitglieder sind innerhalb dieser Section) -->
   <section id="team">
     <h2>Unser Team</h2>
 
@@ -256,8 +307,7 @@
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Prof. Dr. Matthias Klosinski">
         <h3>Prof. Dr. Matthias Klosinski</h3>
         <p>Stellv. Leitung</p>
-         <p>Diplom-Psychologe, Facharzt für Kinder- und Jugendpsychiatrie und Psychotherapie (VT), Systemischer Berater (SG), systemischer Therapeut (SG), systemischer Supervisor (SG), Professur für Psychische Gesundheit</p>
-         <p> </p>
+        <p>Diplom-Psychologe, Facharzt für Kinder- und Jugendpsychiatrie und Psychotherapie (VT), Systemischer Berater (SG), systemischer Therapeut (SG), systemischer Supervisor (SG), Professur für Psychische Gesundheit</p>
         <a class="cv-button" href="cv/klosinski.pdf" download>CV Download</a>
       </div>
     </div>
@@ -266,7 +316,7 @@
 
     <div class="team-grid members">
       <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Penelope_Website_1.jpeg" alt="Thomas">
+        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Penelope_Website_1.jpeg" alt="Penelope Thomas">
         <h3>Penelope Thomas</h3>
         <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin</p>
         <a class="cv-button" href="cv/datei2.pdf" download>CV Download</a>
@@ -278,92 +328,73 @@
         <p>Kinder- und Jugendpsychotherapeutin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-  <div class="team-member">
+      <div class="team-member">
         <img src="" alt="Franziska Negele">
         <h3>Franziska Negele</h3>
-        <p>Psychotherapeutin, wissenschafliche Mitarbeiterin, Doktorandin</p>
+        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-    <div class="team-member">
-        <img src="" alt="Lena Streckert">
+      <div class="team-member">
+        <img src="" alt="Saskia Le Beherec">
         <h3>Saskia Le Beherec</h3>
-        <p>Psychotherapeutin, wissenschafliche Mitarbeiterin, Doktorandin</p>
+        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
-  
-  <div class="team-member">
+
+      <div class="team-member">
         <img src="" alt="Lena Streckert">
         <h3>Lena Streckert, Msc.</h3>
-        <p>Psychotherapeutin, wissenschafliche Mitarbeiterin, Doktorandin</p>
+        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-  <div class="team-member">
+      <div class="team-member">
         <img src="" alt="Katharina Münch">
         <h3>Katharina Münch</h3>
         <p>Ärztin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-  <div class="team-member">
+      <div class="team-member">
         <img src="" alt="Monika Fink">
         <h3>Monika Fink</h3>
         <p>Ärztin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-  <div class="team-member">
+      <div class="team-member">
         <img src="" alt="Klara Karali">
         <h3>Klara Karali, B.A.</h3>
         <p>Assistentin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
-  
-   <div class="team-member">
-        <img src="" alt="Klara Karali">
+
+      <div class="team-member">
+        <img src="" alt="Verena Dudek">
         <h3>Verena Dudek, Msc.</h3>
-        <p>Psychotherapeutin, wissenschafliche Mitarbeiterin</p>
+        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-    <div class="team-member">
-        <img src="" alt="Klara Karali">
-        <h3>Berfin Akdaq, Msc. </h3>
+      <div class="team-member">
+        <img src="" alt="Berfin Akdaq">
+        <h3>Berfin Akdaq, Msc.</h3>
         <p>Psychotherapeutin in Ausbildung, wissenschaftliche Mitarbeiterin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
-   <div class="Lea Eckler">
-        <img src="" alt="Klara Karali">
+
+      <div class="team-member">
+        <img src="" alt="Lea Eckler">
         <h3>Lea Eckler, Msc.</h3>
-        <p>Psychotherapeutin, wissenschafliche Mitarbeiterin</p>
+        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
-    </div>
-  </section>
 
-   <div class="team-member">
-        <img src="" alt="Klara Karali">
-        <h3>Marco Gaßner, M.A., M.Ed. </h3>
+      <div class="team-member">
+        <img src="" alt="Marco Gaßner">
+        <h3>Marco Gaßner, M.A., M.Ed.</h3>
         <p>Wissenschaftlicher Mitarbeiter, Doktorand</p>
         <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
       </div>
@@ -376,7 +407,7 @@
 
     <div class="project" id="iskf">
       <h3>ISKF</h3>
-      <p>Seit 2016 bietet die INCLUDE-Gruppe mit der Förderung des Bayrischen Innenministeriums eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung an. Die Sprechstunde findet jeweils direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) und in Haus 22 des SPZ Schwabing (kbo Kinderzentrum) in München statt. 
+      <p>Seit 2016 bietet die INCLUDE-Gruppe mit der Förderung des Bayrischen Innenministeriums eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung an. Die Sprechstunde findet jeweils direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) und in Haus 22 des SPZ Schwabing (kbo Kinderzentrum) in München statt.
 Zusätzlich zu regelmäßig stattfindenden interdisziplinären Sprechstunden in den Dependancen des Ankerzentrums wurde gemeinsam mit den von Krieg und Vertreibung betroffenen Eltern die niedrigschwellige Psychoedukationsgruppe „Parents‘ College“ entwickelt, in welcher wichtige Informationen zur gesunden kindlichen Entwicklung in einfacher Sprache und mit Bildmaterialien kulturunabhängig aufbereitet wurden, um von Experten in Elterngruppen mit Hilfe von Dolmetschern vermittelt und diskutiert zu werden.1
 Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums Manching in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
 </p>
@@ -436,25 +467,24 @@ Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums 
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
           <p>Die im aktuellen Stand der Leitlinien in ihrer Wirksamkeit bestätigten Psychotherapien zu Behandlung von Traumafolgestörungen (Schäfer et al., 2019) setzen eine gewisse längerfristige Behandlungsmotivation der Familien voraus und findet im individuellen Kontakt in einem Sprechstundensetting oder einrichtungsbasiert in Praxen, Kliniken und Instituten statt, wohingegen die Huggy-Puppy-Intervention niedrigschwellig in einem Gruppenkontext in einzelnen Terminen durchgeführt werden kann.
-Das Kind erhält einen Teddybären und es wird folgende Geschichte dazu erzählt: 
+Das Kind erhält einen Teddybären und es wird folgende Geschichte dazu erzählt:
 
 „Das kleine Bärchen hier ist gerade traurig und fühlt sich einsam. Es musste seine Heimat verlassen und jetzt ist alles fremd für es und es hat keine Freunde hier. Es kann zur Zeit nicht regelmäßig in die Schule / den Kindergarten gehen und der Krieg macht ihm Angst. Es mag so gerne, wenn sich jemand um es kümmert, es streichelt und ihm Geschichten erzählt. Was hältst du davon, wenn du ab jetzt auf das Bärchen achtgibst, es versorgst, viel in den Arm nimmst und es bei dir im Bett schlafen lässt, damit es sich wohl fühlt?“
 
 Wenn das Kind Zustimmung signalisiert, wird ihm das Kuscheltier gereicht mit einer kleinen Demonstration, wie mit dem Bärchen gekuschelt werden kann. Zusätzlich werden die Eltern ermutigt, das Interesse des Kindes für das Kuscheltier aufrecht zu erhalten und es regelmäßig an seine Verantwortung für die Versorgung desselben zu erinnern.
 
-Aufgrund neurobiologischer Erkenntnisse, dass es die bewussten und unbewussten Emotionen sind, die mit ihren Fehlentwicklungen aufgrund früherer Traumatisierungen das Denken und Handeln bestimmen (Roth & Strüber, 2021), können über neue Erfahrungen im Zusammenhang mit der Fürsorge für das Kuscheltier alte Gewohnheitsmuster verändert und dies als belohnend erlebt werden. Es sollen damit im häuslichen Alltag Situationen geschaffen werden, in welchen durch ständiges Einübens eines neuen Umgangs mit sich und der Welt eingefahrene Verhaltens- und Erlebensmuster bei Kind und Eltern überwunden werden können (Roth & Strüber, 2021). Dies lässt sich über das neu initiierte Fürsorgeverhalten bei den Kindern im Rahmen der HPI niedrigschwellig im Gruppenkontext mit Kindern und Bezugspersonen umsetzen, wie auch in der Studie von Sadeh et al. (2008) beschrieben. 
-Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch den/die Untersucher*in (die bei der Intervention allerdings aufgrund der einfachen Durchführung begrenzt ist) v.a. die Bindung des Kindes an das Kuscheltier genannt. Hierbei fungiert das Kuscheltier als Stellvertreter oder Übergangsobjekt, wobei Kinder ihre Gefühle und Ängste auf Spielzeugfiguren projizieren, um sich mit diesen Gefühlen zu identifizieren und diese Emotionen zu regulieren, während sie sich um die Spielzeugfiguren kümmern. Zudem wird durch die Intervention die Aufmerksamkeit des Kindes weg vom Erleben der eigenen Problematik hin zu einer lösungsorientierten Versorgung des Kuscheltiers im Äußeren gelenkt und es findet eine Aktivierung lösungsorientierter Verhaltensweisen statt. Es wird somit eine positive Bewältigungserfahrung für das Kuscheltier als Stellvertreter gemacht (Problembewältigung), womit eine Ressourcenaktivierung als wichtigster allgemeiner Wirkfaktor von Psychotherapie (Grawe, 2000) erfolgt. 
- <p>Sadeh, A., Hen-Gal, S. & Tikotzky, L. (2008). Young children's reactions to war-related stress: a survey and assessment of an innovative intervention. Pediatrics. 121(1):46-53.</p> 
- <p>Roth, G. & Strüber, N. (2021). Wie das Gehirn die Seele macht. Klett-Cotta.</p>
- <p>Schäfer, I., Gast, U., Hofmann, A., Knaevelsrud, C., Lampe, A., Liebermann, A., Liebermann, P., Lotzin, A., Maercker, A., Rosner, R. & Wöllner, W. (2019). S3-Leitlinie Posttraumatische Belastungsstörung. Springer Verlag.</p>
- <p>Grawe, K. (2000). Psychologische Therapie. Hogrefe.</p>
+Aufgrund neurobiologischer Erkenntnisse, dass es die bewussten und unbewussten Emotionen sind, die mit ihren Fehlentwicklungen aufgrund früherer Traumatisierungen das Denken und Handeln bestimmen (Roth & Strüber, 2021), können über neue Erfahrungen im Zusammenhang mit der Fürsorge für das Kuscheltier alte Gewohnheitsmuster verändert und dies als belohnend erlebt werden. Es sollen damit im häuslichen Alltag Situationen geschaffen werden, in welchen durch ständiges Einübens eines neuen Umgangs mit sich und der Welt eingefahrene Verhaltens- und Erlebensmuster bei Kind und Eltern überwunden werden können (Roth & Strüber, 2021). Dies lässt sich über das neu initiierte Fürsorgeverhalten bei den Kindern im Rahmen der HPI niedrigschwellig im Gruppenkontext mit Kindern und Bezugspersonen umsetzen, wie auch in der Studie von Sadeh et al. (2008) beschrieben.
+Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch den/die Untersucher*in (die bei der Intervention allerdings aufgrund der einfachen Durchführung begrenzt ist) v.a. die Bindung des Kindes an das Kuscheltier genannt. Hierbei fungiert das Kuscheltier als Stellvertreter oder Übergangsobjekt, wobei Kinder ihre Gefühle und Ängste auf Spielzeugfiguren projizieren, um sich mit diesen Gefühlen zu identifizieren und diese Emotionen zu regulieren, während sie sich um die Spielzeugfiguren kümmern. Zudem wird durch die Intervention die Aufmerksamkeit des Kindes weg vom Erleben der eigenen Problematik hin zu einer lösungsorientierten Versorgung des Kuscheltiers im Äußeren gelenkt und es findet eine Aktivierung lösungsorientierter Verhaltensweisen statt. Es wird somit eine positive Bewältigungserfahrung für das Kuscheltier als Stellvertreter gemacht (Problembewältigung), womit eine Ressourcenaktivierung als wichtigster allgemeiner Wirkfaktor von Psychotherapie (Grawe, 2000) erfolgt.
 
 </p>
+          <p>Sadeh, A., Hen-Gal, S. & Tikotzky, L. (2008). Young children's reactions to war-related stress: a survey and assessment of an innovative intervention. Pediatrics. 121(1):46-53.</p>
+          <p>Roth, G. & Strüber, N. (2021). Wie das Gehirn die Seele macht. Klett-Cotta.</p>
+          <p>Schäfer, I., Gast, U., Hofmann, A., Knaevelsrud, C., Lampe, A., Liebermann, A., Liebermann, P., Lotzin, A., Maercker, A., Rosner, R. & Wöllner, W. (2019). S3-Leitlinie Posttraumatische Belastungsstörung. Springer Verlag.</p>
+          <p>Grawe, K. (2000). Psychologische Therapie. Hogrefe.</p>
         </div>
       </details>
     </div>
 
-    <!-- Optionaler zweiter InterAPPtion-Block (falls gewünscht) -->
     <div class="project">
       <h3>InterAPPtion – Zusatzinfos</h3>
       <p>Weitere Hinweise und Evaluationspläne.</p>
@@ -493,7 +523,6 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
   <section id="publikationen">
     <h2>Publikationen</h2>
 
-    <!-- Ziel für "Studien der INCLUDE-Arbeitsgruppe" -->
     <h3 id="include">Studien der INCLUDE-Arbeitsgruppe</h3>
 
     <div class="diagonal-timeline">
@@ -547,7 +576,6 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
     &copy; 2025 INCLUDE. Alle Rechte vorbehalten.
   </footer>
 
-  <!-- Skript ganz unten -->
   <script>
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
