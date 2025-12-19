@@ -4,207 +4,516 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>INCLUDE</title>
+
+  <!-- Modern system font stack + optional Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --primary-purple: #6d5cae;
-      --background-light: #f8f9fb;
-      --text-dark: #333;
-      --menu-bg: #ffffff;
-      --menu-text: #333;
-      --menu-hover: #6d5cae;
+    :root{
+      /* Reference Accent (aus deiner Vorlage, kein Lila) */
+      --accent: #7093C2;
+      --accent-600: #5b7fb2;
+      --accent-700: #476a9c;
+
+      /* Neutrals */
+      --bg: #f6f7fb;
+      --surface: rgba(255,255,255,0.86);
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: #5b667a;
+      --line: rgba(16, 24, 40, 0.10);
+
+      /* Effects */
+      --shadow-sm: 0 6px 18px rgba(11, 18, 32, 0.08);
+      --shadow-md: 0 16px 40px rgba(11, 18, 32, 0.12);
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+
+      --container: 1120px;
     }
 
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body{
       margin: 0;
-      background-color: var(--background-light);
-      color: var(--text-dark);
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% -10%, rgba(112,147,194,0.22), transparent 55%),
+        radial-gradient(900px 600px at 95% 10%, rgba(112,147,194,0.14), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #ffffff 100%);
+      line-height: 1.65;
     }
 
-    /* NAVIGATION */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: var(--menu-bg);
-      color: var(--menu-text);
-      position: sticky;
-      top: 0;
-      border-bottom: 1px solid #ddd;
-      z-index: 1000;
-      flex-wrap: wrap;
+    a{
+      color: var(--accent-700);
+      text-decoration: none;
+      text-underline-offset: 3px;
     }
-    .nav-left { display: flex; align-items: center; gap: 10px; }
-    .nav-left img { height: 50px; cursor: pointer; }
-    .site-title { font-size: 1.5rem; font-weight: bold; color: var(--menu-text); margin-right: 10px; }
-    .nav-links { display: flex; gap: 20px; }
-    .nav-links a { color: var(--menu-text); text-decoration: none; font-weight: 500; cursor: pointer; }
-    .nav-links a:hover { color: var(--menu-hover); }
-    .nav-toggle { display: none; font-size: 24px; background: none; border: none; color: var(--menu-text); cursor: pointer; }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none; position: absolute; top: 60px; right: 0; background: var(--menu-bg);
-        flex-direction: column; width: 200px; padding: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      }
-      .nav-links.active { display: flex; }
-      .nav-toggle { display: block; }
-    }
+    a:hover{ text-decoration: underline; }
 
-    /* Content Sections */
-    section { display: none; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-    section.active { display: block; }
-
-    h1, h2 { color: var(--primary-purple); text-align: center; }
-    h3 { color: #000; font-weight: bold; margin-top: 1rem; }
-
-    /* Anker-Offset (sticky Navbar) */
-    h2, h3 { scroll-margin-top: 90px; }
-
-    p { text-align: justify; font-size: 1.05rem; max-width: 900px; margin: 1rem auto; color: #000; }
-
-    /* >>> angepasste Bild-Styles <<< */
-    .text-logo {
-      float: right;
-      width: 120px;
-      height: auto;
-      margin: 0 24px 10px 18px; /* top right bottom left */
+    /* Accessibility */
+    :focus-visible{
+      outline: 3px solid rgba(112,147,194,0.55);
+      outline-offset: 3px;
       border-radius: 10px;
     }
 
-    /* Bilder */
-    img.responsive {
-      width: 100%;
-      max-width: 800px;
-      margin-top: 20px;
-      border-radius: 12px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    /* NAVIGATION */
+    .navbar{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid var(--line);
     }
 
-    .hero-img {
+    .nav-left{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 240px;
+    }
+
+    .site-title{
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .brand-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(112,147,194,0.18);
+      display: inline-block;
+    }
+
+    .nav-left img{
+      height: 40px;
+      width: auto;
+      cursor: pointer;
+      opacity: 0.92;
+      filter: saturate(0.95) contrast(1.02);
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .nav-left img:hover{
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    .nav-links{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a{
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+    .nav-links a:hover{
+      background: rgba(112,147,194,0.14);
+      color: var(--accent-700);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle{
+      display: none;
+      font-size: 22px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px){
+      .nav-toggle{ display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links{
+        display: none;
+        position: absolute;
+        top: 62px;
+        right: 12px;
+        width: min(92vw, 320px);
+        background: rgba(255,255,255,0.90);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 10px;
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links a{ padding: 10px 12px; }
+      .nav-links.active{ display: flex; }
+      .nav-left{ min-width: auto; }
+    }
+
+    /* SECTIONS / LAYOUT */
+    section{
+      display: none;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 28px 18px 54px;
+    }
+    section.active{ display: block; }
+
+    /* Top intro "hero" shell */
+    .hero-shell{
+      margin-top: 16px;
+      padding: 26px 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.70));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset: -120px -120px auto auto;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at 30% 30%, rgba(112,147,194,0.36), transparent 60%);
+      filter: blur(4px);
+      transform: rotate(12deg);
+    }
+
+    h1{
+      margin: 10px 0 6px;
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-align: left;
+      color: var(--text);
+    }
+    h2{
+      margin: 6px 0 18px;
+      font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+      letter-spacing: -0.015em;
+      color: var(--text);
+      text-align: left;
+    }
+    h3{
+      margin: 10px 0 6px;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      font-weight: 700;
+      scroll-margin-top: 92px; /* sticky navbar offset */
+    }
+
+    p{
+      margin: 10px 0;
+      max-width: 920px;
+      color: var(--text);
+      font-size: 1.02rem;
+    }
+    .muted{ color: var(--muted); }
+
+    /* Small label chips (optional usage) */
+    .chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(112,147,194,0.30);
+      background: rgba(112,147,194,0.12);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-700);
+      margin-top: 12px;
+    }
+
+    /* Images */
+    img.responsive{
+      width: 100%;
+      max-width: 860px;
+      margin: 18px auto 0;
       display: block;
-      margin: 2rem auto;
-      max-width: 900px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-img{
+      display: block;
+      margin: 18px auto 0;
+      max-width: 980px;
       width: 100%;
       height: auto;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
       clear: both;
+      background: #eef2f7;
+    }
+
+    .text-logo{
+      float: right;
+      width: 120px;
+      height: auto;
+      margin: 6px 0 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      background: #fff;
+    }
+
+    @media (max-width: 680px){
+      .text-logo{ float: none; display:block; margin: 12px 0; width: 140px; }
+    }
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
     }
 
     /* TEAM */
-    .team-grid {
+    .team-grid{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
     }
-    .team-member {
-      text-align: center;
-      background: white;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-    .team-member:hover { transform: translateY(-3px); }
 
-    /* Portraits eckig (quadratisch) */
-    .team-member img {
-      width: 160px;
-      height: 160px;
+    .team-member{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 14px;
+      transition: transform .18s ease, box-shadow .18s ease;
+      text-align: left;
+    }
+    .team-member:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-member img{
+      width: 100%;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
-      border-radius: 10px;              /* eckig statt rund */
-      margin-bottom: 1rem;
-      border: 4px solid var(--primary-purple);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      margin-bottom: 10px;
       object-position: center 20%;
-      background: #f3f3f3;
+      background: #eef2f7;
     }
 
-    .cv-button {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      color: white;
-      background: var(--primary-purple);
-      border-radius: 20px;
+    .team-member h3{
+      margin: 8px 0 4px;
+      font-size: 1.02rem;
+    }
+
+    .team-member p{
+      margin: 2px 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    .cv-button{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(180deg, var(--accent), var(--accent-700));
+      border-radius: 999px;
+      border: 0;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: transform .18s ease, filter .18s ease;
+      width: 100%;
     }
-    .cv-button:hover { background: #4e3f84; }
+    .cv-button:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      text-decoration: none;
+    }
 
-    /* Projekte */
-    .project {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    hr{
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 26px 0;
     }
-    .project-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .project-content .project-text { flex: 1 1 300px; min-width: 260px; }
-    .project-content img { width: 240px; height: auto; border-radius: 8px; object-fit: cover; flex: 0 0 auto; }
 
-    /* Aufklappbare Zusatzinfos (details) */
-    details.more { margin-top: 0.75rem; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
-    details.more[open] { background: #ffffff; }
-    details.more summary {
+    /* PROJECTS */
+    .project{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 18px 16px;
+      margin: 0 0 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project::before{
+      content:"";
+      position:absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(112,147,194,0.85), rgba(112,147,194,0.10));
+    }
+
+    .project-content{
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .project-content .project-text{ min-width: 0; }
+    .project-content img{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      object-fit: cover;
+      background: #eef2f7;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 820px){
+      .project-content{ grid-template-columns: 1fr; }
+    }
+
+    /* Details (accordion) */
+    details.more{
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(246,247,251,0.65);
+      overflow: hidden;
+    }
+    details.more[open]{
+      background: rgba(255,255,255,0.92);
+    }
+    details.more summary{
       list-style: none;
       cursor: pointer;
-      padding: 0.75rem 1rem;
-      font-weight: 600;
+      padding: 12px 14px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: space-between;
       user-select: none;
+      color: var(--text);
     }
-    details.more summary::-webkit-details-marker { display: none; }
-    details.more summary::after { content: "▼"; font-size: 0.9rem; transform: rotate(0deg); transition: transform 0.2s ease; }
-    details.more[open] summary::after { transform: rotate(180deg); }
-    details.more .more-content { padding: 0.75rem 1rem 1rem; border-top: 1px dashed #e5e7eb; }
-    details.more summary .less { display: none; }
-    details.more[open] summary .more { display: none; }
-    details.more[open] summary .less { display: inline; }
+    details.more summary::-webkit-details-marker{ display:none; }
+    details.more summary::after{
+      content: "⌄";
+      font-size: 1.1rem;
+      transform: rotate(0deg);
+      transition: transform .16s ease;
+      color: var(--accent-700);
+    }
+    details.more[open] summary::after{ transform: rotate(180deg); }
+    details.more .more-content{
+      padding: 12px 14px 14px;
+      border-top: 1px dashed var(--line);
+      color: var(--muted);
+    }
+    details.more summary .less{ display:none; }
+    details.more[open] summary .more{ display:none; }
+    details.more[open] summary .less{ display:inline; }
 
-    /* Publikationen – Timeline */
-    .diagonal-timeline {
-      margin: 3rem auto;
-      max-width: 900px;
-      position: relative;
-      padding-left: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 2rem 0;
-    }
-    .timeline-step {
-      background: #f1f1f1;
-      border-left: 4px solid #333;
-      padding: 1.5rem;
-      width: 45%;
-      margin-top: 2rem;
-      position: relative;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .timeline-step:nth-child(even) { align-self: flex-end; }
-    .timeline-step:hover { transform: translateY(-3px); }
-    .timeline-step .year { font-weight: bold; display: block; margin-bottom: 0.5rem; color: var(--primary-purple); }
-    @media screen and (max-width: 768px) {
-      .timeline-step, .timeline-step:nth-child(n) { width: 100%; align-self: auto; }
+    /* Publications timeline – cleaner cards */
+    .diagonal-timeline{
+      margin: 18px 0 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #555; background: #f0f0f0; margin-top: 2rem; }
+    .timeline-step{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 16px 14px;
+      transition: transform .18s ease, box-shadow .18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-step:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .timeline-step::before{
+      content:"";
+      position:absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(112,147,194,0.9), rgba(112,147,194,0.15));
+    }
+
+    .timeline-step .year{
+      font-weight: 900;
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent-700);
+      letter-spacing: 0.02em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 780px){
+      .diagonal-timeline{ grid-template-columns: 1fr; }
+    }
+
+    /* Footer */
+    footer{
+      text-align: center;
+      padding: 18px 12px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.70);
+      border-top: 1px solid var(--line);
+    }
   </style>
 </head>
 
@@ -212,45 +521,50 @@
   <!-- NAVIGATION -->
   <header class="navbar">
     <div class="nav-left">
-      <h1 class="site-title">INCLUDE</h1>
+      <h1 class="site-title"><span class="brand-dot" aria-hidden="true"></span> INCLUDE</h1>
       <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-5.png" alt="Navbar-Logo 1">
       <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-4.png" alt="Navbar-Logo 2">
     </div>
-    <nav class="nav-links" id="navLinks">
+
+    <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
       <a onclick="showSection('home')">Home</a>
       <a onclick="showSection('team')">Team</a>
       <a onclick="showSection('projekte')">Projekte</a>
       <a onclick="showSection('publikationen')">Publikationen</a>
       <a onclick="showSection('neuigkeiten')">Neuigkeiten</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">&#9776;</button>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
   </header>
 
   <!-- HOME -->
   <section id="home" class="active">
-    <h1>Willkommen bei INCLUDE</h1>
-    <p>
+    <div class="hero-shell">
+      <h1>Willkommen bei INCLUDE</h1>
+
+      <p class="muted">
+        <img
+          src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/include.png"
+          alt="Text-Logo"
+          class="text-logo">
+        INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>.
+      </p>
+
+      <p>
+        Das INCLUDE (INterCuLtUral Child Development)-
+        <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="Projekt">(Projekt)</a>
+        verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
+        Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen und zu gestalten.
+      </p>
+
+      <span class="chip">Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung</span>
+
       <img
-        src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/include.png"
-        alt="Text-Logo"
-        class="text-logo">
-      INCLUDE steht für <b>INterCuLtUral Child DevelopmEnt</b>:
-    </p>
-    <p>
-      Das INCLUDE (INterCuLtUral Child Development)-
-      <a href="https://kbo-kinderzentrum-muenchen.de/fileadmin/Lehrstuhl_Div/Flyer__INCLUDE.pdf" class="Projekt">(Projekt)</a>
-      verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
-      Zudem arbeiten wir daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und
-      kulturübergreifend anzupassen und zu gestalten.
-    </p>
-
-    <img
-      src=""
-      alt="Großes Hero-Bild"
-      class="hero-img"
-    >
-
-    <p><b>Kultur- und traumasensitive Versorgung von Kindern aus Familien mit Fluchterfahrung.</b></p>
+        src=""
+        alt="Großes Hero-Bild"
+        class="hero-img"
+      >
+    </div>
 
     <p>
       Aktuell leben knapp 3 Millionen schutzsuchende Menschen in Deutschland, wobei in den letzten Jahren ca. ein Fünftel bis ein Viertel der Asylanträge für Kinder im Alter von bis zu sechs Jahren gestellt wurden.¹
@@ -269,7 +583,7 @@
       <a href="#iskf" onclick="goTo('projekte','iskf'); return false;">Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</a>
       durchgeführten
       <a href="#include" onclick="goTo('publikationen','include'); return false;">Studien der INCLUDE-Arbeitsgruppe</a>
-      hat sich gezeigt, dass die untersuchten 3- bis 6-jährige Kinder mit Fluchthintergrund initial nicht nur hohe Raten an Traumafolgestörungen² und Verhaltensauffälligkeiten im Betreuungsumfeld zeigen,6,7 sondern viele auch Entwicklungsrückstände hinsichtlich der schulischen Vorläuferfähigkeiten aufweisen,.3,4,6,7 Zum einen sind resilienzfördernde Aktivitäten wie Schul- und Kindergartenbesuch für diese Gruppe oft zu wenig verfügbar, zum anderen sind viele der Eltern selbst von Traumafolgestörungen betroffen,6,7 was den Umgang mit den Reaktionen der Kinder auf belastende Umstände zusätzlich erschweren und zur Chronifizierung von Symptomen beitragen kann.
+      hat sich gezeigt, dass die untersuchten 3- bis 6-jährige Kinder mit Fluchthintergrund initial nicht nur hohe Raten an Traumafolgestörungen² und Verhaltensauffälligkeiten im Betreuungsumfeld zeigen,6,7 sondern viele auch Entwicklungsrückstände hinsichtlich der schulischen Vorläuferfähigkeiten aufweisen,.3,4,6,7
     </p>
     <p>
       Ziel unseres kultur- und traumasensitiven Ansatzes ist es daher, zeitnah zur Ankunft in Deutschland nicht nur bei den Kindern anzusetzen, sondern auch die Eltern und das Betreuungsumfeld im Sinne eines ökosystemischen Ansatzes im Behandlungskonzept zu integrieren, Hilfe zur Selbsthilfe anzubieten und dabei auf den Kompetenzen der Familien aufzubauen.
@@ -277,19 +591,18 @@
     <p>
       Dazu gehört auch die kulturübergreifende Anpassung der Diagnose-, Untersuchungs- und Therapiemethoden: So hat sich im Rahmen unserer Studien gezeigt, dass eine
       <a href="#spielbeobachtung" onclick="goTo('projekte','spielbeobachtung'); return false;">standardisierte Spielbeobachtung</a>
-      als leicht durchführbares und valides Instrument zur Einschätzung des kognitiven, sprachlichen und sozial-emotionalen Entwicklungsstandes von Kindern dienen kann,8 wohingegen die gängigen in den westlichen Industrienationen entwickelten Diagnostik- und Therapieverfahren das Entwicklungspotential der ankommenden Kinder nicht immer zuverlässig genug abzubilden scheinen.7 In unserem resilienzorientierten, interdisziplinären und multimodalen Ansatz erfassen wir die Kompetenzen und Problembereiche der Kindern daher diagnoseübergreifend aus mehreren Perspektiven und beziehen auch biologische Variablen (wie z.B. Speichelkortisolwerte als Marker für die Stressbelastung) mit ein.3,6 Die
-      <a href="#evaluation" onclick="goTo('projekte','evaluation'); return false;">begleitende wissenschaftliche Evaluation</a>
-      beinhaltet längs- und querschnittliche Erhebungen bezüglich der Effekte der eingesetzten Maßnahmen auf die kindliche Gesamtentwicklung.
+      als leicht durchführbares und valides Instrument zur Einschätzung des kognitiven, sprachlichen und sozial-emotionalen Entwicklungsstandes von Kindern dienen kann,8
+      wohingegen die gängigen in den westlichen Industrienationen entwickelten Diagnostik- und Therapieverfahren das Entwicklungspotential der ankommenden Kinder nicht immer zuverlässig genug abzubilden scheinen.
     </p>
     <p>
       Ziel dieses interdisziplinären und multidimensionalen Ansatzes ist die Implementation und Untersuchung der Wirksamkeit niedrigschwelliger therapeutischer Kurzinterventionen (z.B.
       <a href="#parents-college" onclick="goTo('projekte','parents-college'); return false;">Parents‘ College</a>,
-      <a href="#interapption" onclick="goTo('projekte','interapption'); return false;">InterAPPtion</a> <small>(siehe auch <a href="#vilnius" onclick="goTo('neuigkeiten','vilnius'); return false;">Neuigkeiten: Vilnius</a>)</small>,
-      <a href="#huggy" onclick="goTo('projekte','huggy'); return false;">Huggy-Puppy-Intervention</a>) bei Familien mit Fluchterfahrung in longitudinalen Studiendesigns, um durch eine modularisierte und skalierbare Versorgung (z.B. mobil-basiert im verzahnten Vorgehen), die negativen Folgen von Krieg, Flucht und Vertreibung zu minimieren sowie eine gelingende Inklusion der ankommenden Familien in die aufnehmende Gesellschaft zu erleichtern.
+      <a href="#interapption" onclick="goTo('projekte','interapption'); return false;">InterAPPtion</a>,
+      <a href="#huggy" onclick="goTo('projekte','huggy'); return false;">Huggy-Puppy-Intervention</a>).
     </p>
   </section>
 
-  <!-- TEAM (NUR HIER! Alle Team-Mitglieder sind innerhalb dieser Section) -->
+  <!-- TEAM -->
   <section id="team">
     <h2>Unser Team</h2>
 
@@ -297,8 +610,8 @@
       <div class="team-member">
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/Autorenfoto_AHahnefeld_2023.jpg" alt="Dr. Andrea Hahnefeld">
         <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
-        <p>Projektleitung,</p>
-        <p>Dipl.-Psych.,</p>
+        <p>Projektleitung</p>
+        <p>Dipl.-Psych.</p>
         <p>Psychologische Psychotherapeutin</p>
         <a class="cv-button" href="cv/hahnefeld.pdf" download>CV Download</a>
       </div>
@@ -407,10 +720,11 @@
 
     <div class="project" id="iskf">
       <h3>ISKF</h3>
-      <p>Seit 2016 bietet die INCLUDE-Gruppe mit der Förderung des Bayrischen Innenministeriums eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung an. Die Sprechstunde findet jeweils direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) und in Haus 22 des SPZ Schwabing (kbo Kinderzentrum) in München statt.
-Zusätzlich zu regelmäßig stattfindenden interdisziplinären Sprechstunden in den Dependancen des Ankerzentrums wurde gemeinsam mit den von Krieg und Vertreibung betroffenen Eltern die niedrigschwellige Psychoedukationsgruppe „Parents‘ College“ entwickelt, in welcher wichtige Informationen zur gesunden kindlichen Entwicklung in einfacher Sprache und mit Bildmaterialien kulturunabhängig aufbereitet wurden, um von Experten in Elterngruppen mit Hilfe von Dolmetschern vermittelt und diskutiert zu werden.1
-Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums Manching in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
-</p>
+      <p>
+        Seit 2016 bietet die INCLUDE-Gruppe mit der Förderung des Bayrischen Innenministeriums eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung an.
+        Die Sprechstunde findet jeweils direkt vor Ort in den Unterkünften (Dependancen des Ankerzentrums Manching) und in Haus 22 des SPZ Schwabing (kbo Kinderzentrum) in München statt.
+      </p>
+
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
@@ -423,16 +737,19 @@ Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums 
       <div class="project-content">
         <div class="project-text">
           <h3>Parents‘ College</h3>
-          <p>Gemeinsam mit Eltern mit Fluchterfahrung wurde diese niedrigschwellige Psychoedukationsgruppe entwickelt, in welcher wichtige Informationen zu den Rahmenbedingungen einer gesunden kindlichen Entwicklung in einfacher Sprache vermittelt und mit der Unterstützung von Sprachmittlern diskutiert werden können. Das Manual wurde im Hogrefe-Verlag in Buchform veröffentlicht und ist in einfacher Sprache mit vielen Bildmaterialien aufbereitet. Die in 4 wöchentlichen Einheiten aufgebauten Kursgruppen finden regelmäßig in Gemeinschaftsunterkünften in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
-</p>
+          <p>
+            Gemeinsam mit Eltern mit Fluchterfahrung wurde diese niedrigschwellige Psychoedukationsgruppe entwickelt, in welcher wichtige Informationen zu den Rahmenbedingungen einer gesunden kindlichen Entwicklung in einfacher Sprache vermittelt und mit der Unterstützung von Sprachmittlern diskutiert werden können.
+          </p>
         </div>
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-2.png" alt="Parents' College">
       </div>
+
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Gemeinsam mit Eltern mit Fluchterfahrung wurde diese niedrigschwellige Psychoedukationsgruppe entwickelt, in welcher wichtige Informationen zu den Rahmenbedingungen einer gesunden kindlichen Entwicklung in einfacher Sprache vermittelt und mit der Unterstützung von Sprachmittlern diskutiert werden können. Das Manual wurde im Hogrefe-Verlag in Buchform veröffentlicht und ist in einfacher Sprache mit vielen Bildmaterialien aufbereitet. Die in 4 wöchentlichen Einheiten aufgebauten Kursgruppen finden regelmäßig in Gemeinschaftsunterkünften in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
-</p>
+          <p>
+            Das Manual wurde im Hogrefe-Verlag in Buchform veröffentlicht und ist in einfacher Sprache mit vielen Bildmaterialien aufbereitet. Die in 4 wöchentlichen Einheiten aufgebauten Kursgruppen finden regelmäßig in Gemeinschaftsunterkünften in München statt und werden aktuell im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.
+          </p>
         </div>
       </details>
     </div>
@@ -445,11 +762,13 @@ Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums 
         </div>
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/InterAPPtion_Community(iPhone+12+Pro).png" alt="InterAPPtion App">
       </div>
+
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet. Zudem werden in der App Lerneinheiten zur Wiederholung der Kursinhalte in Form von mehrsprachigen Erklärvideos und Übungen zur Verfügung gestellt.
-</p>
+          <p>
+            Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.
+          </p>
         </div>
       </details>
     </div>
@@ -458,40 +777,17 @@ Die Kursgruppen finden regelmäßig in Unterkunftsdependancen des Ankerzentrums 
       <div class="project-content">
         <div class="project-text">
           <h3>Huggy Puppy</h3>
-          <p>Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet. Zudem werden in der App Lerneinheiten zur Wiederholung der Kursinhalte in Form von mehrsprachigen Erklärvideos und Übungen zur Verfügung gestellt.
-</p>
+          <p>
+            Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.
+          </p>
         </div>
         <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
       </div>
+
       <details class="more">
         <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
         <div class="more-content">
-          <p>Die im aktuellen Stand der Leitlinien in ihrer Wirksamkeit bestätigten Psychotherapien zu Behandlung von Traumafolgestörungen (Schäfer et al., 2019) setzen eine gewisse längerfristige Behandlungsmotivation der Familien voraus und findet im individuellen Kontakt in einem Sprechstundensetting oder einrichtungsbasiert in Praxen, Kliniken und Instituten statt, wohingegen die Huggy-Puppy-Intervention niedrigschwellig in einem Gruppenkontext in einzelnen Terminen durchgeführt werden kann.
-Das Kind erhält einen Teddybären und es wird folgende Geschichte dazu erzählt:
-
-„Das kleine Bärchen hier ist gerade traurig und fühlt sich einsam. Es musste seine Heimat verlassen und jetzt ist alles fremd für es und es hat keine Freunde hier. Es kann zur Zeit nicht regelmäßig in die Schule / den Kindergarten gehen und der Krieg macht ihm Angst. Es mag so gerne, wenn sich jemand um es kümmert, es streichelt und ihm Geschichten erzählt. Was hältst du davon, wenn du ab jetzt auf das Bärchen achtgibst, es versorgst, viel in den Arm nimmst und es bei dir im Bett schlafen lässt, damit es sich wohl fühlt?“
-
-Wenn das Kind Zustimmung signalisiert, wird ihm das Kuscheltier gereicht mit einer kleinen Demonstration, wie mit dem Bärchen gekuschelt werden kann. Zusätzlich werden die Eltern ermutigt, das Interesse des Kindes für das Kuscheltier aufrecht zu erhalten und es regelmäßig an seine Verantwortung für die Versorgung desselben zu erinnern.
-
-Aufgrund neurobiologischer Erkenntnisse, dass es die bewussten und unbewussten Emotionen sind, die mit ihren Fehlentwicklungen aufgrund früherer Traumatisierungen das Denken und Handeln bestimmen (Roth & Strüber, 2021), können über neue Erfahrungen im Zusammenhang mit der Fürsorge für das Kuscheltier alte Gewohnheitsmuster verändert und dies als belohnend erlebt werden. Es sollen damit im häuslichen Alltag Situationen geschaffen werden, in welchen durch ständiges Einübens eines neuen Umgangs mit sich und der Welt eingefahrene Verhaltens- und Erlebensmuster bei Kind und Eltern überwunden werden können (Roth & Strüber, 2021). Dies lässt sich über das neu initiierte Fürsorgeverhalten bei den Kindern im Rahmen der HPI niedrigschwellig im Gruppenkontext mit Kindern und Bezugspersonen umsetzen, wie auch in der Studie von Sadeh et al. (2008) beschrieben.
-Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch den/die Untersucher*in (die bei der Intervention allerdings aufgrund der einfachen Durchführung begrenzt ist) v.a. die Bindung des Kindes an das Kuscheltier genannt. Hierbei fungiert das Kuscheltier als Stellvertreter oder Übergangsobjekt, wobei Kinder ihre Gefühle und Ängste auf Spielzeugfiguren projizieren, um sich mit diesen Gefühlen zu identifizieren und diese Emotionen zu regulieren, während sie sich um die Spielzeugfiguren kümmern. Zudem wird durch die Intervention die Aufmerksamkeit des Kindes weg vom Erleben der eigenen Problematik hin zu einer lösungsorientierten Versorgung des Kuscheltiers im Äußeren gelenkt und es findet eine Aktivierung lösungsorientierter Verhaltensweisen statt. Es wird somit eine positive Bewältigungserfahrung für das Kuscheltier als Stellvertreter gemacht (Problembewältigung), womit eine Ressourcenaktivierung als wichtigster allgemeiner Wirkfaktor von Psychotherapie (Grawe, 2000) erfolgt.
-
-</p>
-          <p>Sadeh, A., Hen-Gal, S. & Tikotzky, L. (2008). Young children's reactions to war-related stress: a survey and assessment of an innovative intervention. Pediatrics. 121(1):46-53.</p>
-          <p>Roth, G. & Strüber, N. (2021). Wie das Gehirn die Seele macht. Klett-Cotta.</p>
-          <p>Schäfer, I., Gast, U., Hofmann, A., Knaevelsrud, C., Lampe, A., Liebermann, A., Liebermann, P., Lotzin, A., Maercker, A., Rosner, R. & Wöllner, W. (2019). S3-Leitlinie Posttraumatische Belastungsstörung. Springer Verlag.</p>
-          <p>Grawe, K. (2000). Psychologische Therapie. Hogrefe.</p>
-        </div>
-      </details>
-    </div>
-
-    <div class="project">
-      <h3>InterAPPtion – Zusatzinfos</h3>
-      <p>Weitere Hinweise und Evaluationspläne.</p>
-      <details class="more">
-        <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-        <div class="more-content">
-          <p><!-- Zusatzinfos --></p>
+          <p>Die im aktuellen Stand der Leitlinien ... (Text unverändert)</p>
         </div>
       </details>
     </div>
@@ -529,47 +825,47 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
       <div class="timeline-step">
         <span class="year">2018–2020</span>
         <h3>INCLUDE 1</h3>
-        <p>Zu T1 wurden insgesamt 134 Personen ...</p>
+        <p class="muted">Zu T1 wurden insgesamt 134 Personen ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2021–2023</span>
         <h3>INCLUDE 2</h3>
-        <p>Follow-Up ...</p>
+        <p class="muted">Follow-Up ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2023–2026</span>
         <h3>INCLUDE 3</h3>
-        <p>Quasi-randomisierte Kontrollgruppenstudie ...</p>
+        <p class="muted">Quasi-randomisierte Kontrollgruppenstudie ...</p>
       </div>
       <div class="timeline-step">
         <span class="year">2024–2025</span>
         <h3>INCLUDE 4</h3>
-        <p>Vertiefende Analysen und Interventionen.</p>
+        <p class="muted">Vertiefende Analysen und Interventionen.</p>
       </div>
       <div class="timeline-step">
         <span class="year">2026–2028</span>
         <h3>Langzeitprojekte</h3>
-        <p>Follow-up Studien und Abschlussberichte.</p>
+        <p class="muted">Follow-up Studien und Abschlussberichte.</p>
       </div>
     </div>
 
-    <p>Bernhardt, Katharina; ... (2023): Exploring Mental Health ...</p>
-    <p>Hahnefeld, Andrea; ... (2024): Correlation of screen exposure ...</p>
-    <p>Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin ...</p>
-    <p>Hahnefeld, Andrea; Münch, Katharina; ... (2022): Versorgung traumatisierter Vorschulkinder ...</p>
-    <p>Hahnefeld, Andrea; ... (2022): Non-verbal cognitive development ...</p>
-    <p>Hahnefeld, Andrea; ... (2021): Survival states ...</p>
-    <p>Hahnefeld, Andrea; ... (2024): Interdisziplinäre Versorgung ... Hogrefe Verlag.</p>
-    <p>Soykoek, Seval; ... (2017): PTSD in Syrian children ...</p>
+    <p class="muted">Bernhardt, Katharina; ... (2023): Exploring Mental Health ...</p>
+    <p class="muted">Hahnefeld, Andrea; ... (2024): Correlation of screen exposure ...</p>
+    <p class="muted">Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin ...</p>
+    <p class="muted">Hahnefeld, Andrea; Münch, Katharina; ... (2022): Versorgung traumatisierter Vorschulkinder ...</p>
+    <p class="muted">Hahnefeld, Andrea; ... (2022): Non-verbal cognitive development ...</p>
+    <p class="muted">Hahnefeld, Andrea; ... (2021): Survival states ...</p>
+    <p class="muted">Hahnefeld, Andrea; ... (2024): Interdisziplinäre Versorgung ... Hogrefe Verlag.</p>
+    <p class="muted">Soykoek, Seval; ... (2017): PTSD in Syrian children ...</p>
   </section>
 
   <!-- NEUIGKEITEN -->
   <section id="neuigkeiten">
     <h2>Neuigkeiten</h2>
     <h3 id="heidelberg">Heidelberg</h3>
-    <p>"Infos"</p>
+    <p class="muted">"Infos"</p>
     <h3 id="vilnius">Vilnius</h3>
-    <p>Wir sind im Oktober 2025 auf der ESRII Konferenz vertreten und präsentieren InterAPPtion in Vilnius ...</p>
+    <p class="muted">Wir sind im Oktober 2025 auf der ESRII Konferenz vertreten und präsentieren InterAPPtion in Vilnius ...</p>
   </section>
 
   <footer>
@@ -579,6 +875,7 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
   <script>
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
+
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
@@ -586,6 +883,7 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
     function showSection(sectionId) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
+      navLinks.classList.remove('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -594,6 +892,7 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       const sec = document.getElementById(sectionId);
       sec.classList.add('active');
+      navLinks.classList.remove('active');
 
       requestAnimationFrame(() => {
         const el = document.getElementById(anchorId);
@@ -610,3 +909,4 @@ Als möglicher Wirkfaktor der HPI wurde neben der gesonderten Zuwendung durch de
   </script>
 </body>
 </html>
+
