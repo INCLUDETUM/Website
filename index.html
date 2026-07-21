@@ -1,1075 +1,929 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INCLUDE – INterCuLtUral Child Development: Versorgung, Forschung, Projekte und Publikationen.">
   <title>INCLUDE</title>
 
-  <!-- Ruhige, professionelle Typografie für einen universitären Webauftritt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --accent: #7093c2;
-      --accent-600: #5b7fb2;
-      --accent-700: #476a9c;
-      --accent-soft: rgba(112,147,194,0.13);
-      --accent-faint: rgba(112,147,194,0.07);
-
-      --bg: #f3f6fa;
-      --surface: rgba(255,255,255,0.88);
-      --card: #ffffff;
-      --text: #142033;
-      --muted: #5d697b;
-      --line: rgba(20,32,51,0.11);
-
-      --shadow-sm: 0 8px 24px rgba(24,41,68,0.07);
-      --shadow-md: 0 18px 46px rgba(24,41,68,0.12);
-      --radius-sm: 10px;
-      --radius-md: 18px;
-      --radius-lg: 28px;
-      --container: 1180px;
+      --ink:#15202e;
+      --ink-soft:#354254;
+      --muted:#687384;
+      --paper:#ffffff;
+      --canvas:#f5f6f7;
+      --line:#dfe3e8;
+      --line-dark:#cbd2da;
+      --accent:#315f86;
+      --accent-dark:#244a6a;
+      --accent-pale:#eaf0f5;
+      --radius:14px;
+      --container:1160px;
+      --shadow:0 16px 42px rgba(20,32,46,.07);
     }
 
-    *{ box-sizing: border-box; }
-
-    html{
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--canvas)}
     body{
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 500px at 8% -8%, rgba(112,147,194,0.20), transparent 62%),
-        radial-gradient(780px 500px at 100% 8%, rgba(112,147,194,0.11), transparent 60%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 48%, #ffffff 100%);
-      line-height: 1.58;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      background:var(--canvas);
+      font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+      line-height:1.62;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
-    a{
-      color: var(--accent-700);
-      text-decoration: none;
-      text-underline-offset: 3px;
-    }
-
-    a:hover{ text-decoration: underline; }
+    a{color:var(--accent-dark);text-decoration-thickness:1px;text-underline-offset:3px}
+    a:hover{color:var(--accent);text-decoration-thickness:2px}
+    img{max-width:100%}
 
     :focus-visible{
-      outline: 3px solid rgba(112,147,194,0.48);
-      outline-offset: 3px;
-      border-radius: 8px;
+      outline:3px solid rgba(49,95,134,.35);
+      outline-offset:3px;
+      border-radius:5px;
     }
 
-    /* NAVIGATION */
-    .navbar{
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      min-height: 72px;
-      padding: 12px max(18px, calc((100vw - var(--container)) / 2));
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 5px 20px rgba(24,41,68,0.04);
+    /* Kopfzeile */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid rgba(203,210,218,.9);
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
     }
 
-    .nav-left{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 240px;
+    .header-inner{
+      width:min(var(--container),calc(100% - 36px));
+      min-height:70px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
     }
 
-    .site-title{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0;
-      color: var(--text);
-      font-family: "Source Sans 3", sans-serif;
-      font-size: 1.03rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      line-height: 1;
-      white-space: nowrap;
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      color:var(--ink);
+      font-size:.96rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-decoration:none;
+      white-space:nowrap;
     }
 
-    .brand-dot{
-      width: 9px;
-      height: 9px;
-      display: inline-block;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(112,147,194,0.16);
+    .brand-mark{
+      width:11px;
+      height:11px;
+      border:2px solid var(--accent);
+      border-radius:50%;
+      box-shadow:0 0 0 5px var(--accent-pale);
     }
 
-    .nav-left img{
-      width: auto;
-      height: 38px;
-      opacity: 0.94;
-      object-fit: contain;
-      filter: saturate(0.92) contrast(1.02);
-      transition: transform .18s ease, opacity .18s ease;
-    }
-
-    .nav-left img:hover{
-      transform: translateY(-1px);
-      opacity: 1;
-    }
-
-    .nav-links{
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-
+    .nav-links{display:flex;align-items:center;gap:3px}
     .nav-links a{
-      position: relative;
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: var(--text);
-      font-size: 0.94rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .18s ease, color .18s ease, transform .18s ease;
+      padding:9px 11px;
+      border-radius:7px;
+      color:var(--ink-soft);
+      font-size:.91rem;
+      font-weight:600;
+      text-decoration:none;
+      transition:background .18s ease,color .18s ease;
     }
-
     .nav-links a:hover,
-    .nav-links a.active-link{
-      color: var(--accent-700);
-      background: var(--accent-soft);
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
+    .nav-links a.active-link{color:var(--accent-dark);background:var(--accent-pale)}
 
     .nav-toggle{
-      display: none;
-      align-items: center;
-      justify-content: center;
-      min-width: 42px;
-      min-height: 42px;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--text);
-      background: rgba(255,255,255,0.8);
-      font-size: 21px;
-      cursor: pointer;
+      display:none;
+      width:42px;
+      height:42px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line-dark);
+      border-radius:8px;
+      color:var(--ink);
+      background:var(--paper);
+      font-size:1.25rem;
+      cursor:pointer;
     }
 
-    /* SECTIONS */
-    section{
-      display: none;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 42px 22px 68px;
-      animation: sectionIn .28s ease both;
+    /* Seiten */
+    main{min-height:calc(100vh - 135px)}
+    .page{
+      display:none;
+      width:min(var(--container),calc(100% - 36px));
+      margin:0 auto;
+      padding:70px 0 86px;
+      animation:pageIn .22s ease both;
+    }
+    .page.active{display:block}
+    @keyframes pageIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+    .eyebrow{
+      display:block;
+      margin-bottom:14px;
+      color:var(--accent);
+      font-size:.79rem;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
     }
 
-    section.active{ display: block; }
+    h1,h2,h3{margin-top:0;color:var(--ink);text-wrap:balance}
+    h1,h2{font-family:"Source Serif 4",Georgia,serif}
+    h1{margin-bottom:22px;font-size:clamp(2.35rem,6vw,5rem);line-height:.99;letter-spacing:-.045em}
+    h2{margin-bottom:16px;font-size:clamp(2rem,4vw,3.45rem);line-height:1.05;letter-spacing:-.035em}
+    h3{margin-bottom:9px;font-size:1.18rem;line-height:1.25}
 
-    @keyframes sectionIn{
-      from{ opacity: 0; transform: translateY(7px); }
-      to{ opacity: 1; transform: translateY(0); }
+    p,
+    li,
+    .publication-citation,
+    .project-summary,
+    .detail-copy{
+      text-align:justify;
+      text-align-last:left;
+      text-justify:inter-word;
+      hyphens:auto;
+      -webkit-hyphens:auto;
     }
 
-    h1,
-    h2,
-    h3{
-      color: var(--text);
-      text-wrap: balance;
+    p{margin:0 0 1em;color:var(--ink-soft);font-size:1rem}
+    .intro{max-width:820px;color:var(--muted);font-size:1.08rem}
+
+    /* Startseite */
+    .hero{
+      display:block;
+      min-height:520px;
+      padding:30px 0 42px;
+      border-bottom:1px solid var(--line-dark);
     }
 
-    h1,
-    h2{
-      font-family: "Source Serif 4", Georgia, serif;
+    .hero-copy{max-width:790px}
+    .hero-copy p{max-width:760px;font-size:clamp(1.03rem,1.45vw,1.16rem);line-height:1.78}
+
+    .hero-aside{
+      align-self:stretch;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:30px;
+      border-left:1px solid var(--line-dark);
+      background:linear-gradient(180deg,rgba(234,240,245,.18),rgba(234,240,245,.72));
+    }
+    .hero-aside strong{display:block;margin-bottom:10px;font-family:"Source Serif 4",Georgia,serif;font-size:1.55rem;line-height:1.15}
+    .hero-aside p{margin:0;color:var(--muted);font-size:.94rem}
+
+    /* Team */
+    .section-head{
+      display:block;
+      margin-bottom:44px;
+      padding-bottom:28px;
+      border-bottom:1px solid var(--line-dark);
+    }
+    .section-head p{margin:0;color:var(--muted)}
+
+    .team-label{
+      margin:38px 0 17px;
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
 
-    h1{
-      margin: 8px 0 14px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.08;
-    }
-
-    h2{
-      margin: 0 0 26px;
-      font-size: clamp(1.75rem, 3vw, 2.45rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-
-    h3{
-      margin: 8px 0 7px;
-      font-size: 1.08rem;
-      font-weight: 700;
-      letter-spacing: -0.008em;
-      line-height: 1.25;
-      scroll-margin-top: 96px;
-    }
-
-    p{
-      max-width: 900px;
-      margin: 9px 0;
-      color: var(--text);
-      font-size: 1rem;
-      text-align: justify;
-      text-align-last: left;
-      text-justify: inter-word;
-      hyphens: auto;
-      -webkit-hyphens: auto;
-    }
-
-    .muted{ color: var(--muted); }
-
-    .hero-shell{
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      margin-top: 6px;
-      padding: clamp(28px, 5vw, 58px);
-      border: 1px solid rgba(112,147,194,0.20);
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(130deg, rgba(255,255,255,0.98), rgba(246,249,253,0.88)),
-        var(--surface);
-      box-shadow: var(--shadow-md);
-    }
-
-    .hero-shell::before,
-    .hero-shell::after{
-      content: "";
-      position: absolute;
-      z-index: -1;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .hero-shell::before{
-      top: -165px;
-      right: -115px;
-      width: 390px;
-      height: 390px;
-      background: radial-gradient(circle, rgba(112,147,194,0.34), rgba(112,147,194,0));
-    }
-
-    .hero-shell::after{
-      bottom: -135px;
-      left: -90px;
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(112,147,194,0.16);
-      box-shadow: 0 0 0 42px rgba(112,147,194,0.035), 0 0 0 84px rgba(112,147,194,0.025);
-    }
-
-    .hero-shell p{
-      position: relative;
-      max-width: 920px;
-      margin: 0;
-      font-size: clamp(1rem, 1.5vw, 1.13rem);
-      line-height: 1.72;
-    }
-
-    hr{
-      margin: 30px 0;
-      border: 0;
-      border-top: 1px solid var(--line);
-    }
-
-    /* TEAM */
     .team-grid{
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-      align-items: stretch;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
     }
-
-    .team-grid.leadership{
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: 680px;
-    }
+    .team-grid.leadership{grid-template-columns:repeat(2,minmax(0,280px))}
 
     .team-member{
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 13px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.92);
-      box-shadow: var(--shadow-sm);
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      min-width:0;
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--paper);
+      box-shadow:0 10px 30px rgba(20,32,46,.045);
     }
-
-    .team-member::after{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 14px;
-      right: 14px;
-      height: 3px;
-      border-radius: 0 0 999px 999px;
-      background: linear-gradient(90deg, var(--accent), rgba(112,147,194,0.18));
-      opacity: 0;
-      transition: opacity .22s ease;
-    }
-
-    .team-member:hover{
-      transform: translateY(-4px);
-      border-color: rgba(112,147,194,0.28);
-      box-shadow: var(--shadow-md);
-    }
-
-    .team-member:hover::after{ opacity: 1; }
-
     .team-member img{
-      width: min(100%, 165px);
-      height: 165px;
-      align-self: center;
-      margin-bottom: 10px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #eef2f7;
-      object-fit: cover;
-      object-position: center 20%;
+      display:block;
+      width:138px;
+      height:138px;
+      margin:0 auto 14px;
+      border-radius:10px;
+      object-fit:cover;
+      object-position:center 20%;
+      background:#eef1f4;
+      filter:saturate(.92);
     }
-
-    .team-member h3{
-      margin: 5px 0 5px;
-      font-size: 1.02rem;
-    }
-
-    .team-member p{
-      max-width: none;
-      margin: 2px 0;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.38;
-    }
+    .team-member h3{margin:0 0 6px;font-size:1rem}
+    .team-member p{margin:2px 0;color:var(--muted);font-size:.82rem;line-height:1.4}
 
     .cv-button{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      align-self: flex-start;
-      width: auto;
-      margin-top: 11px;
-      padding: 5px 10px;
-      border: 1px solid rgba(20,32,51,0.18);
-      border-radius: 7px;
-      color: #334056;
-      background: #f5f6f8;
-      box-shadow: none;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:10px;
+      padding:4px 9px;
+      border:1px solid var(--line-dark);
+      border-radius:5px;
+      color:var(--ink-soft);
+      background:#f7f8f9;
+      font-size:.73rem;
+      font-weight:600;
+      text-decoration:none;
+    }
+    .cv-button:hover{color:var(--ink);border-color:#aeb7c1;background:#eef0f2;text-decoration:none}
+
+    /* Projektübersicht */
+    .projects-list{display:grid;gap:20px}
+    .project-card{
+      display:grid;
+      grid-template-columns:230px minmax(0,1fr) auto;
+      gap:28px;
+      align-items:center;
+      min-height:240px;
+      padding:26px;
+      border:1px solid var(--line-dark);
+      border-radius:var(--radius);
+      background:var(--paper);
+      transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+    }
+    .project-card:hover{transform:translateY(-2px);border-color:#b5bec8;box-shadow:var(--shadow)}
+
+    .project-media{
+      width:230px;
+      height:170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#f8f9fa;
+    }
+    .project-media img{
+      width:100%;
+      height:100%;
+      padding:10px;
+      object-fit:contain;
+      object-position:center;
+    }
+    .project-media.is-empty{
+      position:relative;
+      color:var(--accent-dark);
+      background:
+        linear-gradient(135deg,transparent 0 47%,rgba(49,95,134,.09) 47% 48%,transparent 48% 100%),
+        var(--accent-pale);
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:2rem;
+      font-weight:700;
+      letter-spacing:-.04em;
     }
 
-    .cv-button:hover{
-      transform: translateY(-1px);
-      border-color: rgba(20,32,51,0.30);
-      background: #eceff3;
-      text-decoration: none;
+    .project-card h3{font-family:"Source Serif 4",Georgia,serif;font-size:1.45rem;letter-spacing:-.018em}
+    .project-summary{
+      display:-webkit-box;
+      max-width:720px;
+      margin:0;
+      overflow:hidden;
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.58;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:5;
     }
 
-    /* PROJECTS */
-    .projects-grid{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 520px;
-      align-items: stretch;
-      gap: 18px;
+    .project-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 0 10px 12px;
+      border-left:1px solid var(--line-dark);
+      color:var(--accent-dark);
+      font-size:.87rem;
+      font-weight:700;
+      text-decoration:none;
+      white-space:nowrap;
     }
+    .project-link::after{content:"↗";font-size:1rem}
+    .project-link:hover{text-decoration:none;color:var(--accent)}
 
-    .project{
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      min-height: 0;
-      height: 100%;
-      padding: 16px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.94);
-      box-shadow: var(--shadow-sm);
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    /* Projektdetailseiten innerhalb derselben HTML-Datei */
+    .detail-page{max-width:960px}
+    .detail-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:45px;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--line-dark);
     }
+    .back-link{font-size:.88rem;font-weight:700;text-decoration:none}
+    .detail-kicker{color:var(--muted);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 
-    .project::before{
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), rgba(112,147,194,0.08));
+    .detail-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 300px;
+      gap:48px;
+      align-items:start;
+      margin-bottom:40px;
     }
-
-    .project:hover{
-      transform: translateY(-4px);
-      border-color: rgba(112,147,194,0.27);
-      box-shadow: var(--shadow-md);
+    .detail-hero.no-image{grid-template-columns:1fr}
+    .detail-hero h1{font-size:clamp(2.3rem,5vw,4.25rem)}
+    .detail-image{
+      width:300px;
+      height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      border:1px solid var(--line-dark);
+      border-radius:12px;
+      background:var(--paper);
     }
+    .detail-image img{width:100%;height:100%;object-fit:contain;object-position:center}
 
-    .project h3{
-      flex: 0 0 auto;
-      margin: 3px 0 8px;
-      font-size: 1rem;
+    .detail-body{
+      padding-top:34px;
+      border-top:1px solid var(--line-dark);
+      color:var(--ink-soft);
+      font-size:1.03rem;
+      line-height:1.77;
+      white-space:pre-line;
     }
-
-    .project p{
-      max-width: none;
-      color: #334056;
-      font-size: 0.86rem;
-      line-height: 1.46;
+    .detail-body p{font-size:1.03rem;line-height:1.77}
+    .external-resource{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin:10px 0 22px;
+      padding:10px 13px;
+      border:1px solid var(--line-dark);
+      border-radius:7px;
+      background:var(--paper);
+      font-weight:700;
+      text-decoration:none;
     }
+    .external-resource::after{content:"↗"}
 
-    .project > p,
-    .project-text > p{
-      flex: 1 1 auto;
-      min-height: 0;
-      margin-bottom: 0;
-      padding-right: 6px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(93,105,123,0.38) transparent;
+    /* Publikationen */
+    .publications-list{
+      counter-reset:publication;
+      display:grid;
+      gap:0;
+      margin-top:42px;
+      border-top:1px solid var(--line-dark);
     }
-
-    .project > p::-webkit-scrollbar,
-    .project-text > p::-webkit-scrollbar{ width: 6px; }
-
-    .project > p::-webkit-scrollbar-thumb,
-    .project-text > p::-webkit-scrollbar-thumb{
-      border-radius: 999px;
-      background: rgba(93,105,123,0.30);
+    .publication{
+      counter-increment:publication;
+      display:grid;
+      grid-template-columns:52px minmax(0,1fr) auto;
+      gap:24px;
+      align-items:start;
+      padding:27px 0;
+      border-bottom:1px solid var(--line);
     }
-
-    .project-content{
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      min-height: 0;
-      gap: 11px;
+    .publication::before{
+      content:counter(publication,decimal-leading-zero);
+      padding-top:2px;
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.08em;
     }
-
-    .project-text{
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      min-width: 0;
-      min-height: 0;
+    .publication-citation{margin:0;color:var(--ink-soft);font-size:.96rem;line-height:1.65}
+    .publication-citation em{color:var(--ink)}
+    .doi-link{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      color:var(--accent-dark);
+      font-size:.82rem;
+      font-weight:700;
+      text-decoration:none;
+      white-space:nowrap;
     }
+    .doi-link::after{content:"↗"}
+    .doi-link:hover{text-decoration:none;color:var(--accent)}
+    .erratum-link{display:inline-block;margin-left:8px;font-size:.82rem;font-weight:700}
 
-    .project-content img{
-      order: -1;
-      flex: 0 0 auto;
-      width: 100%;
-      height: 132px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #eef2f7;
-      box-shadow: 0 7px 18px rgba(24,41,68,0.07);
-      object-fit: cover;
-      object-position: center;
-    }
-
-    #interapption .project-content img{
-      object-fit: contain;
-      padding: 10px;
-      background: linear-gradient(180deg, #f7f9fc, #edf2f8);
-    }
-
-    details.more{
-      flex: 0 0 auto;
-      margin-top: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(112,147,194,0.18);
-      border-radius: 12px;
-      background: var(--accent-faint);
-    }
-
-    details.more[open]{ background: rgba(255,255,255,0.96); }
-
-    details.more summary{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 12px;
-      color: var(--accent-700);
-      font-size: 0.86rem;
-      font-weight: 700;
-      list-style: none;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    details.more summary::-webkit-details-marker{ display: none; }
-
-    details.more summary::after{
-      content: "+";
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1;
-      transition: transform .18s ease;
-    }
-
-    details.more[open] summary::after{
-      content: "−";
-      transform: rotate(180deg);
-    }
-
-    details.more .more-content{
-      max-height: 180px;
-      padding: 11px 12px 13px;
-      overflow-y: auto;
-      border-top: 1px dashed var(--line);
-    }
-
-    details.more .more-content p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.5;
-      white-space: pre-line;
-    }
-
-    details.more summary .less{ display: none; }
-    details.more[open] summary .more{ display: none; }
-    details.more[open] summary .less{ display: inline; }
-
-    /* PUBLIKATIONEN */
-    .diagonal-timeline{
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 15px;
-      margin: 18px 0 28px;
-    }
-
-    .timeline-step{
-      position: relative;
-      min-width: 0;
-      padding: 17px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.92);
-      box-shadow: var(--shadow-sm);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .timeline-step::before{
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), rgba(112,147,194,0.12));
-    }
-
-    .timeline-step:hover{
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .timeline-step .year{
-      display: inline-block;
-      margin-bottom: 7px;
-      color: var(--accent-700);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.075em;
-      text-transform: uppercase;
-    }
-
-    .timeline-step h3{ font-size: 1rem; }
-
-    .timeline-step p,
-    #publikationen > p{
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* NEUIGKEITEN */
-    details.beitrag{
-      margin: 15px 0 24px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,0.92);
-      box-shadow: var(--shadow-sm);
-    }
-
-    details.beitrag summary{
-      padding: 14px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      text-align: justify;
-      text-align-last: left;
-      hyphens: auto;
-    }
-
-    details.beitrag p{
-      margin: 0;
-      padding: 0 16px 16px;
-      font-size: 0.94rem;
-    }
+    /* Neuigkeiten */
+    .news-list{margin-top:40px;border-top:1px solid var(--line-dark)}
+    .news-item{display:grid;grid-template-columns:170px minmax(0,1fr);gap:34px;padding:27px 0;border-bottom:1px solid var(--line)}
+    .news-item h3{margin:0;font-size:1rem}
+    .news-item p{margin:0;color:var(--muted)}
 
     footer{
-      padding: 20px 14px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      background: rgba(255,255,255,0.76);
-      text-align: center;
-      font-size: 0.86rem;
+      border-top:1px solid var(--line-dark);
+      background:var(--paper);
+    }
+    .footer-inner{
+      width:min(var(--container),calc(100% - 36px));
+      margin:0 auto;
+      padding:22px 0;
+      color:var(--muted);
+      font-size:.82rem;
+      text-align:center;
     }
 
-    @media (max-width: 1080px){
-      .team-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width:1000px){
+      .team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .project-card{grid-template-columns:200px minmax(0,1fr)}
+      .project-media{width:200px;height:155px}
+      .project-link{grid-column:2;padding:0;border-left:0;justify-self:start}
+      .detail-hero{grid-template-columns:minmax(0,1fr) 250px}
+      .detail-image{width:250px;height:190px}
     }
 
-    @media (max-width: 980px){
-      .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .diagonal-timeline{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .projects-grid{ grid-auto-rows: 500px; }
-    }
-
-    @media (max-width: 860px){
-      .navbar{ padding-inline: 16px; }
-      .nav-toggle{ display: inline-flex; }
-      .nav-left{ min-width: auto; }
-
+    @media (max-width:820px){
+      .nav-toggle{display:inline-flex}
       .nav-links{
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 12px;
-        display: none;
-        width: min(92vw, 330px);
-        padding: 10px;
-        border: 1px solid var(--line);
-        border-radius: 15px;
-        background: rgba(255,255,255,0.96);
-        box-shadow: var(--shadow-md);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        flex-direction: column;
-        align-items: stretch;
+        position:absolute;
+        top:calc(100% + 8px);
+        right:18px;
+        display:none;
+        width:min(320px,calc(100vw - 36px));
+        padding:10px;
+        border:1px solid var(--line-dark);
+        border-radius:10px;
+        background:var(--paper);
+        box-shadow:var(--shadow);
+        flex-direction:column;
+        align-items:stretch;
       }
-
-      .nav-links.active{ display: flex; }
-      .nav-links a{ padding: 11px 12px; }
-      .projects-grid{
-        grid-template-columns: 1fr;
-        grid-auto-rows: 500px;
-      }
+      .nav-links.open{display:flex}
+      .hero{min-height:auto;padding-top:10px}
+      .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .project-card{grid-template-columns:170px minmax(0,1fr);gap:20px;padding:20px}
+      .project-media{width:170px;height:140px}
+      .detail-hero{grid-template-columns:1fr}
+      .detail-image{width:100%;height:240px}
+      .publication{grid-template-columns:38px minmax(0,1fr)}
+      .doi-link{grid-column:2;justify-self:start}
     }
 
-    @media (max-width: 640px){
-      section{ padding: 30px 15px 52px; }
-      .navbar{ min-height: 64px; }
-      .nav-left{ gap: 9px; }
-      .nav-left img{ height: 32px; }
-      .site-title{ font-size: 0.92rem; }
-      .brand-dot{ width: 8px; height: 8px; }
-
-      .hero-shell{
-        padding: 25px 20px;
-        border-radius: 21px;
-      }
-
-      h1{ font-size: clamp(1.85rem, 10vw, 2.45rem); }
-      h2{ margin-bottom: 20px; }
-
-      .team-grid,
-      .team-grid.leadership,
-      .diagonal-timeline{
-        grid-template-columns: 1fr;
-        max-width: none;
-      }
-
-      .team-member img{
-        width: min(100%, 150px);
-        height: 150px;
-      }
-      .project{ padding: 15px; }
-      .project-content img{ height: 120px; }
-      .projects-grid{ grid-auto-rows: 480px; }
+    @media (max-width:590px){
+      .header-inner,.page,.footer-inner{width:min(100% - 28px,var(--container))}
+      .page{padding:46px 0 64px}
+      h1{font-size:clamp(2.25rem,14vw,3.45rem)}
+      h2{font-size:clamp(1.9rem,10vw,2.7rem)}
+      .team-grid,.team-grid.leadership{grid-template-columns:1fr}
+      .team-member img{width:130px;height:130px}
+      .project-card{grid-template-columns:1fr;min-height:0}
+      .project-media{width:100%;height:170px}
+      .project-link{grid-column:1;padding-top:5px}
+      .project-summary{-webkit-line-clamp:7}
+      .detail-topbar{align-items:flex-start;flex-direction:column}
+      .news-item{grid-template-columns:1fr;gap:8px}
+      .publication{grid-template-columns:30px minmax(0,1fr);gap:12px}
     }
 
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior: auto; }
-      *, *::before, *::after{
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
     }
   </style>
 </head>
 
 <body>
-  <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="nav-left">
-      <h1 class="site-title"><span class="brand-dot" aria-hidden="true"></span> INCLUDE</h1>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" data-page="home" aria-label="INCLUDE Startseite">
+        <span class="brand-mark" aria-hidden="true"></span>
+        INCLUDE
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+        <a href="#home" data-page="home" class="active-link">Home</a>
+        <a href="#team" data-page="team">Team</a>
+        <a href="#projekte" data-page="projekte">Projekte</a>
+        <a href="#publikationen" data-page="publikationen">Publikationen</a>
+        <a href="#neuigkeiten" data-page="neuigkeiten">Neuigkeiten</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
-
-    <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
-      <a href="#home" data-section="home" class="active-link">Home</a>
-      <a href="#team" data-section="team">Team</a>
-      <a href="#projekte" data-section="projekte">Projekte</a>
-      <a href="#publikationen" data-section="publikationen">Publikationen</a>
-      <a href="#neuigkeiten" data-section="neuigkeiten">Neuigkeiten</a>
-    </nav>
-
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">☰</button>
   </header>
 
-  <!-- HOME -->
-  <section id="home" class="active">
-    <div class="hero-shell">
-      <h1>Willkommen bei INCLUDE</h1>
-      <p>
-        INCLUDE (INterCuLtUral Child Development) verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird. 
-Die Forschung des INCLUDE-Teams widmet sich vulnerablen Populationen mit Flucht- und Migrationserfahrung sowie Kindern und Eltern in akuten Kriegsgebieten. Wir arbeiten daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen. Im Mittelpunkt steht dabei das Ermöglichen einer gesunden kindlichen Entwicklung in Interaktion mit dem jeweiligen sozialen Umfeld. 
-      </p>
-    </div>
-  </section>
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">INterCuLtUral Child Development</span>
+          <h1>Willkommen bei INCLUDE</h1>
+          <p>
+            INCLUDE (INterCuLtUral Child Development) verbindet klinische Diagnostik und Therapie mit Forschung, indem eine niedrigschwellige Versorgung für Kinder und Familien mit Fluchterfahrung angeboten und durch kontinuierliche wissenschaftliche Evaluation begleitet wird.
+          </p>
+          <p>
+            Die Forschung des INCLUDE-Teams widmet sich vulnerablen Populationen mit Flucht- und Migrationserfahrung sowie Kindern und Eltern in akuten Kriegsgebieten. Wir arbeiten daran, die Diagnose-, Untersuchungs- und Therapiemethoden universell und kulturübergreifend anzupassen. Im Mittelpunkt steht dabei das Ermöglichen einer gesunden kindlichen Entwicklung in Interaktion mit dem jeweiligen sozialen Umfeld.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <!-- TEAM -->
-  <section id="team">
-    <h2>Unser Team</h2>
-
-    <div class="team-grid leadership">
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/Autorenfoto_AHahnefeld_2023.jpg" alt="Dr. Andrea Hahnefeld">
-        <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
-        <p>Projektleitung</p>
-        <p>Dipl.-Psych.</p>
-        <p>Psychologische Psychotherapeutin</p>
-        <a class="cv-button" href="cv/hahnefeld.pdf" download>CV</a>
+    <!-- TEAM -->
+    <section id="team" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Unser Team</h2>
+        </div>
       </div>
 
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Prof. Dr. Matthias Klosinski">
-        <h3>Prof. Dr. Matthias Klosinski</h3>
-        <p>Stellv. Leitung</p>
-        <p>Diplom-Psychologe, Facharzt für Kinder- und Jugendpsychiatrie und Psychotherapie(VT) </p>
-        <a class="cv-button" href="cv/klosinski.pdf" download>CV</a>
-      </div>
-    </div>
+      <div class="team-label">Leitung</div>
+      <div class="team-grid leadership">
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/Autorenfoto_AHahnefeld_2023.jpg" alt="Dr. Andrea Hahnefeld">
+          <h3>Dr. rer. nat. Andrea Hahnefeld</h3>
+          <p>Projektleitung</p>
+          <p>Dipl.-Psych.</p>
+          <p>Psychologische Psychotherapeutin</p>
+          <a class="cv-button" href="cv/hahnefeld.pdf" download>CV</a>
+        </article>
 
-    <hr>
-
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Profilbild_Elena.jpg" alt="Elena Weigand">
-        <h3>Elena Weigand</h3>
-        <p>Kinder- und Jugendpsychotherapeutin</p>
-        <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
-      </div>
-
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/FranziskaNegele.jpg" alt="Franziska Negele">
-        <h3>Franziska Negele</h3>
-        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
-        <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Poster_Videos/BerlinBlick-Matthias+Klosinski+Portrait.jpg" alt="Prof. Dr. Matthias Klosinski">
+          <h3>Prof. Dr. Matthias Klosinski</h3>
+          <p>Stellv. Leitung</p>
+          <p>Diplom-Psychologe, Facharzt für Kinder- und Jugendpsychiatrie und Psychotherapie(VT)</p>
+          <a class="cv-button" href="cv/klosinski.pdf" download>CV</a>
+        </article>
       </div>
 
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/SaskiaLeBeherec.png" alt="Saskia Le Beherec">
-        <h3>Saskia Le Beherec</h3>
-        <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
-        <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
+      <div class="team-label">Mitarbeitende</div>
+      <div class="team-grid">
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Profilbild_Elena.jpg" alt="Elena Weigand">
+          <h3>Elena Weigand</h3>
+          <p>Kinder- und Jugendpsychotherapeutin</p>
+          <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
+        </article>
+
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/FranziskaNegele.jpg" alt="Franziska Negele">
+          <h3>Franziska Negele</h3>
+          <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
+          <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
+        </article>
+
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/SaskiaLeBeherec.png" alt="Saskia Le Beherec">
+          <h3>Saskia Le Beherec</h3>
+          <p>Psychotherapeutin, wissenschaftliche Mitarbeiterin, Doktorandin</p>
+          <a class="cv-button" href="cv/datei3.pdf" download>CV</a>
+        </article>
+
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/BerfinDemirkol.jpeg" alt="Berfin Demirkol">
+          <h3>Berfin Demirkol, Msc.</h3>
+          <p>Psychotherapeutin in Ausbildung, wissenschaftliche Mitarbeiterin</p>
+          <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
+        </article>
+
+        <article class="team-member">
+          <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/MarcoGa%C3%9Fner.jpg" alt="Marco Gaßner">
+          <h3>Marco Gaßner, M.A., M.Ed.</h3>
+          <p>Wissenschaftlicher Mitarbeiter, Doktorand</p>
+          <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJEKTE -->
+    <section id="projekte" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Aktuelle Versorgungs- und Forschungsprojekte</h2>
+        </div>
       </div>
 
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/BerfinDemirkol.jpeg" alt="Berfin Demirkol">
-        <h3>Berfin Demirkol, Msc.</h3>
-        <p>Psychotherapeutin in Ausbildung, wissenschaftliche Mitarbeiterin</p>
-        <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
-      </div>
-
-      <div class="team-member">
-        <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Team_Bilder/MarcoGa%C3%9Fner.jpg" alt="Marco Gaßner">
-        <h3>Marco Gaßner, M.A., M.Ed.</h3>
-        <p>Wissenschaftlicher Mitarbeiter, Doktorand</p>
-        <a class="cv-button" href="cv/datei3.pdf" download>CV Download</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJEKTE -->
-  <section id="projekte">
-    <h2>Aktuelle Versorgungs- und Forschungsprojekte</h2>
-
-    <div class="projects-grid">
-      <div class="project" id="iskf">
-        <h3>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h3>
-        <p>
-          Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung in Erstaufnahmeeinrichtungen an. 
-          Wir sind als interdisziplinäres und multikulturelles Team (kinder- und jugendärztlich, -psychiatrisch, psychotherapeutisch) direkt vor Ort in bestimmten Unterkunftsdependancen des Ankerzentrums Manching in München tätig und bieten niedrigschwellige Termine an. Bei Bedarf erfolgt eine gezielte Weitervermittlung ins bestehende Behandlungssystem.
-          Von November 2020 bis Februar 2026 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um niedrigschwellige Psychoedukationsgruppen für Eltern („Parents‘ College“) ergänzt werden. 
-        </p>
-      </div>
-
-      <div class="project" id="parents-college">
-        <div class="project-content">
-          <div class="project-text">
-            <h3>Parents‘ College</h3>
-            <p>
-              Beim Parents‘ College handelt es sich um modular aufgebaute, niedrigschwellige Psychoedukationsgruppen für Eltern mit Fluchterfahrung, deren Inhalte aus der ISKF heraus gemeinsam mit Betroffenen und Fachkräften u.a. in „World Café“-Formaten entwickelt und zusammengestellt wurden. Das Manual mit Textbausteinen für die Arbeit mit Dolmetschenden ist in Buchform veröffentlicht (Kinder mit Fluchterfahrung optimal versorgen | Hogrefe). 
-              In zwei bis vier Sitzungen werden den Bezugspersonen in einfacher Sprache und mit vielen Bildmaterialien wichtige und evidenzbasierte Informationen zu kindlichen Entwicklungsbedürfnissen vermittelt. Zudem wird Raum für Diskussion und Austausch – untereinander sowie mit den Experten/Fachkräften - geboten. 
-            </p>
+      <div class="projects-list">
+        <article class="project-card">
+          <div class="project-media is-empty" aria-hidden="true">ISKF</div>
+          <div>
+            <h3>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h3>
+            <p class="project-summary">Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung in Erstaufnahmeeinrichtungen an. Wir sind als interdisziplinäres und multikulturelles Team direkt vor Ort tätig und bieten niedrigschwellige Termine an.</p>
           </div>
+          <a class="project-link" href="#projekt-iskf" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-2.png" alt="Parents' College">
+          </div>
+          <div>
+            <h3>Parents‘ College</h3>
+            <p class="project-summary">Beim Parents‘ College handelt es sich um modular aufgebaute, niedrigschwellige Psychoedukationsgruppen für Eltern mit Fluchterfahrung, deren Inhalte aus der ISKF heraus gemeinsam mit Betroffenen und Fachkräften u.a. in „World Café“-Formaten entwickelt und zusammengestellt wurden. In zwei bis vier Sitzungen werden den Bezugspersonen in einfacher Sprache und mit vielen Bildmaterialien wichtige und evidenzbasierte Informationen zu kindlichen Entwicklungsbedürfnissen vermittelt.</p>
+          </div>
+          <a class="project-link" href="#projekt-parents-college" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/InterAPPtion_Community(iPhone+12+Pro).png" alt="InterAPPtion App">
+          </div>
+          <div>
+            <h3>InterAPPtion</h3>
+            <p class="project-summary">Das Ziel der geplanten Studie besteht in der Untersuchung der Wirksamkeit der mobilen Anwendung InterAPPtion, sowohl als eigenständiges Angebot als auch in Verbindung mit dem Elterntraining Parents’ College. Geprüft wird, ob InterAPPtion die Adhärenz erhöht, den Wissenszuwachs der Eltern begünstigt und durch gezielte Anregungen im Alltag die kindliche Entwicklung unterstützt.</p>
+          </div>
+          <a class="project-link" href="#projekt-interapption" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
+          </div>
+          <div>
+            <h3>Huggy Puppy</h3>
+            <p class="project-summary">Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.</p>
+          </div>
+          <a class="project-link" href="#projekt-huggy" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media is-empty" aria-hidden="true">SB</div>
+          <div>
+            <h3>Standardisierte Spielbeobachtung</h3>
+            <p class="project-summary">Die standardisierte Spielbeobachtung dient als valides, leicht durchführbares Instrument ...</p>
+          </div>
+          <a class="project-link" href="#projekt-spielbeobachtung" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media is-empty" aria-hidden="true">EVA</div>
+          <div>
+            <h3>Begleitende wissenschaftliche Evaluation</h3>
+            <p class="project-summary">Längs- und querschnittliche Erhebungen zur Wirkung ...</p>
+          </div>
+          <a class="project-link" href="#projekt-evaluation" target="_blank" rel="noopener">Weitere Informationen</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PUBLIKATIONEN -->
+    <section id="publikationen" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Schlüsselpublikationen</h2>
+        </div>
+      </div>
+
+      <div class="publications-list">
+        <article class="publication">
+          <p class="publication-citation">Bernhardt, K., Le Beherec, S., Uppendahl, J. R., Fleischmann, M., Klosinski, M., Rivera, L. M., Samaras, G., Kenney, M., Müller, R., Nehring, I., Mall, V., &amp; Hahnefeld, A. (2024). Young children’s development after forced displacement: A systematic review. <em>Child and Adolescent Psychiatry and Mental Health, 18</em>, Article 20.</p>
+          <a class="doi-link" href="https://doi.org/10.1186/s13034-024-00711-5" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+
+        <article class="publication">
+          <p class="publication-citation">Hahnefeld, A., Fink, M., Le Beherec, S., Baur, M. A., Bernhardt, K., &amp; Mall, V. (2025). Correlation of screen exposure to stress, learning, cognitive and language performance in children. <em>European Child &amp; Adolescent Psychiatry, 34</em>(5), 1615–1624. <a class="erratum-link" href="https://doi.org/10.1007/s00787-024-02625-1" target="_blank" rel="noopener">Erratum</a></p>
+          <a class="doi-link" href="https://doi.org/10.1007/s00787-024-02593-6" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+
+        <article class="publication">
+          <p class="publication-citation">Hahnefeld, A., Fink, M., Hauber, E., Le Beherec, S., Gassner, M., Klosinski, M., &amp; Mall, V. (2025). Dysregulated screen exposure is associated with severity of language and communication impairments in children with developmental disorders. <em>Acta Paediatrica</em>. Advance online publication.</p>
+          <a class="doi-link" href="https://doi.org/10.1111/apa.70223" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+
+        <article class="publication">
+          <p class="publication-citation">Bernhardt, K., Le Beherec, S., Uppendahl, J., Baur, M.-A., Klosinski, M., Mall, V., &amp; Hahnefeld, A. (2023). Exploring mental health and development in refugee children through systematic play assessment. <em>Child Psychiatry &amp; Human Development</em>.</p>
+          <a class="doi-link" href="https://doi.org/10.1007/s10578-023-01584-z" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+
+        <article class="publication">
+          <p class="publication-citation">Hahnefeld, A., Sukale, T., Weigand, E., Dudek, V., Münch, K., Aberl, S., Eckler, L. V., Nehring, I., Friedmann, A., Plener, P. L., Fegert, J. M., &amp; Mall, V. (2022). Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. <em>European Journal of Pediatrics, 181</em>(3), 1205–1212.</p>
+          <a class="doi-link" href="https://doi.org/10.1007/s00431-021-04312-8" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+
+        <article class="publication">
+          <p class="publication-citation">Hahnefeld, A., Sukale, T., Weigand, E., Münch, K., Aberl, S., Eckler, L. V., Schmidt, D., Friedmann, A., Plener, P. L., Fegert, J. M., &amp; Mall, V. (2021). Survival states as indicators of learning performance and biological stress in refugee children: A cross-sectional study with a comparison group. <em>BMC Psychiatry, 21</em>, Article 228.</p>
+          <a class="doi-link" href="https://doi.org/10.1186/s12888-021-03233-y" target="_blank" rel="noopener">DOI öffnen</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEUIGKEITEN -->
+    <section id="neuigkeiten" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Neuigkeiten</h2>
+        </div>
+      </div>
+
+      <div class="news-list">
+        <article class="news-item">
+          <h3>Heidelberg</h3>
+          <div>
+            <p>Infos</p>
+            <p><a href="https://www.br.de/" target="_blank" rel="noopener">Beitrag des Bayerischen Rundfunk: „Förderung und Therapie: Mehr Angebot für Flüchtlingskinder nötig“</a></p>
+          </div>
+        </article>
+
+        <article class="news-item">
+          <h3>Vilnius</h3>
+          <p>Wir sind im Oktober 2025 auf der ESRII Konferenz vertreten und präsentieren InterAPPtion in Vilnius ...</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- DETAIL: ISKF -->
+    <section id="projekt-iskf" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
+      </div>
+      <div class="detail-hero no-image">
+        <div>
+          <h1>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h1>
+        </div>
+      </div>
+      <div class="detail-body">Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten Interdisziplinären Sprechstunde für Kinder mit Fluchterfahrung (ISKF) eine frühzeitige und niedrigschwellige diagnostische und therapeutische Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung in Erstaufnahmeeinrichtungen an.
+
+Wir sind als interdisziplinäres und multikulturelles Team (kinder- und jugendärztlich, -psychiatrisch, psychotherapeutisch) direkt vor Ort in bestimmten Unterkunftsdependancen des Ankerzentrums Manching in München tätig und bieten niedrigschwellige Termine an. Bei Bedarf erfolgt eine gezielte Weitervermittlung ins bestehende Behandlungssystem.
+
+Von November 2020 bis Februar 2026 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um niedrigschwellige Psychoedukationsgruppen für Eltern („Parents‘ College“) ergänzt werden.</div>
+    </section>
+
+    <!-- DETAIL: PARENTS COLLEGE -->
+    <section id="projekt-parents-college" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
+      </div>
+      <div class="detail-hero">
+        <div>
+          <h1>Parents‘ College</h1>
+        </div>
+        <div class="detail-image">
           <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Picture-2.png" alt="Parents' College">
         </div>
+      </div>
+      <div class="detail-body">Beim Parents‘ College handelt es sich um modular aufgebaute, niedrigschwellige Psychoedukationsgruppen für Eltern mit Fluchterfahrung, deren Inhalte aus der ISKF heraus gemeinsam mit Betroffenen und Fachkräften u.a. in „World Café“-Formaten entwickelt und zusammengestellt wurden. Das Manual mit Textbausteinen für die Arbeit mit Dolmetschenden ist in Buchform veröffentlicht (Kinder mit Fluchterfahrung optimal versorgen | Hogrefe).
 
-        <details class="more">
-          <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-          <div class="more-content">
-            <p>
-Einstiegsthemen des manualisierten Elternkurses sind universelle, kulturübergreifende Rahmenbedingungen und Grundvoraussetzungen für eine gesunde kindliche Entwicklung wie z.B. Aufsichtspflicht, Gewaltfreiheit und Bedeutung der frühen interpersonellen Interaktion für das Erlernen von Sprache und Kommunikation. 
-Weitere Module befassen sich mit den Themen gesundheitsförderndes Verhalten im Alltag, Umgang mit häufigen Erkrankungen und typischen Infekten sowie Information über Beschneidung und Genitalverstümmelung. 
-Auch auf die Bedeutung einer Tagesstruktur mit festen Ritualen, Grenzsetzungen im Alltag und Gewaltfreiheit wird umfassend eingegangen. 
-In einem weiteren Modul werden Traumafolgesymptome thematisiert und entsprechende Behandlungsmöglichkeiten vorgestellt. Abschließend werden gemeinsam in der Gruppe Ressourcen der Familien erarbeitet und betont, um die Resilienz zu stärken. 
+In zwei bis vier Sitzungen werden den Bezugspersonen in einfacher Sprache und mit vielen Bildmaterialien wichtige und evidenzbasierte Informationen zu kindlichen Entwicklungsbedürfnissen vermittelt. Zudem wird Raum für Diskussion und Austausch – untereinander sowie mit den Experten/Fachkräften - geboten.
+
+Einstiegsthemen des manualisierten Elternkurses sind universelle, kulturübergreifende Rahmenbedingungen und Grundvoraussetzungen für eine gesunde kindliche Entwicklung wie z.B. Aufsichtspflicht, Gewaltfreiheit und Bedeutung der frühen interpersonellen Interaktion für das Erlernen von Sprache und Kommunikation.
+
+Weitere Module befassen sich mit den Themen gesundheitsförderndes Verhalten im Alltag, Umgang mit häufigen Erkrankungen und typischen Infekten sowie Information über Beschneidung und Genitalverstümmelung.
+
+Auch auf die Bedeutung einer Tagesstruktur mit festen Ritualen, Grenzsetzungen im Alltag und Gewaltfreiheit wird umfassend eingegangen.
+
+In einem weiteren Modul werden Traumafolgesymptome thematisiert und entsprechende Behandlungsmöglichkeiten vorgestellt. Abschließend werden gemeinsam in der Gruppe Ressourcen der Familien erarbeitet und betont, um die Resilienz zu stärken.
 
 Diese Gruppenangebote finden sowohl in einzelnen Unterkunftsdependancen des Ankerzentrums als auch im SPZ Schwabing (kbo Kinderzentrum) statt und werden aktuell mit digitalen Anwendungen verzahnt angeboten (s.u. InterAPPtion).
 
-Info- und Begleitmaterialien können hier heruntergeladen werden: https://includetum.github.io/Poster/?lang=de
+<a class="external-resource" href="https://includetum.github.io/Poster/?lang=de" target="_blank" rel="noopener">Info- und Begleitmaterialien öffnen</a>
 
-Diese Maßnahme wurde von 2023 bis 2026 im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert. Die Ergebnisse werden demnächst hier veröffentlicht.
-            </p>
-          </div>
-        </details>
+Diese Maßnahme wurde von 2023 bis 2026 im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert. Die Ergebnisse werden demnächst hier veröffentlicht.</div>
+    </section>
+
+    <!-- DETAIL: INTERAPPTION -->
+    <section id="projekt-interapption" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
       </div>
-
-      <div class="project" id="interapption">
-        <div class="project-content">
-          <div class="project-text">
-            <h3>InterAPPtion</h3>
-            <p>Das Ziel der geplanten Studie besteht in der Untersuchung der Wirksamkeit der mobilen Anwendung InterAPPtion, sowohl als eigenständiges Angebot als auch in Verbindung mit dem Elterntraining Parents’ College. 
-Geprüft wird, ob InterAPPtion die Adhärenz erhöht, den Wissenszuwachs der Eltern begünstigt und durch gezielte Anregungen im Alltag die kindliche Entwicklung unterstützt. Darüber hinaus wird untersucht, ob der kombinierte Ansatz die Gesamtbeeinträchtigung der Kinder verringert. Im Mittelpunkt stehen eine Reduktion der Symptomatik, ein geringeres Stressniveau sowie ein positiveres Spiel-, Interaktions- und Lernverhalten. 
-Die Inhalte der App werden auf Grundlage des Manuals modularisiert und multimedial aufbereitet. Sie werden in acht Sprachen (Arabisch, Dari/Farsi, Türkisch, Russisch, Spanisch, Französisch, Englisch und Deutsch) bereitgestellt. Neben psychoedukativen Videos und Übungen wird durch eine Community-Funktion die Möglichkeit geschaffen, Hausaufgaben innerhalb einer geschlossenen Kursgruppe mit anderen Teilnehmenden zu teilen.Die Zielgruppe ist durch einen interaktiven und partizipativen Prozess aktiv in die Weiterentwicklung der App einbezogen.
-Die App befindet sich derzeit in der Entwicklungs- und Testphase. Nach Abschluss wird sie hier zur Verfügung gestellt.
-</p>
-          </div>
+      <div class="detail-hero">
+        <div>
+          <h1>InterAPPtion</h1>
+        </div>
+        <div class="detail-image">
           <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/InterAPPtion_Community(iPhone+12+Pro).png" alt="InterAPPtion App">
         </div>
-
-        <details class="more">
-          <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-          <div class="more-content">
-            <p>
-              Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.
-            </p>
-          </div>
-        </details>
       </div>
+      <div class="detail-body">Das Ziel der geplanten Studie besteht in der Untersuchung der Wirksamkeit der mobilen Anwendung InterAPPtion, sowohl als eigenständiges Angebot als auch in Verbindung mit dem Elterntraining Parents’ College.
 
-      <div class="project" id="huggy">
-        <div class="project-content">
-          <div class="project-text">
-            <h3>Huggy Puppy</h3>
-            <p>
-              Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.
-            </p>
-          </div>
+Geprüft wird, ob InterAPPtion die Adhärenz erhöht, den Wissenszuwachs der Eltern begünstigt und durch gezielte Anregungen im Alltag die kindliche Entwicklung unterstützt. Darüber hinaus wird untersucht, ob der kombinierte Ansatz die Gesamtbeeinträchtigung der Kinder verringert. Im Mittelpunkt stehen eine Reduktion der Symptomatik, ein geringeres Stressniveau sowie ein positiveres Spiel-, Interaktions- und Lernverhalten.
+
+Die Inhalte der App werden auf Grundlage des Manuals modularisiert und multimedial aufbereitet. Sie werden in acht Sprachen (Arabisch, Dari/Farsi, Türkisch, Russisch, Spanisch, Französisch, Englisch und Deutsch) bereitgestellt. Neben psychoedukativen Videos und Übungen wird durch eine Community-Funktion die Möglichkeit geschaffen, Hausaufgaben innerhalb einer geschlossenen Kursgruppe mit anderen Teilnehmenden zu teilen.Die Zielgruppe ist durch einen interaktiven und partizipativen Prozess aktiv in die Weiterentwicklung der App einbezogen.
+
+Die App befindet sich derzeit in der Entwicklungs- und Testphase. Nach Abschluss wird sie hier zur Verfügung gestellt.
+
+Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.</div>
+    </section>
+
+    <!-- DETAIL: HUGGY -->
+    <section id="projekt-huggy" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
+      </div>
+      <div class="detail-hero">
+        <div>
+          <h1>Huggy Puppy</h1>
+        </div>
+        <div class="detail-image">
           <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
         </div>
-
-        <details class="more">
-          <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-          <div class="more-content">
-            <p>Die im aktuellen Stand der Leitlinien ... (Text unverändert)</p>
-          </div>
-        </details>
       </div>
+      <div class="detail-body">Als Ergänzung der Elternpsychoedukationsgruppe Parents‘ College haben wir eine digitale Anwendung entwickelt, die Eltern im Alltag begleitet, regelmäßig an die notwendige Interaktion mit ihren Kindern erinnert und gezielte Anreize zum sprachlichen Austausch in der Familie anbietet.
 
-      <div class="project" id="spielbeobachtung">
-        <h3>Standardisierte Spielbeobachtung</h3>
-        <p>Die standardisierte Spielbeobachtung dient als valides, leicht durchführbares Instrument ...</p>
-        <details class="more">
-          <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-          <div class="more-content">
-            <p>Spielbeobachtungsbogen ... Unterskalen ...</p>
-          </div>
-        </details>
+Die im aktuellen Stand der Leitlinien ... (Text unverändert)</div>
+    </section>
+
+    <!-- DETAIL: SPIELBEOBACHTUNG -->
+    <section id="projekt-spielbeobachtung" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
       </div>
-
-      <div class="project" id="evaluation">
-        <h3>Begleitende wissenschaftliche Evaluation</h3>
-        <p>Längs- und querschnittliche Erhebungen zur Wirkung ...</p>
-        <details class="more">
-          <summary><span class="more">Mehr anzeigen</span><span class="less">Weniger anzeigen</span></summary>
-          <div class="more-content">
-            <p>Die „Symptomabfrage Traumafolgestörung bei Kindern“ (SATK-10, Hahnefeld & Terlinden, 2022) ...</p>
-          </div>
-        </details>
+      <div class="detail-hero no-image">
+        <div>
+          <h1>Standardisierte Spielbeobachtung</h1>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="detail-body">Die standardisierte Spielbeobachtung dient als valides, leicht durchführbares Instrument ...
 
-  <!-- PUBLIKATIONEN -->
-  <section id="publikationen">
-    <h2>Publikationen</h2>
+Spielbeobachtungsbogen ... Unterskalen ...</div>
+    </section>
 
-    <h3 id="include">Studien der INCLUDE-Arbeitsgruppe</h3>
-
-    <div class="diagonal-timeline">
-      <div class="timeline-step">
-        <span class="year">2018–2020</span>
-        <h3>INCLUDE 1</h3>
-        <p class="muted">Zu T1 wurden insgesamt 134 Personen ...</p>
+    <!-- DETAIL: EVALUATION -->
+    <section id="projekt-evaluation" class="page detail-page">
+      <div class="detail-topbar">
+        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
+        <span class="detail-kicker">Projektseite</span>
       </div>
-      <div class="timeline-step">
-        <span class="year">2021–2023</span>
-        <h3>INCLUDE 2</h3>
-        <p class="muted">Follow-Up ...</p>
+      <div class="detail-hero no-image">
+        <div>
+          <h1>Begleitende wissenschaftliche Evaluation</h1>
+        </div>
       </div>
-      <div class="timeline-step">
-        <span class="year">2023–2026</span>
-        <h3>INCLUDE 3</h3>
-        <p class="muted">Quasi-randomisierte Kontrollgruppenstudie ...</p>
-      </div>
-      <div class="timeline-step">
-        <span class="year">2024–2025</span>
-        <h3>INCLUDE 4</h3>
-        <p class="muted">Vertiefende Analysen und Interventionen.</p>
-      </div>
-      <div class="timeline-step">
-        <span class="year">2026–2028</span>
-        <h3>Langzeitprojekte</h3>
-        <p class="muted">Follow-up Studien und Abschlussberichte.</p>
-      </div>
-    </div>
+      <div class="detail-body">Längs- und querschnittliche Erhebungen zur Wirkung ...
 
-    <p class="muted">Bernhardt, Katharina; ... (2023): Exploring Mental Health ...</p>
-    <p class="muted">Hahnefeld, Andrea; ... (2024): Correlation of screen exposure ...</p>
-    <p class="muted">Hahnefeld, Andrea; Mall, Volker (2020): Patientenorientierte Medizin ...</p>
-    <p class="muted">Hahnefeld, Andrea; Münch, Katharina; ... (2022): Versorgung traumatisierter Vorschulkinder ...</p>
-    <p class="muted">Hahnefeld, Andrea; ... (2022): Non-verbal cognitive development ...</p>
-    <p class="muted">Hahnefeld, Andrea; ... (2021): Survival states ...</p>
-    <p class="muted">Hahnefeld, Andrea; ... (2024): Interdisziplinäre Versorgung ... Hogrefe Verlag.</p>
-    <p class="muted">Soykoek, Seval; ... (2017): PTSD in Syrian children ...</p>
-  </section>
-
-  <!-- NEUIGKEITEN -->
-  <section id="neuigkeiten">
-    <h2>Neuigkeiten</h2>
-
-    <h3 id="heidelberg">Heidelberg</h3>
-    <p class="muted">"Infos"</p>
-
-    <details class="beitrag">
-      <summary>
-        Beitrag des Bayerischen Rundfunk:
-        <strong>„Förderung und Therapie: Mehr Angebot für Flüchtlingskinder nötig“</strong>
-      </summary>
-      <p>
-        <a href="https://www.br.de/" target="_blank" rel="noopener">
-          Zum Beitrag auf der Website des Bayerischen Rundfunk
-        </a>
-      </p>
-    </details>
-
-    <h3 id="vilnius">Vilnius</h3>
-    <p class="muted">
-      Wir sind im Oktober 2025 auf der ESRII Konferenz vertreten und präsentieren InterAPPtion in Vilnius ...
-    </p>
-  </section>
+Die „Symptomabfrage Traumafolgestörung bei Kindern“ (SATK-10, Hahnefeld &amp; Terlinden, 2022) ...</div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 INCLUDE. Technical Universty Munich. Alle Rechte vorbehalten.
+    <div class="footer-inner">&copy; 2025 INCLUDE. Technical Universty Munich. Alle Rechte vorbehalten.</div>
   </footer>
 
   <script>
-    const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    const sectionLinks = document.querySelectorAll('[data-section]');
+    const navToggle = document.getElementById('navToggle');
+    const pages = [...document.querySelectorAll('.page')];
+    const mainPageIds = ['home', 'team', 'projekte', 'publikationen', 'neuigkeiten'];
 
-    function showSection(sectionId, updateHash = true) {
-      const target = document.getElementById(sectionId);
+    function showPage(pageId, updateHash = true) {
+      const target = document.getElementById(pageId);
       if (!target) return;
 
-      document.querySelectorAll('body > section').forEach(section => {
-        section.classList.toggle('active', section.id === sectionId);
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+
+      const activeMainPage = mainPageIds.includes(pageId)
+        ? pageId
+        : (pageId.startsWith('projekt-') ? 'projekte' : 'home');
+
+      document.querySelectorAll('[data-page]').forEach(link => {
+        link.classList.toggle('active-link', link.dataset.page === activeMainPage);
       });
 
-      sectionLinks.forEach(link => {
-        link.classList.toggle('active-link', link.dataset.section === sectionId);
-      });
-
-      navLinks.classList.remove('active');
+      navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
 
-      if (updateHash) {
-        history.replaceState(null, '', `#${sectionId}`);
-      }
-
+      if (updateHash) history.replaceState(null, '', `#${pageId}`);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('active');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    sectionLinks.forEach(link => {
+    document.querySelectorAll('[data-page]').forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
-        showSection(link.dataset.section);
+        showPage(link.dataset.page);
       });
     });
 
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
     document.addEventListener('click', event => {
-      if (!event.target.closest('.navbar')) {
-        navLinks.classList.remove('active');
+      if (!event.target.closest('.site-header')) {
+        navLinks.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
       }
     });
 
-    function goTo(sectionId, anchorId) {
-      showSection(sectionId);
+    window.addEventListener('hashchange', () => {
+      const pageId = location.hash.slice(1) || 'home';
+      showPage(pageId, false);
+    });
 
-      requestAnimationFrame(() => {
-        const element = document.getElementById(anchorId);
-        if (!element) return;
-
-        const project = element.closest('.project');
-        if (project) {
-          const details = project.querySelector('details.more');
-          if (details) details.open = true;
-        }
-
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
-
-    const initialSection = window.location.hash.replace('#', '');
-    if (initialSection && document.getElementById(initialSection)) {
-      showSection(initialSection, false);
-    }
+    const initialPage = location.hash.slice(1) || 'home';
+    showPage(document.getElementById(initialPage) ? initialPage : 'home', false);
   </script>
 </body>
 </html>
