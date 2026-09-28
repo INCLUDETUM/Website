@@ -495,6 +495,16 @@
       line-height:1.4;
     }
 
+    .parents-college-material-image{
+      display:block;
+      width:100%;
+      max-width:480px;
+      height:auto;
+      margin:14px 0 18px;
+      border:1px solid var(--line);
+      border-radius:10px;
+    }
+
     .detail-image-placeholder{
       display:flex;
       min-height:170px;
@@ -749,7 +759,9 @@ Die Forschung des INCLUDE-Teams widmet sich vulnerablen Populationen mit Flucht-
 
       <div class="projects-list">
         <article class="project-card" data-project-page="projekt-iskf" tabindex="0" role="link">
-          <div class="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/ISKF.png" aria-hidden="true">ISKF</div>
+          <div class="project-media">
+            <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/ISKF.png" alt="ISKF">
+          </div>
           <div>
             <h3>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h3>
             <p class="project-summary">Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten ISKF eine frühzeitige und niedrigschwellige Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung in Erstaufnahmeeinrichtungen an. Wir sind als interdisziplinäres Team in Unterkunftsdependancen des Ankerzentrums Manching in München tätig und bieten Termine direkt vor Ort an. Bei Bedarf erfolgt eine gezielte Weitervermittlung der belasteten Familien ins bestehende Behandlungssystem. Von November 2020 bis Februar 2026 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um Elterngruppen („Parents‘ College“) ergänzt werden.</p>
@@ -1014,11 +1026,9 @@ Die Durchführung der Therapie erfolgt in Kliniken und Behandlungszentren in der
           </div>
 
           <div class="detail-gallery">
-            <!-- OPTIONAL: Hier kann später ein ISKF-Bild eingefügt werden.
-                 Beispiel:
-                 <figure><img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/ISKF.png" alt="ISKF"><figcaption>© Name</figcaption></figure>
-            -->
-            <div class="detail-image-placeholder">Bildplatzhalter ISKF<br>Hier später einfach den Bild-Link einsetzen.</div>
+            <figure>
+              <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/ISKF.png" alt="ISKF">
+            </figure>
           </div>
         </div>
       </div>
@@ -1072,17 +1082,20 @@ Die Durchführung der Therapie erfolgt in Kliniken und Behandlungszentren in der
           <a class="detail-link" href="https://drks.de/search/en/trial/DRKS00025734" target="_blank" rel="noopener">Zur Studie im Deutschen Register Klinischer Studien</a>
           <p>Melden Sie sich gerne per E-Mail, wenn Sie Interesse an den Info- und Begleitmaterialien haben: <a href="mailto:iskf@mri.tum.de">iskf@mri.tum.de</a></p>
         </div>
-      </div>
-    </section>
 
-    <div class="detail-section">
+        <div class="detail-section">
           <h2>Begleitmaterialien</h2>
-            <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Bildschirmfoto+2026-09-28+um+14.24.28.png" alt="Ressourcen und Resilienz im Parents‘ College">
-          <a class="detail-link" href="https://includetum.github.io/Poster/" target="_blank" rel="noopener">Zur Studie im Deutschen Register Klinischer Studien</a>
+          <img
+            class="parents-college-material-image"
+            src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Website/Bildschirmfoto+2026-09-28+um+14.24.28.png"
+            alt="Begleitmaterialien des Parents‘ College"
+          >
+          <a class="detail-link" href="https://includetum.github.io/Poster/" target="_blank" rel="noopener">Zu den Begleitmaterialien</a>
           <p>Melden Sie sich gerne per E-Mail, wenn Sie Interesse an den Info- und Begleitmaterialien haben: <a href="mailto:iskf@mri.tum.de">iskf@mri.tum.de</a></p>
         </div>
       </div>
     </section>
+
     <section id="projekt-interapption" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
