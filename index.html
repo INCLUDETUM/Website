@@ -267,6 +267,10 @@
       background:var(--paper);
       transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
     }
+
+    .project-card.no-image {
+  grid-template-columns: minmax(0,1fr) auto;
+}
     .project-card:hover{transform:translateY(-2px);border-color:#b5bec8;box-shadow:var(--shadow)}
     .project-card[data-project-page]{cursor:pointer}
     .project-card[data-project-page]:focus-visible{
@@ -789,27 +793,40 @@ Die Durchführung der Therapie erfolgt in Kliniken und Behandlungszentren in der
           <a class="project-link" href="#projekt-huggy" data-page="projekt-huggy" aria-label="Projektseite Huggy Puppy öffnen">Weitere Informationen</a>
         </article>
 
-        <article class="project-card" data-project-page="projekt-umweltfaktoren" tabindex="0" role="link">
-          <div class="project-media is-empty" aria-hidden="true">SB</div>
-          <div>
-            <h3>Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik</h3>
-            <p class="project-summary">Im Zeitalter zunehmender Digitalisierung setzen wir mobile Anwendungen nicht nur in der Therapie ein, sondern forschen auch dazu, wie sich die steigende Bildschirmexposition innerhalb der Familien auf die kindliche Entwicklung auswirkt.
-Zudem befassen wir uns mit Konstruktion und Validierung einer standardisierten strukturierten Spielbeobachtung und Indexwerten zur Einschätzung der psychischen Gesundheit und Kommunikationsfähigkeiten sowie kognitiver und sprachlicher Entwicklung bei jungen Kindern, wenn andere gängige Verfahren aus unterschiedlichen Gründen nicht valide anwendbar sind.</p>
-          </div>
-          <a class="project-link" href="#projekt-umweltfaktoren" data-page="projekt-umweltfaktoren" aria-label="Projektseite Auswirkungen von Umweltfaktoren und kulturübergreifende Diagnostik öffnen">Weitere Informationen</a>
-        </article>
+ <article class="project-card no-image" data-project-page="projekt-umweltfaktoren" tabindex="0" role="link">
+  <div>
+    <h3>Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik</h3>
+    <p class="project-summary">
+      Im Zeitalter zunehmender Digitalisierung setzen wir mobile Anwendungen nicht nur in der Therapie ein, sondern forschen auch dazu, wie sich die steigende Bildschirmexposition innerhalb der Familien auf die kindliche Entwicklung auswirkt.
+      Zudem befassen wir uns mit Konstruktion und Validierung einer standardisierten strukturierten Spielbeobachtung und Indexwerten zur Einschätzung der psychischen Gesundheit und Kommunikationsfähigkeiten sowie kognitiver und sprachlicher Entwicklung bei jungen Kindern, wenn andere gängige Verfahren aus unterschiedlichen Gründen nicht valide anwendbar sind.
+    </p>
+  </div>
 
-        <article class="project-card" data-project-page="projekt-fortbildungen" tabindex="0" role="link">
-          <div class="project-media is-empty" aria-hidden="true">01</div>
-          <div>
-            <h3>Bedarfsanalyse und Fortbildungen von Fachkräften</h3>
-            <p class="project-summary">In unserer Bedarfsanalyse zeigte sich ein hoher Bedarf an der Entwicklung von Fortbildungsangeboten zur interkulturellen Kompetenz von Fachkräften.
-Über die Akademie für Entwicklungsförderung und andere Kanäle bieten wir regelmäßig Fortbildungen für Fachkräfte an. Zu unserem Seminar: Kultur- und traumasensitive Elternarbeit mit „Parents‘ College“
-Weitere Anfragen bitte gerne unter iskf@mri.tum.de
-</p>
-          </div>
-          <a class="project-link" href="#projekt-fortbildungen" data-page="projekt-fortbildungen" aria-label="Projektseite Bedarfsanalyse und Fortbildungen von Fachkräften öffnen">Weitere Informationen</a>
-        </article>
+  <a class="project-link"
+     href="#projekt-umweltfaktoren"
+     data-page="projekt-umweltfaktoren"
+     aria-label="Projektseite Auswirkungen von Umweltfaktoren und kulturübergreifende Diagnostik öffnen">
+    Weitere Informationen
+  </a>
+</article>
+
+<article class="project-card no-image" data-project-page="projekt-fortbildungen" tabindex="0" role="link">
+  <div>
+    <h3>Bedarfsanalyse und Fortbildungen von Fachkräften</h3>
+    <p class="project-summary">
+      In unserer Bedarfsanalyse zeigte sich ein hoher Bedarf an der Entwicklung von Fortbildungsangeboten zur interkulturellen Kompetenz von Fachkräften.
+      Über die Akademie für Entwicklungsförderung und andere Kanäle bieten wir regelmäßig Fortbildungen für Fachkräfte an. Zu unserem Seminar: Kultur- und traumasensitive Elternarbeit mit „Parents‘ College“
+      Weitere Anfragen bitte gerne unter iskf@mri.tum.de
+    </p>
+  </div>
+
+  <a class="project-link"
+     href="#projekt-fortbildungen"
+     data-page="projekt-fortbildungen"
+     aria-label="Projektseite Bedarfsanalyse und Fortbildungen von Fachkräften öffnen">
+    Weitere Informationen
+  </a>
+</article>
 
       </div>
     </section>
