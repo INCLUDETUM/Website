@@ -391,54 +391,137 @@
     }
     .external-resource::after{content:"↗"}
 
-    /* Leere Projektseiten / Under construction */
-    .construction-shell{
-      min-height:460px;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:center;
-      padding:clamp(34px,7vw,82px);
-      border:1px solid var(--line-dark);
-      border-radius:var(--radius);
-      background:
-        linear-gradient(135deg,rgba(234,240,245,.64),rgba(255,255,255,.98) 48%),
-        var(--paper);
-      box-shadow:var(--shadow);
+    /* Projektdetailseiten: Inhalte, Bilder und weiterführende Links */
+    .detail-content{
+      display:grid;
+      gap:34px;
     }
-    .construction-status{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      margin-bottom:24px;
-      padding:7px 10px;
-      border:1px solid var(--line-dark);
-      border-radius:999px;
-      color:var(--accent-dark);
-      background:rgba(255,255,255,.8);
-      font-size:.76rem;
-      font-weight:700;
-      letter-spacing:.1em;
-      text-transform:uppercase;
+
+    .detail-intro{
+      padding-bottom:30px;
+      border-bottom:1px solid var(--line-dark);
     }
-    .construction-status::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 0 4px var(--accent-pale);
-    }
-    .construction-shell h1{
-      max-width:820px;
+
+    .detail-intro h1{
+      max-width:900px;
       margin-bottom:18px;
       font-size:clamp(2.15rem,5vw,4.15rem);
     }
-    .construction-shell p{
-      max-width:620px;
+
+    .detail-intro p{
+      max-width:850px;
       margin:0;
-      color:var(--muted);
+      color:var(--ink-soft);
       font-size:1.04rem;
+      line-height:1.78;
+    }
+
+    .detail-section{
+      padding-top:4px;
+    }
+
+    .detail-section + .detail-section{
+      padding-top:30px;
+      border-top:1px solid var(--line);
+    }
+
+    .detail-section h2{
+      margin-bottom:16px;
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:clamp(1.55rem,3vw,2.15rem);
+      line-height:1.15;
+      letter-spacing:-.025em;
+    }
+
+    .detail-section h3{
+      margin:24px 0 10px;
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:1.25rem;
+    }
+
+    .detail-section p,
+    .detail-section li{
+      color:var(--ink-soft);
+      font-size:1.01rem;
+      line-height:1.78;
+    }
+
+    .detail-section ul{
+      margin:10px 0 20px;
+      padding-left:1.35rem;
+    }
+
+    .detail-section li{margin-bottom:8px}
+
+    .detail-two-column{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 300px;
+      gap:42px;
+      align-items:start;
+    }
+
+    .detail-gallery{
+      display:grid;
+      gap:14px;
+    }
+
+    .detail-gallery figure,
+    .detail-figure{
+      margin:0;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:11px;
+      background:var(--paper);
+    }
+
+    .detail-gallery img,
+    .detail-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:7px;
+      object-fit:contain;
+    }
+
+    .detail-gallery figcaption,
+    .detail-figure figcaption{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:.76rem;
+      line-height:1.4;
+    }
+
+    .detail-image-placeholder{
+      display:flex;
+      min-height:170px;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      border:1px dashed var(--line-dark);
+      border-radius:10px;
+      color:var(--muted);
+      background:#fafbfc;
+      font-size:.84rem;
+      text-align:center;
+    }
+
+    .detail-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:4px 0 10px;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .detail-link::after{content:"↗"}
+
+    .detail-note{
+      margin-top:20px;
+      padding:17px 19px;
+      border-left:3px solid var(--accent);
+      background:var(--accent-pale);
+      color:var(--ink-soft);
     }
 
     /* Publikationen */
@@ -481,6 +564,21 @@
     .doi-link::after{content:"↗"}
     .doi-link:hover{text-decoration:none;color:var(--accent)}
     .erratum-link{display:inline-block;margin-left:8px;font-size:.82rem;font-weight:700}
+    .publication-list{
+      margin:1.5rem 0 0;
+      padding-left:1.4rem;
+    }
+    .publication-list li{
+      margin-bottom:1.25rem;
+      padding-left:.35rem;
+      color:var(--ink-soft);
+      line-height:1.65;
+    }
+    .publication-list li::marker{color:var(--muted)}
+    .publication-list a{word-break:break-word}
+    .more-publications{margin-top:1.8rem}
+    .funding-list{margin-top:1.25rem;padding-left:1.4rem}
+    .funding-list li{margin-bottom:.7rem;line-height:1.6}
 
     /* Neuigkeiten */
     .news-list{margin-top:40px;border-top:1px solid var(--line-dark)}
@@ -508,6 +606,7 @@
       .project-link{grid-column:2;padding:0;border-left:0;justify-self:start}
       .detail-hero{grid-template-columns:minmax(0,1fr) 250px}
       .detail-image{width:250px;height:190px}
+      .detail-two-column{grid-template-columns:minmax(0,1fr) 260px;gap:28px}
     }
 
     @media (max-width:820px){
@@ -533,6 +632,8 @@
       .project-media{width:170px;height:140px}
       .detail-hero{grid-template-columns:1fr}
       .detail-image{width:100%;height:240px}
+      .detail-two-column{grid-template-columns:1fr}
+      .detail-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
       .publication{grid-template-columns:38px minmax(0,1fr)}
       .doi-link{grid-column:2;justify-self:start}
     }
@@ -549,6 +650,7 @@
       .project-link{grid-column:1;padding-top:5px}
       .project-summary{-webkit-line-clamp:7}
       .detail-topbar{align-items:flex-start;flex-direction:column}
+      .detail-gallery{grid-template-columns:1fr}
       .news-item{grid-template-columns:1fr;gap:8px}
       .publication{grid-template-columns:30px minmax(0,1fr);gap:12px}
     }
@@ -613,6 +715,7 @@ Die Forschung des INCLUDE-Teams widmet sich vulnerablen Populationen mit Flucht-
           <p>Psychologische Psychotherapeutin</p>
           <a class="cv-button" href="cv/hahnefeld.pdf" download>CV</a>
         </article>
+      </div>
 
       <div class="team-label">Mitarbeitende</div>
       <div class="team-grid">
@@ -722,28 +825,17 @@ Die Durchführung der Therapie erfolgt in Kliniken und Behandlungszentren in der
           <a class="project-link" href="#projekt-huggy" data-page="projekt-huggy" aria-label="Projektseite Huggy Puppy öffnen">Weitere Informationen</a>
         </article>
 
-        <article class="project-card" data-project-page="Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik" tabindex="0" role="link">
+        <article class="project-card" data-project-page="projekt-umweltfaktoren" tabindex="0" role="link">
           <div class="project-media is-empty" aria-hidden="true">SB</div>
           <div>
             <h3>Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik</h3>
             <p class="project-summary">Im Zeitalter zunehmender Digitalisierung setzen wir mobile Anwendungen nicht nur in der Therapie ein, sondern forschen auch dazu, wie sich die steigende Bildschirmexposition innerhalb der Familien auf die kindliche Entwicklung auswirkt.
 Zudem befassen wir uns mit Konstruktion und Validierung einer standardisierten strukturierten Spielbeobachtung und Indexwerten zur Einschätzung der psychischen Gesundheit und Kommunikationsfähigkeiten sowie kognitiver und sprachlicher Entwicklung bei jungen Kindern, wenn andere gängige Verfahren aus unterschiedlichen Gründen nicht valide anwendbar sind.</p>
           </div>
-          <a class="project-link" href="#projekt-Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik" data-page="projekt-Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik" aria-label="Projektseite Auswirkungen von Umweltfaktoren und kulturübergreifende Diagnostik öffnen">Weitere Informationen</a>
+          <a class="project-link" href="#projekt-umweltfaktoren" data-page="projekt-umweltfaktoren" aria-label="Projektseite Auswirkungen von Umweltfaktoren und kulturübergreifende Diagnostik öffnen">Weitere Informationen</a>
         </article>
 
-         <article class="project-card" data-project-page="projekt-bildschirmexposition" tabindex="0" role="link">
-          <div class="project-media is-empty" aria-hidden="true">SB</div>
-          <div>
-            <h3>Bildschirmexposition</h3>
-            <p class="project-summary">Bei Kindern mit und ohne Fluchterfahrung befassen wir uns mit dem Zusammenhang zwischen Entwicklungsstörungen und Bildschirmexposition und haben auf Basis klinischer Beobachtungen und aktueller Forschungsliteratur Indexwerte zur diagnostischen Einschätzung entwickelt. </p>
-          </div>
-          <a class="project-link" href="#projekt-bildschirmexposition" data-page="projekt-bildschirmexposition" aria-label="Projektseite Bildschirmexposition öffnen">Weitere Informationen</a>
-        </article>
-
-        
-        <!-- VORBEREITETE PLATZHALTER FÜR ZUKÜNFTIGE PROJEKTE -->
-        <article class="project-card" data-project-page="projekt-Bedarfsanalyse und Fortbildungen von Fachkräften" tabindex="0" role="link">
+        <article class="project-card" data-project-page="projekt-fortbildungen" tabindex="0" role="link">
           <div class="project-media is-empty" aria-hidden="true">01</div>
           <div>
             <h3>Bedarfsanalyse und Fortbildungen von Fachkräften</h3>
@@ -752,77 +844,143 @@ Zudem befassen wir uns mit Konstruktion und Validierung einer standardisierten s
 Weitere Anfragen bitte gerne unter iskf@mri.tum.de
 </p>
           </div>
-          <a class="project-link" href="#projekt-test-1" data-page="projekt-test-1" aria-label="Projektseite Test 1 öffnen">Weitere Informationen</a>
+          <a class="project-link" href="#projekt-fortbildungen" data-page="projekt-fortbildungen" aria-label="Projektseite Bedarfsanalyse und Fortbildungen von Fachkräften öffnen">Weitere Informationen</a>
         </article>
 
       </div>
     </section>
 
-    <!-- PUBLIKATIONEN -->
-    <section id="publikationen" class="page">
-      <div class="section-head">
-        <div>
-          <h2>Schlüsselpublikationen</h2>
-        </div>
-      </div>
+   <!-- PUBLIKATIONEN -->
+<section id="publikationen" class="page">
 
-      <div class="publications-list">
-        <article class="publication">
-          <p class="publication-citation">
-            Bernhardt, K., Le Beherec, S., Uppendahl, J., Baur, M.-A., Klosinski, M., Mall, V., &amp; Hahnefeld, A. (2023). Exploring mental health and development in refugee children through systematic play assessment. <em>Child Psychiatry &amp; Human Development</em>.
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1007/s10578-023-01584-z" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+  <div class="section-head">
+    <h3>Schlüsselpublikationen</h3>
+  </div>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Bernhardt, K., Le Beherec, S., Uppendahl, J. R., Fleischmann, M., Klosinski, M., Rivera, L. M., Samaras, G., Kenney, M., Müller, R., Nehring, I., Mall, V., &amp; Hahnefeld, A. (2024). Young children’s development after forced displacement: A systematic review. <em>Child and Adolescent Psychiatry and Mental Health, 18</em>(1), Article 20.
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1186/s13034-024-00711-5" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+  <ul class="publication-list">
 
-        <article class="publication">
-          <p class="publication-citation">
-            Hahnefeld, A., Fink, M., Hauber, E., Le Beherec, S., Gassner, M., Klosinski, M., &amp; Mall, V. (2025). Dysregulated screen exposure is associated with severity of language and communication impairments in children with developmental disorders. <em>Acta Paediatrica</em>. Advance online publication.
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1111/apa.70223" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+    <li>
+      Bernhardt, K., Le Beherec, S., Uppendahl, J., Baur, M.-A.,
+      Klosinski, M., Mall, V., &amp; Hahnefeld, A. (2023).
+      Exploring mental health and development in refugee children through
+      systematic play assessment.
+      <em>Child Psychiatry &amp; Human Development</em>.
+      <a href="https://doi.org/10.1007/s10578-023-01584-z"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1007/s10578-023-01584-z
+      </a>
+    </li>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Hahnefeld, A., Fink, M., Le Beherec, S., Baur, M. A., Bernhardt, K., &amp; Mall, V. (2025). Correlation of screen exposure to stress, learning, cognitive and language performance in children. <em>European Child &amp; Adolescent Psychiatry, 34</em>(5), 1615–1624.
-            <a class="erratum-link" href="https://doi.org/10.1007/s00787-024-02625-1" target="_blank" rel="noopener">Erratum</a>
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1007/s00787-024-02593-6" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+    <li>
+      Bernhardt, K., Le Beherec, S., Uppendahl, J. R., Fleischmann, M.,
+      Klosinski, M., Rivera, L. M., Samaras, G., Kenney, M., Müller, R.,
+      Nehring, I., Mall, V., &amp; Hahnefeld, A. (2024).
+      Young children’s development after forced displacement:
+      A systematic review.
+      <em>Child and Adolescent Psychiatry and Mental Health, 18</em>(1),
+      Article 20.
+      <a href="https://doi.org/10.1186/s13034-024-00711-5"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1186/s13034-024-00711-5
+      </a>
+    </li>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Hahnefeld, A., Sukale, T., Weigand, E., Dudek, V., Münch, K., Aberl, S., Eckler, L. V., Nehring, I., Friedmann, A., Plener, P. L., Fegert, J. M., &amp; Mall, V. (2022). Non-verbal cognitive development, learning, and symptoms of PTSD in 3- to 6-year-old refugee children. <em>European Journal of Pediatrics, 181</em>(3), 1205–1212.
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1007/s00431-021-04312-8" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+    <li>
+      Hahnefeld, A., Fink, M., Hauber, E., Le Beherec, S., Gassner, M.,
+      Klosinski, M., &amp; Mall, V. (2025).
+      Dysregulated screen exposure is associated with severity of language
+      and communication impairments in children with developmental disorders.
+      <em>Acta Paediatrica</em>.
+      <a href="https://doi.org/10.1111/apa.70223"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1111/apa.70223
+      </a>
+    </li>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Hahnefeld, A., Sukale, T., Weigand, E., Münch, K., Aberl, S., Eckler, L. V., Schmidt, D., Friedmann, A., Plener, P. L., Fegert, J. M., &amp; Mall, V. (2021). Survival states as indicators of learning performance and biological stress in refugee children: A cross-sectional study with a comparison group. <em>BMC Psychiatry, 21</em>(1), Article 228.
-          </p>
-          <a class="doi-link" href="https://doi.org/10.1186/s12888-021-03233-y" target="_blank" rel="noopener">DOI öffnen</a>
-        </article>
+    <li>
+      Hahnefeld, A., Fink, M., Le Beherec, S., Baur, M. A., Bernhardt, K.,
+      &amp; Mall, V. (2025).
+      Correlation of screen exposure to stress, learning, cognitive and
+      language performance in children.
+      <em>European Child &amp; Adolescent Psychiatry, 34</em>(5),
+      1615–1624.
+      <a href="https://doi.org/10.1007/s00787-024-02593-6"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1007/s00787-024-02593-6
+      </a>
+    </li>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Klosinski, M., Bernhardt, K., Hahnefeld, A., Mall, V., Wermuth, I., &amp; Schulte-Körne, G. (2026). Intercultural competence as a key qualification in child and adolescent psychiatry and psychotherapy. <em>Zeitschrift für Kinder- und Jugendpsychiatrie und Psychotherapie</em>.
-          </p>
-        </article>
+    <li>
+      Hahnefeld, A., Sukale, T., Weigand, E., Dudek, V., Münch, K.,
+      Aberl, S., Eckler, L. V., Nehring, I., Friedmann, A., Plener, P. L.,
+      Fegert, J. M., &amp; Mall, V. (2022).
+      Non-verbal cognitive development, learning, and symptoms of PTSD
+      in 3- to 6-year-old refugee children.
+      <em>European Journal of Pediatrics, 181</em>(3), 1205–1212.
+      <a href="https://doi.org/10.1007/s00431-021-04312-8"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1007/s00431-021-04312-8
+      </a>
+    </li>
 
-        <article class="publication">
-          <p class="publication-citation">
-            Le Beherec, S., Bernhardt, K., Gassner, M., Hauber, E. J., Mall, V., &amp; Hahnefeld, A. (2026, March). Between stress and development: Mental health and cognitive catch-up development of young children with refugee experience over two years [Conference abstract]. <em>Zeitschrift für Kinder- und Jugendpsychiatrie und Psychotherapie, 54</em>, 660.
-          </p>
-        </article>
-      </div>
-    </section>
+    <li>
+      Hahnefeld, A., Sukale, T., Weigand, E., Münch, K., Aberl, S.,
+      Eckler, L. V., Schmidt, D., Friedmann, A., Plener, P. L.,
+      Fegert, J. M., &amp; Mall, V. (2021).
+      Survival states as indicators of learning performance and biological
+      stress in refugee children: A cross-sectional study with a comparison group.
+      <em>BMC Psychiatry, 21</em>(1), Article 228.
+      <a href="https://doi.org/10.1186/s12888-021-03233-y"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1186/s12888-021-03233-y
+      </a>
+    </li>
+
+    <li>
+      Horowitz-Kraus, T., Mall, V., Cancer, A., Alessandro, A.,
+      Dimitrova, N., Vogel, S. E., &amp; Hahnefeld, A. (2026).
+      Research is needed on how young European children use digital
+      technology and its developmental impact.
+      <em>Acta Paediatrica, 115</em>(4), 797–799.
+      <a href="https://doi.org/10.1111/apa.70426"
+         target="_blank" rel="noopener">
+        https://doi.org/10.1111/apa.70426
+      </a>
+    </li>
+
+  </ul>
+
+  <p class="more-publications">
+    Weitere Publikationen finden Sie
+    <a href="https://www.researchgate.net/profile/Andrea-Hahnefeld/research"
+       target="_blank" rel="noopener">
+      hier
+    </a>.
+  </p>
+
+</section>
+
+
+<!-- FÖRDERUNGEN -->
+<section id="foerderungen" class="page">
+
+  <div class="section-head">
+    <h3>Förderungen</h3>
+  </div>
+
+  <ul class="funding-list">
+    <li>
+      <strong>Andrea Hahnefeld:</strong>
+      AMIF Fonds: AM19-BY5232 und 9168-2022-0193
+    </li>
+
+    <li>
+      <strong>Andrea Hahnefeld:</strong>
+      BAMF-TRG1177
+    </li>
+  </ul>
+
+</section>
 
     <!-- NEUIGKEITEN -->
     <section id="neuigkeiten" class="page">
@@ -851,190 +1009,255 @@ Weitere Anfragen bitte gerne unter iskf@mri.tum.de
       </div>
     </section>
 
-    <!--
-      STABILE DIREKTLINKS FÜR DIE SPÄTEREN PROJEKTSEITEN:
-      #projekt-iskf
-      #projekt-parents-college
-      #projekt-interapption
-      #projekt-huggy
-      #projekt-spielbeobachtung
-      #projekt-bildschirmexposition
-      #projekt-evaluation
-      #projekt-test-1
-      #projekt-test-2
-      #projekt-test-3
-      #projekt-test-4
-      #projekt-test-5
-
-      Nach dem Hochladen lautet ein vollständiger Link zum Beispiel:
-      https://deine-domain.de/deine-datei.html#projekt-iskf
-    -->
-
-    <!-- LEERE PROJEKTSEITEN / UNDER CONSTRUCTION -->
+    <!-- PROJEKTDETAILSEITEN -->
     <section id="projekt-iskf" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Versorgung &amp; Forschung</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR ISKF HIER EINFÜGEN -->
+
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>Interdisziplinäre Sprechstunde für Kinder mit Fluchterfahrung (ISKF)</h1>
+          <p>Seit 2016 bietet unsere Projektgruppe mit der über das Bayrische Innenministerium geförderten ISKF eine frühzeitige und niedrigschwellige Versorgung für Kinder und Jugendliche aus Familien mit Fluchterfahrung in Erstaufnahmeeinrichtungen an.</p>
+        </div>
+
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Versorgung direkt vor Ort</h2>
+            <p>Wir sind als interdisziplinäres Team in Unterkunftsdependancen des Ankerzentrums Manching in München tätig und bieten Termine direkt vor Ort an. Bei Bedarf erfolgt eine gezielte Weitervermittlung der belasteten Familien ins bestehende Behandlungssystem.</p>
+            <p>Von November 2020 bis Februar 2026 konnte die ISKF mit EU-Fördermitteln (AMIF-Fonds) erweitert und um Elterngruppen („Parents‘ College“) ergänzt werden.</p>
+            <p>Diese Gruppenangebote finden sowohl in einzelnen Unterkunftsdependancen des Ankerzentrums als auch im SPZ Schwabing (kbo Kinderzentrum) statt und werden aktuell im verzahnten Vorgehen mit der digitalen Anwendung InterAPPtion angeboten.</p>
+            <a class="detail-link" href="#projekt-parents-college" data-page="projekt-parents-college">Zum Parents‘ College</a><br>
+            <a class="detail-link" href="#projekt-interapption" data-page="projekt-interapption">Zu InterAPPtion</a>
+          </div>
+
+          <div class="detail-gallery">
+            <!-- OPTIONAL: Hier kann später ein ISKF-Bild eingefügt werden.
+                 Beispiel:
+                 <figure><img src="DEIN-BILD-LINK" alt="ISKF"><figcaption>© Name</figcaption></figure>
+            -->
+            <div class="detail-image-placeholder">Bildplatzhalter ISKF<br>Hier später einfach den Bild-Link einsetzen.</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="projekt-parents-college" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Elternprogramm</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Parents‘ College</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR PARENTS COLLEGE HIER EINFÜGEN -->
+
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>Parents‘ College</h1>
+          <p>Beim Parents‘ College handelt es sich um modular aufgebaute, niedrigschwellige Psychoedukationsgruppen für Eltern mit Fluchterfahrung. Die Inhalte wurden aus der ISKF heraus gemeinsam mit Betroffenen und Fachkräften zusammengestellt.</p>
+        </div>
+
+        <div class="detail-section">
+          <h2>Inhalte</h2>
+          <p>Einstiegsthemen des manualisierten Elternkurses sind universelle, kulturübergreifende Rahmenbedingungen und Grundvoraussetzungen für eine gesunde kindliche Entwicklung wie z. B. Aufsichtspflicht, Gewaltfreiheit und die Bedeutung der frühen interpersonellen Interaktion für das Erlernen von Sprache und Kommunikation.</p>
+
+          <figure class="detail-figure">
+            <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+            <img src="https://tum.create4care.de/wp-content/uploads/2026/07/InhaltePaCo-1024x293.png" alt="Inhalte des Parents‘ College">
+            <figcaption>© Nadine Roßa</figcaption>
+          </figure>
+
+          <p>Weitere Module befassen sich mit den Themen gesundheitsförderndes Verhalten im Alltag, Umgang mit häufigen Erkrankungen und typischen Infekten sowie Information über Beschneidung und Genitalverstümmelung.</p>
+
+          <figure class="detail-figure">
+            <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+            <img src="https://tum.create4care.de/wp-content/uploads/2026/07/WeitereInhaltePaCo-1024x233.png" alt="Weitere Inhalte des Parents‘ College">
+            <figcaption>© Nadine Roßa</figcaption>
+          </figure>
+
+          <p>Auch auf die Bedeutung einer Tagesstruktur mit festen Ritualen, Grenzsetzungen im Alltag und Gewaltfreiheit wird umfassend eingegangen. Zur Generalisierung der Inhalte erhalten die Eltern zudem ein alters- und kulturunabhängiges Spieleset mit alltagsbezogenen, praktisch durchführbaren Hausaufgaben.</p>
+
+          <div class="detail-gallery">
+            <figure>
+              <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+              <img src="https://tum.create4care.de/wp-content/uploads/2026/07/Spieleset-224x300.png" alt="Spieleset des Parents‘ College">
+            </figure>
+            <figure>
+              <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+              <img src="https://tum.create4care.de/wp-content/uploads/2026/07/TagesstrukturPaCo-1024x479.png" alt="Tagesstruktur im Parents‘ College">
+              <figcaption>© Nadine Roßa</figcaption>
+            </figure>
+          </div>
+
+          <p>In einem weiteren Modul werden Traumafolgesymptome thematisiert und entsprechende Behandlungsmöglichkeiten vorgestellt. Abschließend werden gemeinsam in der Gruppe Ressourcen der Familien erarbeitet und betont, um die Resilienz zu stärken.</p>
+
+          <figure class="detail-figure">
+            <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+            <img src="https://tum.create4care.de/wp-content/uploads/2026/07/Tagesstruktur_PaCo-1024x750.png" alt="Ressourcen und Resilienz im Parents‘ College">
+            <figcaption>© Nadine Roßa</figcaption>
+          </figure>
+        </div>
+
+        <div class="detail-section">
+          <h2>Wissenschaftliche Evaluation</h2>
+          <p>Diese Maßnahme wurde von 2023 bis 2026 im Rahmen einer quasi-randomisierten Kontrollgruppenstudie wissenschaftlich evaluiert.</p>
+          <a class="detail-link" href="https://drks.de/search/en/trial/DRKS00025734" target="_blank" rel="noopener">Zur Studie im Deutschen Register Klinischer Studien</a>
+          <p>Melden Sie sich gerne per E-Mail, wenn Sie Interesse an den Info- und Begleitmaterialien haben: <a href="mailto:iskf@mri.tum.de">iskf@mri.tum.de</a></p>
+        </div>
       </div>
     </section>
 
     <section id="projekt-interapption" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Digitale Anwendung</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>InterAPPtion</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR INTERAPPTION HIER EINFÜGEN -->
+
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>InterAPPtion</h1>
+          <p>Ergänzend zu den „Parents‘ College“-Gruppen wurde die mehrsprachige, modular aufgebaute digitale Anwendung InterAPPtion entwickelt, um die Inhalte der Psychoedukation für die Bezugspersonen auch über die Kursteilnahme hinaus verfügbar zu machen.</p>
+        </div>
+
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Alltagsnahe Unterstützung für Familien</h2>
+            <p>Das Ziel ist, durch alltagsnahe Psychoedukation und Verhaltensaktivierungen mit konkreten Anregungen die elterliche Selbstwirksamkeit sowie die gemeinsamen Eltern-Kind-Interaktionen im Alltag zu erhöhen.</p>
+            <p>Die Zielgruppe der Eltern mit Fluchterfahrung wurde durch einen interaktiven und partizipativen Prozess und „<a href="https://tum.create4care.de/forschung-pppi/" target="_blank" rel="noopener">World Café</a>“-Veranstaltungen aktiv in die Weiterentwicklung der App einbezogen.</p>
+            <p>Die App ist in acht Sprachen verfügbar, entsprechend den häufigsten Familiensprachen derzeit in Deutschland eintreffender Schutzsuchender: Farsi, Arabisch, Ukrainisch/Russisch, Englisch, Französisch, Türkisch und Deutsch.</p>
+            <p>Umfangreiche Bildmaterialien sowie kurze Videos in einfacher Sprache helfen dabei, die vermittelten Inhalte im Alltag in Handlungen und Gewohnheiten zu übersetzen. Zu diesem Zweck bietet InterAPPtion Beispiele, Übungen und regelmäßige Erinnerungen, die zu konstruktiven Interaktionen mit den Kindern anregen. Über eine Community-Funktion können Hausaufgaben geteilt und Ideen für gemeinsame Aktivitäten ausgetauscht werden.</p>
+          </div>
+
+          <div class="detail-gallery">
+            <figure>
+              <!-- BILD 1 RECHTS: Link im src-Attribut bei Bedarf austauschen -->
+              <img src="https://tum.create4care.de/wp-content/uploads/2026/07/Bildschirmfoto-2026-07-23-um-09.50.39.png" alt="InterAPPtion Anwendung">
+            </figure>
+            <figure>
+              <!-- BILD 2 RECHTS: Link im src-Attribut bei Bedarf austauschen -->
+              <img src="https://tum.create4care.de/wp-content/uploads/2025/11/ParentsCollege.webp" alt="Parents‘ College und InterAPPtion">
+            </figure>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h2>Begleitende wissenschaftliche Evaluation</h2>
+          <p>Begleitend zum Einsatz von InterAPPtion findet eine wissenschaftliche Evaluation statt. Es wird untersucht, ob es gelingt, die Lernleistung, sprachliche, kognitive und die sozial-emotionale Entwicklung sowie die psychische Gesundheit der Kinder damit positiv zu beeinflussen.</p>
+        </div>
       </div>
     </section>
 
     <section id="projekt-huggy" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Traumatherapie</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Huggy Puppy</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR HUGGY PUPPY HIER EINFÜGEN -->
+
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>Therapien von Traumafolgestörungen in der Ukraine</h1>
+          <p>Da das Leben in einem akuten Kriegsgebiet eine erhebliche psychische Belastung für Familien und ihre Kinder mit sich bringt, unterstützen wir aktuell Kolleginnen und Kollegen in der Ukraine bei der Durchführung traumatherapeutischer Interventionen vor Ort.</p>
+        </div>
+
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Huggy Puppy</h2>
+            <p>Wir setzen die Intervention „Huggy Puppy“ ein, die den Kindern dabei helfen soll, aktive Strategien zur Stressbewältigung anzuwenden und ihre Gefühle besser zu regulieren. Das Kind wird motiviert, Fürsorgeverhalten für ein Kuscheltier zu zeigen, das ähnliche Dinge erleben musste wie es selbst.</p>
+            <p>Unser gemeinsames Ziel ist dabei, dass über das Fürsorgeverhalten für das Kuscheltier aktive Bewältigungsstrategien vom Kind selbst abgerufen werden. So können im Alltag Situationen geschaffen werden, in welchen die Kinder sich in einem kleinen Rahmen als selbstwirksam und kompetent erleben und so ein Stück Kontrolle über ihren Alltag zurückgewinnen können.</p>
+            <p>Die Durchführung der Therapie erfolgt in Kliniken und Behandlungszentren in der Ukraine mit Unterstützung der Hellbrügge Stiftung und Spenden über Sternstunden.</p>
+          </div>
+
+          <div class="detail-gallery">
+            <figure>
+              <!-- BILD-LINK kann bei Bedarf im src-Attribut ersetzt werden -->
+              <img src="https://baseresourcesstack-documentsbucket9ec9deb9-qmmkdw8bfxhu.s3.eu-central-1.amazonaws.com/public/videos/Bilder/Bildschirmfoto+2025-07-20+um+11.20.09.png" alt="Huggy Puppy">
+            </figure>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h2>Wissenschaftliche Begleitevaluation</h2>
+          <p>In unserer wissenschaftlichen Begleitevaluation steht das Erfassen der Wirksamkeit der Huggy-Puppy-Intervention direkt in Krisengebieten sowie die Untersuchung der Auswirkungen auf die kindliche Gesamtsymptomatik und Beeinträchtigung im Fokus. In der Studie werden Wohlbefinden und Entwicklungsstand nicht nur im Elternurteil, sondern auch in der Untersuchung der Kinder direkt erhoben.</p>
+          <a class="detail-link" href="https://drks.de/search/de/trial/DRKS00032037" target="_blank" rel="noopener">Mehr zur Studie</a>
+          <p>Zukünftig werden wir vermehrt verzahnte online-basierte Verfahren anbieten, um die gefährlichen Wegstrecken für die Familien zu den Therapieterminen geringer halten zu können.</p>
+        </div>
       </div>
     </section>
 
-    <section id="projekt-spielbeobachtung" class="page detail-page">
+    <section id="projekt-umweltfaktoren" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Diagnostik &amp; Entwicklung</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Standardisierte Spielbeobachtung</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR SPIELBEOBACHTUNG HIER EINFÜGEN -->
+
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>Auswirkung von Umweltfaktoren und kulturübergreifende Diagnostik</h1>
+          <p>Wir untersuchen, wie Umweltfaktoren wie Bildschirmexposition mit kindlicher Entwicklung zusammenhängen und wie diagnostische Verfahren für Kinder aus unterschiedlichen kulturellen und sprachlichen Kontexten weiterentwickelt werden können.</p>
+        </div>
+
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Kulturübergreifende Diagnostik</h2>
+            <p>Hinsichtlich der <strong>Entwicklung und Adaptation diagnostischer Verfahren zur kulturübergreifenden Erfassung kindlicher Entwicklung</strong> konnten wir zeigen, dass:</p>
+            <ul>
+              <li>die Anwendung der gängigen in den westlichen Industrienationen entwickelten IQ-Tests das Risiko birgt, die wahren kognitiven Fähigkeiten von Kindern aus anderen Kulturen und mit wenig formeller Bildung zu unterschätzen, und</li>
+              <li>eine standardisierte Spielbeobachtung wertvolle Hinweise auf die psychische Gesundheit sowie die kognitive, sprachliche und emotional-soziale Entwicklung von jungen Kindern liefern kann.</li>
+            </ul>
+            <p>Auf Basis klinischer Beobachtungen und aktueller Forschungsliteratur haben wir den <strong>Sprach-Kommunikations-Index (SKI)</strong> zur diagnostischen Einschätzung von Sprach-, Interaktions- und Kommunikationsfähigkeiten von Kindern im mehrsprachigen Umfeld entwickelt.</p>
+          </div>
+
+          <div class="detail-gallery">
+            <!-- OPTIONAL: Bild zur Spielbeobachtung / SKI hier einsetzen -->
+            <div class="detail-image-placeholder">Bildplatzhalter Diagnostik / SKI<br>Hier später einfach den Bild-Link einsetzen.</div>
+          </div>
+        </div>
+
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Bildschirmexposition und Entwicklung</h2>
+            <p>Bei Kindern mit und ohne Fluchterfahrung befassen wir uns mit dem Zusammenhang zwischen Entwicklungsstörungen und <strong>Bildschirmexposition</strong> und haben auf Basis klinischer Beobachtungen und aktueller Forschungsliteratur den <strong>Bildschirmexpositionsindex (BEI)</strong> zur diagnostischen Einschätzung entwickelt.</p>
+            <p>In unseren Studien zeigen sich signifikante Zusammenhänge zwischen dysregulierter Bildschirmexposition und dem Ausmaß der kindlichen Entwicklungsstörungen in den Bereichen Lernen, Sprache und Kommunikation.</p>
+          </div>
+
+          <div class="detail-gallery">
+            <!-- OPTIONAL: Bild zur Bildschirmexposition / BEI hier einsetzen -->
+            <div class="detail-image-placeholder">Bildplatzhalter Bildschirmexposition / BEI<br>Hier später einfach den Bild-Link einsetzen.</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="projekt-bildschirmexposition" class="page detail-page">
+    <section id="projekt-fortbildungen" class="page detail-page">
       <div class="detail-topbar">
         <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
+        <span class="detail-kicker">Fachkräfte</span>
       </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Bildschirmexposition</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR BILDSCHIRMEXPOSITION HIER EINFÜGEN -->
-      </div>
-    </section>
 
-    <section id="projekt-evaluation" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Begleitende wissenschaftliche Evaluation</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR EVALUATION HIER EINFÜGEN -->
-      </div>
-    </section>
+      <div class="detail-content">
+        <div class="detail-intro">
+          <h1>Bedarfsanalysen und Fortbildungen von Fachkräften</h1>
+          <p>In unseren Bedarfsanalysen zeigte sich ein hoher Bedarf an der Entwicklung von Fortbildungsangeboten zur interkulturellen Kompetenz von Fachkräften.</p>
+        </div>
 
-    <!-- ZUKÜNFTIGES PROJEKT: TEST 1 -->
-    <section id="projekt-test-1" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Bedarfsanalysen und Fortbildungen von Fachkräften</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR TEST 1 HIER EINFÜGEN -->
-      </div>
-    </section>
+        <div class="detail-section detail-two-column">
+          <div>
+            <h2>Bedarfsanalyse zu interkultureller Kompetenz</h2>
+            <p>In einer deutschlandweiten Online-Befragung wurde über den zentralen Verteiler der Deutschen Gesellschaft für Kinder- und Jugendpsychiatrie eine Bedarfsanalyse bezüglich Fortbildungen in interkultureller Kompetenz von Fachkräften im Bereich der Kinder- und Jugendpsychiatrie und -psychotherapie durchgeführt. Es zeigte sich ein hoher Bedarf an der Entwicklung von Fortbildungsangeboten.</p>
+            <p>Eine ähnliche Studie im Bereich der Pädiatrie wurde in Kooperation mit dem Universitätsklinikum Freiburg über den Fachausschuss Transkulturelle Pädiatrie der Deutschen Gesellschaft für Sozialpädiatrie und Jugendmedizin e. V. auf den Weg gebracht.</p>
+            <p>Über die Akademie für Entwicklungsförderung und andere Kanäle bieten wir regelmäßig Fortbildungen für Fachkräfte an, unter anderem zum Thema kultur- und traumasensitive Elternarbeit mit „Parents‘ College“.</p>
+            <p>Weitere Anfragen gerne unter <a href="mailto:iskf@mri.tum.de">iskf@mri.tum.de</a>.</p>
+          </div>
 
-    <!-- ZUKÜNFTIGES PROJEKT: TEST 2 -->
-    <section id="projekt-test-2" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Projektbericht</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR TEST 2 HIER EINFÜGEN -->
-      </div>
-    </section>
-
-    <!-- ZUKÜNFTIGES PROJEKT: TEST 3 -->
-    <section id="projekt-test-3" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Test 3</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR TEST 3 HIER EINFÜGEN -->
-      </div>
-    </section>
-
-    <!-- ZUKÜNFTIGES PROJEKT: TEST 4 -->
-    <section id="projekt-test-4" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Test 4</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR TEST 4 HIER EINFÜGEN -->
-      </div>
-    </section>
-
-    <!-- ZUKÜNFTIGES PROJEKT: TEST 5 -->
-    <section id="projekt-test-5" class="page detail-page">
-      <div class="detail-topbar">
-        <a class="back-link" href="#projekte" data-page="projekte">← Zur Projektübersicht</a>
-        <span class="detail-kicker">Projektseite</span>
-      </div>
-      <div class="construction-shell">
-        <span class="construction-status">Under construction :)</span>
-        <h1>Test 5</h1>
-        <p>Diese Projektseite befindet sich im Aufbau. Inhalte folgen.</p>
-        <!-- ZUKÜNFTIGE INHALTE FÜR TEST 5 HIER EINFÜGEN -->
+          <div class="detail-gallery">
+            <!-- OPTIONAL: Bild zur Fortbildung hier einsetzen -->
+            <div class="detail-image-placeholder">Bildplatzhalter Fortbildungen<br>Hier später einfach den Bild-Link einsetzen.</div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner">&copy; 2025 INCLUDE. Technical Universty Munich. Alle Rechte vorbehalten.</div>
+    <div class="footer-inner">&copy; 2025 INCLUDE. Technical University Munich. Alle Rechte vorbehalten.</div>
   </footer>
 
   <script>
